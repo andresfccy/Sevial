@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sevial.WEB", "Sevial.WEB\Sevial.WEB.csproj", "{DF68D37A-5ED5-48A2-B1CB-FC3B8F08DBEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sevial.DATA", "Sevial.DATA\Sevial.DATA.csproj", "{380B00DA-8E05-48FE-BFCC-A65008B64AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sevial.API", "Sevial.API\Sevial.API.csproj", "{0EEA31D4-10D6-4C92-8900-437AD2461313}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF68D37A-5ED5-48A2-B1CB-FC3B8F08DBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF68D37A-5ED5-48A2-B1CB-FC3B8F08DBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF68D37A-5ED5-48A2-B1CB-FC3B8F08DBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF68D37A-5ED5-48A2-B1CB-FC3B8F08DBEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380B00DA-8E05-48FE-BFCC-A65008B64AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380B00DA-8E05-48FE-BFCC-A65008B64AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380B00DA-8E05-48FE-BFCC-A65008B64AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380B00DA-8E05-48FE-BFCC-A65008B64AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EEA31D4-10D6-4C92-8900-437AD2461313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EEA31D4-10D6-4C92-8900-437AD2461313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EEA31D4-10D6-4C92-8900-437AD2461313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EEA31D4-10D6-4C92-8900-437AD2461313}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A72C0220-FA2F-4BA0-8F52-EF32910548F3}
+	EndGlobalSection
+EndGlobal
