@@ -1,2 +1,20 @@
-﻿body {
+﻿.watermark {
+    font-size: 0.8em;
+    font-family: Futura;
+    font-weight: bold;
+    background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(245,245,245,0.5) 3px 5px 1px;
+}
+
+.dashboard{
+    height: 100vh;
+    width: 100vw;
+}
+
+.welcoming{
+    font-size: 20px;
 }

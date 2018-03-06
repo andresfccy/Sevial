@@ -69,12 +69,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\0_Dashboard\dashboardModule.js" />
+    <Content Include="app\0_Dashboard\routes\accountRoutes.js" />
+    <Content Include="app\0_Dashboard\views\dashboard.html" />
     <Content Include="app\account\accountModule.js" />
     <Content Include="app\account\controllers\accountController.js" />
     <Content Include="app\account\interceptors\sessionInterceptor.js" />
     <Content Include="app\account\routes\accountRoutes.js" />
     <Content Include="app\account\services\accountServices.js" />
     <Content Include="app\account\services\sessionServices.js" />
+    <Content Include="app\account\views\login.html" />
     <Content Include="app\app.js" />
     <Content Include="app\common\commonModule.js" />
     <Content Include="app\common\controllers\commonController.js" />
@@ -86,6 +90,7 @@
     <Content Include="assets\css\creative.min.css" />
     <Content Include="assets\css\selectize.default.css" />
     <Content Include="assets\css\styles.css" />
+    <Content Include="assets\img\wireframe_logo.png" />
     <Content Include="assets\js\creative.min.js" />
     <Content Include="index.html" />
     <Content Include="node_modules\.yarn-integrity" />
@@ -1541,6 +1546,7 @@
     <Content Include="node_modules\font-awesome\scss\_variables.scss" />
     <Content Include="i18n\common\common-es.json" />
     <Content Include="i18n\account\account-es.json" />
+    <Content Include="i18n\dashboard\dashboard-es.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1557,7 +1563,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\account\views\" />
+    <Folder Include="assets\img\loader\" />
     <Folder Include="node_modules\angular-ui-router-title\test\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,78 +1,56 @@
-﻿<link href="../../../assets/utils/css/indexStyles.css" rel="stylesheet" />
-
-<div class="col-md-12 fill align-middle" ng-init="accCtrl.init()">
-    <div class="col-md-offset-4 col-md-4">
-        <div class="col-md-offset-1 col-md-10 panel panel-default">
+﻿<div class="col-md-12" ng-init="accCtrl.init()">
+    <div class="offset-md-4 col-md-4">
+        <div class="panel panel-default">
             <div class="col-md-12 text-center margin-top-bottom">
-                <img class="img-responsive" src="/assets/image-resources/logo-admin-cea.png">
+                <img class="img-responsive" src="/assets/img/wireframe_logo.png">
             </div>
-            <div class="form-group">
-                <form>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon addon-inside bg-gray">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <input class="form-control"
-                                   data-val="true"
-                                   data-val-required="El Usuario es requerido"
-                                   id="Login" 
-                                   name="Login"
-                                   placeholder="Digite su usuario"
-                                   type="text"
-                                   value=""
-                                   ng-model="accCtrl.login.username">
-                            <span class="field-validation-valid text-danger"
-                                  data-valmsg-for="Login"
-                                  data-valmsg-replace="true"></span>
-                        </div>
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon addon-inside bg-gray">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <input class="form-control"
+                               data-val="true"
+                               data-val-required="El Usuario es requerido"
+                               id="Login"
+                               name="Login"
+                               placeholder="Digite su usuario"
+                               type="text"
+                               value=""
+                               ng-model="accCtrl.login.username">
+                        <span class="field-validation-valid text-danger"
+                              data-valmsg-for="Login"
+                              data-valmsg-replace="true"></span>
                     </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon addon-inside bg-gray">
-                                <i class="fa fa-unlock-alt"></i>
-                            </span>
-                            <input class="form-control"
-                                   data-val="true"
-                                   data-val-required="La contraseña es requerida"
-                                   id="Password"
-                                   name="Password"
-                                   placeholder="Digite su contraseña"
-                                   type="password"
-                                   ng-model="accCtrl.login.password">
-                            <span class="field-validation-valid text-danger"
-                                  data-valmsg-for="Password"
-                                  data-valmsg-replace="true"></span>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon addon-inside bg-gray">
+                            <i class="fa fa-unlock-alt"></i>
+                        </span>
+                        <input class="form-control"
+                               data-val="true"
+                               data-val-required="La contraseña es requerida"
+                               id="Password"
+                               name="Password"
+                               placeholder="Digite su contraseña"
+                               type="password"
+                               ng-model="accCtrl.login.password">
+                        <span class="field-validation-valid text-danger"
+                              data-valmsg-for="Password"
+                              data-valmsg-replace="true"></span>
                     </div>
-                    <span class="field-validation-valid label label-danger"
-                          data-valmsg-for="Key_mensaje"
-                          data-valmsg-replace="true"></span>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input data-val="true"
-                                       data-val-required="El campo ¿Recordar cuenta? es obligatorio."
-                                       id="RememberMe"
-                                       name="RememberMe"
-                                       type="checkbox"
-                                       value="true"
-                                   ng-model="accCtrl.login.RememberMe">
-                                <input name="RememberMe" type="hidden" value="false">
-                                <label for="RememberMe">¿Recordar cuenta?</label>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input id="btnEntrar"
-                               type="button"
-                               ng-click="accCtrl.submit()"
-                               value="{{ 'account.login' | translate}}"
-                               class="btn btn-lg btn-primary btn-block">
-                    </div>
-                </form>
-                <p class="text-center margin-top-bottom">{{ 'account.watermark' | translate}}</p>
-            </div>
+                </div>
+                <div class="form-group">
+                    <input id="btnEntrar"
+                           type="button"
+                           ng-click="accCtrl.submit()"
+                           value="{{ 'account.login' | translate}}"
+                           class="btn btn-lg btn-primary btn-block">
+                </div>
+            </form>
+            <p class="text-center margin-top-bottom watermark">{{ 'account.watermark' | translate}}</p>
         </div>
     </div>
 </div>
