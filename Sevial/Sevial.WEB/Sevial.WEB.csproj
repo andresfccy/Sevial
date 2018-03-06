@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\0_Dashboard\dashboardModule.js" />
-    <Content Include="app\0_Dashboard\routes\accountRoutes.js" />
+    <Content Include="app\0_Dashboard\routes\dashboardRoutes.js" />
     <Content Include="app\0_Dashboard\views\dashboard.html" />
     <Content Include="app\account\accountModule.js" />
     <Content Include="app\account\controllers\accountController.js" />

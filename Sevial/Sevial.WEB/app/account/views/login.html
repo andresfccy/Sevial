@@ -6,44 +6,23 @@
             </div>
             <form>
                 <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon addon-inside bg-gray">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        <input class="form-control"
-                               data-val="true"
-                               data-val-required="El Usuario es requerido"
-                               id="Login"
-                               name="Login"
-                               placeholder="Digite su usuario"
-                               type="text"
-                               value=""
-                               ng-model="accCtrl.login.username">
-                        <span class="field-validation-valid text-danger"
-                              data-valmsg-for="Login"
-                              data-valmsg-replace="true"></span>
-                    </div>
+                    <input id="Login"
+                           name="Login"
+                           class="form-control"
+                           placeholder="Digite su usuario"
+                           type="text"
+                           ng-model="accCtrl.login.username" />
                 </div>
                 <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon addon-inside bg-gray">
-                            <i class="fa fa-unlock-alt"></i>
-                        </span>
-                        <input class="form-control"
-                               data-val="true"
-                               data-val-required="La contraseña es requerida"
-                               id="Password"
-                               name="Password"
-                               placeholder="Digite su contraseña"
-                               type="password"
-                               ng-model="accCtrl.login.password">
-                        <span class="field-validation-valid text-danger"
-                              data-valmsg-for="Password"
-                              data-valmsg-replace="true"></span>
-                    </div>
+                    <input id="Password"
+                           name="Password"
+                           class="form-control"
+                           placeholder="Digite su contraseña"
+                           type="password"
+                           ng-model="accCtrl.login.password" />
                 </div>
                 <div class="form-group">
-                    <input id="btnEntrar"
+                    <input id="btnLogin"
                            type="button"
                            ng-click="accCtrl.submit()"
                            value="{{ 'account.login' | translate}}"
