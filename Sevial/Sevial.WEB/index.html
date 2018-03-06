@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      ng-app="sevialApp">
+<head>
+    <title>SEVIAL | 2018</title>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Olimpia Management">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/images/icons/favicon.png">
+
+    <!-- Styles -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- Custom Styles -->
+    <link href="assets/css/creative.min.css" rel="stylesheet" />
+    <link href="assets/utils/css/styles.css" rel="stylesheet"/>
+
+    <!-- Dependencies' Styles -->
+    <link href="node_modules/angular-growl-v2/build/angular-growl.min.css" rel="stylesheet" />
+    <link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="node_modules/ui-select/dist/select.min.css" rel="stylesheet" />
+    <link href="assets/css/selectize.default.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Directives -->
+    <div loading></div>
+    <div growl></div>
+
+    <!-- Loader before AngularJS -->
+    <div id="loading" ng-if="false">
+        <div class="svg-icon-loader">
+            <img src="assets/images/svg-loaders/bars.svg" width="40" alt="">
+        </div>
+    </div>
+
+    <!-- Views rendering div -->
+    <div ui-view ng-cloak></div>
+
+    <!-- JS Dependencies -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS Dependencies -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="node_modules/angular-growl-v2/build/angular-growl.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script src="node_modules/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="node_modules/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+    <script src="node_modules/angular-ui-router-title/angular-ui-router-title.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="node_modules/ui-select/dist/select.min.js"></script>
+
+    <!-- AngularJS App-->
+    <script src="app/app.js"></script>
+
+    <!-- CommonModule -->
+    <script src="app/common/commonModule.js"></script>
+    <script src="app/common/directives/loadingDirective.js"></script>
+    <script src="app/common/routes/commonsRoutes.js"></script>
+    <script src="app/common/routes/errorsRoutes.js"></script>
+    <script src="app/common/services/commonConstants.js"></script>
+
+    <!-- AccountModule -->
+    <script src="app/account/accountModule.js"></script>
+    <script src="app/account/routes/accountRoutes.js"></script>
+    <script src="app/account/controllers/accountController.js"></script>
+    <script src="app/account/services/accountServices.js"></script>
+    <script src="app/account/services/sessionServices.js"></script>
+    <script src="app/account/interceptors/sessionInterceptor.js"></script>
+</body>
+</html>
