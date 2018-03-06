@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ValuesController1.cs" />
+    <Compile Include="Controllers\EjemploController.cs" />
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Models\RespuestaEntidad.cs" />
     <Compile Include="Models\RespuestaLista.cs" />
@@ -116,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sevial.CF.DATA\Sevial.CF.DATA.csproj">
+      <Project>{380b00da-8e05-48fe-bfcc-a65008b64aa8}</Project>
+      <Name>Sevial.CF.DATA</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

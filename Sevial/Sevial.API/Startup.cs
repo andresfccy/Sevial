@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Sevial.API.Providers;
 
 [assembly: OwinStartup(typeof(Sevial.API.Startup))]
 namespace Sevial.API

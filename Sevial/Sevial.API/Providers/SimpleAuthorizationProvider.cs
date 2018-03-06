@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin.Security.OAuth;
+﻿using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -25,39 +27,36 @@ namespace Sevial.API.Providers
             }
 
             // Buscar el usuario y dejarlo en la variable user
-
+            // UsuarioEntity user = new UsuarioEntity();
+            var user = new {
+                Id = new Guid(),
+                UserName = "username_dummy",
+                EmailConfirmed = true
+            };
 
             if (user == null)
             {
                 context.SetError("invalid_grant", "El nombre de usuario o contraseña son incorrectos.");
                 return;
             }
-            if (user.Empresa == null && user.Rango == 0)
-            {
-                estado = "CrearEmpresa";
-            }
-            else if (user.Empresa == null && user.Rango > 0)
-            {
-                estado = "EmpresaNoCreada";
-            }
 
             if (!user.EmailConfirmed)
             {
-                context.SetError("invalid_grant", "Tu cuenta no ha sido confirmada, revisa la bandeja de entrada de tu correo electrónico para completar su registro.");
+                context.SetError("invalid_grant", "Tu cuenta no ha sido confirmada, revisa la bandeja de entrada de tu correo electrónico para completar el registro.");
                 return;
             }
             // hacer más verificaciones si es necesario
-            roles = _repo.DarRolesUsuario(user.Id);
+            //roles = _repo.DarRolesUsuario(user.Id);
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
-            String rolesString = "";
-            foreach (var r in roles)
-            {
-                rolesString = "," + r.Id;
-                identity.AddClaim(new Claim("role", r.Name));
-            }
-            rolesString = rolesString.Substring(1);
+            //String rolesString = "";
+            //foreach (var r in roles)
+            //{
+            //    rolesString = "," + r.Id;
+            //    identity.AddClaim(new Claim("role", r.Name));
+            //}
+            //rolesString = rolesString.Substring(1);
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
@@ -67,17 +66,14 @@ namespace Sevial.API.Providers
                     {
                         "userName", context.UserName
                     },
-                    {
-                        "userRoles", rolesString
-                    },
-                    {
-                        "estado", estado
-                    }
+                    //{
+                    //    "userRoles", rolesString
+                    //}
                 });
 
+            // Creación del Token
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);
-
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
