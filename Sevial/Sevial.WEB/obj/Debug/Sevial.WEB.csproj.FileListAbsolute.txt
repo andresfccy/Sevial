@@ -1,9 +1,0 @@
-C:\Workspace\Sevial\Sevial\Sevial.WEB\bin\Sevial.WEB.dll.config
-C:\Workspace\Sevial\Sevial\Sevial.WEB\bin\Sevial.WEB.dll
-C:\Workspace\Sevial\Sevial\Sevial.WEB\bin\Sevial.WEB.pdb
-C:\Workspace\Sevial\Sevial\Sevial.WEB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Workspace\Sevial\Sevial\Sevial.WEB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Workspace\Sevial\Sevial\Sevial.WEB\obj\Debug\Sevial.WEB.csprojResolveAssemblyReference.cache
-C:\Workspace\Sevial\Sevial\Sevial.WEB\obj\Debug\Sevial.WEB.csproj.CoreCompileInputs.cache
-C:\Workspace\Sevial\Sevial\Sevial.WEB\obj\Debug\Sevial.WEB.dll
-C:\Workspace\Sevial\Sevial\Sevial.WEB\obj\Debug\Sevial.WEB.pdb
