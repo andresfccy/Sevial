@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.directive('loading', ['$rootScope', function ($rootScope) {
     return {
-        templateUrl: './app/commons/views/loading.html',
+        templateUrl: './app/common/views/loading.html',
         scope: true,
         controller: ['$scope', function ($scope) {
             $scope.loading = false;

@@ -79,8 +79,7 @@
     <Content Include="app\common\commonModule.js" />
     <Content Include="app\common\controllers\commonController.js" />
     <Content Include="app\common\directives\loadingDirective.js" />
-    <Content Include="app\common\routes\commonsRoutes.js" />
-    <Content Include="app\common\routes\errorsRoutes.js" />
+    <Content Include="app\common\routes\commonRoutes.js" />
     <Content Include="app\common\services\commonConstants.js" />
     <Content Include="app\common\views\loading.html" />
     <Content Include="assets\css\creative.css" />
@@ -1540,6 +1539,8 @@
     <Content Include="node_modules\font-awesome\scss\_screen-reader.scss" />
     <Content Include="node_modules\font-awesome\scss\_stacked.scss" />
     <Content Include="node_modules\font-awesome\scss\_variables.scss" />
+    <Content Include="i18n\common\common-es.json" />
+    <Content Include="i18n\account\account-es.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1557,7 +1558,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\account\views\" />
-    <Folder Include="i18n\" />
     <Folder Include="node_modules\angular-ui-router-title\test\" />
   </ItemGroup>
   <ItemGroup>

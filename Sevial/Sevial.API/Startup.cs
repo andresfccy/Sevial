@@ -25,7 +25,7 @@ namespace Sevial.API
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
-                TokenEndpointPath = new PathString("/Sesion/Login"),
+                TokenEndpointPath = new PathString("Sesion/Login"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationProvider()
             };

@@ -17,18 +17,19 @@
 
     <!-- Styles -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
-
-    <!-- Custom Styles -->
-    <link href="assets/css/creative.min.css" rel="stylesheet" />
-    <link href="assets/utils/css/styles.css" rel="stylesheet"/>
+    <!--<link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>-->
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
     <!-- Dependencies' Styles -->
     <link href="node_modules/angular-growl-v2/build/angular-growl.min.css" rel="stylesheet" />
     <link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" />
     <link href="node_modules/ui-select/dist/select.min.css" rel="stylesheet" />
     <link href="assets/css/selectize.default.css" rel="stylesheet" />
+    <link href="node_modules/sweetalert/dist/sweetalert.css" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link href="assets/css/creative.min.css" rel="stylesheet" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -43,7 +44,7 @@
     <!-- Loader before AngularJS -->
     <div id="loading" ng-if="false">
         <div class="svg-icon-loader">
-            <img src="assets/images/svg-loaders/bars.svg" width="40" alt="">
+            <img src="assets/img/svg-loaders/bars.svg" width="40" alt="">
         </div>
     </div>
 
@@ -53,6 +54,7 @@
     <!-- JS Dependencies -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- AngularJS Dependencies -->
     <script src="node_modules/angular/angular.min.js"></script>
@@ -72,6 +74,7 @@
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="node_modules/ui-select/dist/select.min.js"></script>
+    <script src="node_modules/angular-swal/index.js"></script>
 
     <!-- AngularJS App-->
     <script src="app/app.js"></script>
@@ -79,8 +82,7 @@
     <!-- CommonModule -->
     <script src="app/common/commonModule.js"></script>
     <script src="app/common/directives/loadingDirective.js"></script>
-    <script src="app/common/routes/commonsRoutes.js"></script>
-    <script src="app/common/routes/errorsRoutes.js"></script>
+    <script src="app/common/routes/commonRoutes.js"></script>
     <script src="app/common/services/commonConstants.js"></script>
 
     <!-- AccountModule -->

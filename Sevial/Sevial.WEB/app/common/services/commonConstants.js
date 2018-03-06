@@ -8,8 +8,8 @@ commonModule.factory('CommonConstants', [
             API_LOGIN: 'http://localhost',
             API_LOGIN_SSL: 'https://localhost',
 
-            API_PORT: '52835',
-            API_LOGIN_PORT: '52835',
+            API_PORT: '50885',
+            API_LOGIN_PORT: '50885',
 
             TOKEN_HEADER: 'Authorization',
             TOKEN_KEY_LOCALSTORAGE: 'authData',
@@ -44,11 +44,11 @@ commonModule.factory('CommonConstants', [
                 return baseUrl;
             }
 
-            , SISEC_TOKEN: function () { return factory.API_BASE_URL() + '/api/SISECAccount/Token'; }
+            , TOKEN: function () { return factory.API_BASE_URL() + '/Sesion/Login'; }
 
-            , SISEC_ACCOUNT: function () { return factory.API_BASE_URL() + '/api/SISECAccount'; }
-            , HOME_ADMINISTRATIVE: function () { return factory.API_BASE_URL() + '/api/HomeAdministrativo'; }
-            , QA_SCHEDULE: function () { return factory.API_BASE_URL() + '/api/ModuloHorarioCalidad'; }
+            , ACCOUNT: function () { return factory.API_BASE_URL() + '/Account'; }
+            , HOME_ADMINISTRATIVE: function () { return factory.API_BASE_URL() + '/HomeAdministrativo'; }
+            , QA_SCHEDULE: function () { return factory.API_BASE_URL() + '/ModuloHorarioCalidad'; }
 
             , SISEC_ACCOUNT_GET_VALIDATION_CODE: function () { return factory.SISEC_ACCOUNT() + '/GenerarCodigoValidacion?userName=:username'; }
             , SISEC_ACCOUNT_LOGIN: function () { return factory.SISEC_ACCOUNT() + '/Login'; }

@@ -20,7 +20,7 @@ commonModule
             }
 
             function getCtrlName() {
-                return "commons.commonController";
+                return "common.commonController";
             }
 
             //Simular defer para mostrar el símbolo de carga

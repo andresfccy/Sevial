@@ -1,5 +1,5 @@
 ﻿'use strict';
-var app = angular.module('sisecEnsenanzaApp', [
+var app = angular.module('sevialApp', [
       'ngCookies'
     , 'ngResource'
     , 'pascalprecht.translate'

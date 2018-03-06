@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using Sevial.DATA.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,11 @@ namespace Sevial.API.Providers
                 return;
             }
 
-            // Buscar el usuario y dejarlo en la variable user
-            // UsuarioEntity user = new UsuarioEntity();
-            var user = new {
+            // TODO: Buscar el usuario y dejarlo en la variable user
+            UsuarioEntity user = new UsuarioEntity(){
                 Id = new Guid(),
                 UserName = "username_dummy",
-                EmailConfirmed = true
+                EmailConfirmado = true
             };
 
             if (user == null)
@@ -40,7 +40,7 @@ namespace Sevial.API.Providers
                 return;
             }
 
-            if (!user.EmailConfirmed)
+            if (!user.EmailConfirmado)
             {
                 context.SetError("invalid_grant", "Tu cuenta no ha sido confirmada, revisa la bandeja de entrada de tu correo electrónico para completar el registro.");
                 return;
@@ -64,7 +64,7 @@ namespace Sevial.API.Providers
                         "userId", user.Id.ToString()
                     },
                     {
-                        "userName", context.UserName
+                        "userName", user.UserName
                     },
                     //{
                     //    "userRoles", rolesString
