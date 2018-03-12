@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sevial.API.Models
+namespace Sevial.API2.Models.ObjetoSalida
 {
     public class RespuestaLista<T> : Respuesta
     {

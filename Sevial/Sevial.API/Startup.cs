@@ -13,11 +13,11 @@ namespace Sevial.API
     {
         public void Configuration(IAppBuilder app)
         {
-            HttpConfiguration config = new HttpConfiguration();
+            /*HttpConfiguration config = new HttpConfiguration();
             // Configurar el envío de tokens
             ConfigureOAuth(app);
 
-            WebApiConfig.Register(config);
+            WebApiConfig.Register(config);*/
         }
 
         public void ConfigureOAuth(IAppBuilder app)

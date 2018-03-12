@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sevial.API.Models
+namespace Sevial.API.Models.ObjetoSalida
 {
     /// <summary>
     /// Clase que modela la respuesta a una solicitud al API
     /// </summary>
     public class Respuesta
     {
-        public bool Estado { get; set; }
-        public string Mensaje { get; set; }
-        public string Descripcion { get; set; }
+        public int CodigoRpta { get; set; }
+        public string MensajeRpta { get; set; }
     }
 }

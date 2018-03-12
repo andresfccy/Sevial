@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="APPSEVIALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SEG_TB001_Usuario">
+          <Key>
+            <PropertyRef Name="A001_codigo" />
+          </Key>
+          <Property Name="A001_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A001_aliasUsuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="A001_clave" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="A001_nombreCompleto" Type="nvarchar" MaxLength="200" />
+          <Property Name="A001_correoElectronico" Type="nvarchar" MaxLength="200" />
+          <Property Name="A001_inactivo" Type="bit" />
+          <Property Name="A001_bloqueo" Type="bit" />
+          <Property Name="A001_cambioClave" Type="bit" />
+          <Property Name="A001_fechaUltimoIngreso" Type="datetime" />
+          <Property Name="A001_fechaInactivo" Type="datetime" />
+          <Property Name="A001_fechaBloqueo" Type="datetime" />
+          <Property Name="A001_fechaCambioClave" Type="datetime" />
+          <Property Name="A001_fechaCreacion" Type="datetime" />
+          <Property Name="A001_fechaModificacion" Type="datetime" />
+          <Property Name="A001_usuarioCreacion" Type="int" />
+          <Property Name="A001_usuarioModificacion" Type="int" />
+          <Property Name="A001_estadoRegistro" Type="char" MaxLength="1" />
+        </EntityType>
+        <Function Name="SP001_AutenticarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="clave" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="APPSEVIALModelStoreContainer">
+          <EntitySet Name="SEG_TB001_Usuario" EntityType="Self.SEG_TB001_Usuario" Schema="dbo" Table="SEG.TB001_Usuario" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APPSEVIALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="APPSEVIALEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP001_AutenticarUsuario" ReturnType="Collection(APPSEVIALModel.SP001_AutenticarUsuario_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SEG_TB001_Usuario" EntityType="APPSEVIALModel.SEG_TB001_Usuario" />
+        </EntityContainer>
+        <ComplexType Name="SP001_AutenticarUsuario_Result">
+          <Property Type="Int32" Name="A001_codigo" Nullable="false" />
+          <Property Type="String" Name="A001_aliasUsuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="A001_clave" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="A001_nombreCompleto" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="A001_correoElectronico" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="A001_inactivo" Nullable="true" />
+          <Property Type="Boolean" Name="A001_bloqueo" Nullable="true" />
+          <Property Type="Boolean" Name="A001_cambioClave" Nullable="true" />
+          <Property Type="DateTime" Name="A001_fechaUltimoIngreso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A001_fechaInactivo" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A001_fechaBloqueo" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A001_fechaCambioClave" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A001_fechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A001_fechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="A001_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="A001_usuarioModificacion" Nullable="true" />
+          <Property Type="String" Name="A001_estadoRegistro" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <EntityType Name="SEG_TB001_Usuario">
+          <Key>
+            <PropertyRef Name="A001_codigo" />
+          </Key>
+          <Property Name="A001_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A001_aliasUsuario" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="A001_clave" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="A001_nombreCompleto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="A001_correoElectronico" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="A001_inactivo" Type="Boolean" />
+          <Property Name="A001_bloqueo" Type="Boolean" />
+          <Property Name="A001_cambioClave" Type="Boolean" />
+          <Property Name="A001_fechaUltimoIngreso" Type="DateTime" Precision="3" />
+          <Property Name="A001_fechaInactivo" Type="DateTime" Precision="3" />
+          <Property Name="A001_fechaBloqueo" Type="DateTime" Precision="3" />
+          <Property Name="A001_fechaCambioClave" Type="DateTime" Precision="3" />
+          <Property Name="A001_fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="A001_fechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="A001_usuarioCreacion" Type="Int32" />
+          <Property Name="A001_usuarioModificacion" Type="Int32" />
+          <Property Name="A001_estadoRegistro" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APPSEVIALModelStoreContainer" CdmEntityContainer="APPSEVIALEntities" >
+          <FunctionImportMapping FunctionImportName="SP001_AutenticarUsuario" FunctionName="APPSEVIALModel.Store.SP001_AutenticarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel.SP001_AutenticarUsuario_Result">
+                <ScalarProperty Name="A001_codigo" ColumnName="A001_codigo" />
+                <ScalarProperty Name="A001_aliasUsuario" ColumnName="A001_aliasUsuario" />
+                <ScalarProperty Name="A001_clave" ColumnName="A001_clave" />
+                <ScalarProperty Name="A001_nombreCompleto" ColumnName="A001_nombreCompleto" />
+                <ScalarProperty Name="A001_correoElectronico" ColumnName="A001_correoElectronico" />
+                <ScalarProperty Name="A001_inactivo" ColumnName="A001_inactivo" />
+                <ScalarProperty Name="A001_bloqueo" ColumnName="A001_bloqueo" />
+                <ScalarProperty Name="A001_cambioClave" ColumnName="A001_cambioClave" />
+                <ScalarProperty Name="A001_fechaUltimoIngreso" ColumnName="A001_fechaUltimoIngreso" />
+                <ScalarProperty Name="A001_fechaInactivo" ColumnName="A001_fechaInactivo" />
+                <ScalarProperty Name="A001_fechaBloqueo" ColumnName="A001_fechaBloqueo" />
+                <ScalarProperty Name="A001_fechaCambioClave" ColumnName="A001_fechaCambioClave" />
+                <ScalarProperty Name="A001_fechaCreacion" ColumnName="A001_fechaCreacion" />
+                <ScalarProperty Name="A001_fechaModificacion" ColumnName="A001_fechaModificacion" />
+                <ScalarProperty Name="A001_usuarioCreacion" ColumnName="A001_usuarioCreacion" />
+                <ScalarProperty Name="A001_usuarioModificacion" ColumnName="A001_usuarioModificacion" />
+                <ScalarProperty Name="A001_estadoRegistro" ColumnName="A001_estadoRegistro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="SEG_TB001_Usuario">
+            <EntityTypeMapping TypeName="APPSEVIALModel.SEG_TB001_Usuario">
+              <MappingFragment StoreEntitySet="SEG_TB001_Usuario">
+                <ScalarProperty Name="A001_estadoRegistro" ColumnName="A001_estadoRegistro" />
+                <ScalarProperty Name="A001_usuarioModificacion" ColumnName="A001_usuarioModificacion" />
+                <ScalarProperty Name="A001_usuarioCreacion" ColumnName="A001_usuarioCreacion" />
+                <ScalarProperty Name="A001_fechaModificacion" ColumnName="A001_fechaModificacion" />
+                <ScalarProperty Name="A001_fechaCreacion" ColumnName="A001_fechaCreacion" />
+                <ScalarProperty Name="A001_fechaCambioClave" ColumnName="A001_fechaCambioClave" />
+                <ScalarProperty Name="A001_fechaBloqueo" ColumnName="A001_fechaBloqueo" />
+                <ScalarProperty Name="A001_fechaInactivo" ColumnName="A001_fechaInactivo" />
+                <ScalarProperty Name="A001_fechaUltimoIngreso" ColumnName="A001_fechaUltimoIngreso" />
+                <ScalarProperty Name="A001_cambioClave" ColumnName="A001_cambioClave" />
+                <ScalarProperty Name="A001_bloqueo" ColumnName="A001_bloqueo" />
+                <ScalarProperty Name="A001_inactivo" ColumnName="A001_inactivo" />
+                <ScalarProperty Name="A001_correoElectronico" ColumnName="A001_correoElectronico" />
+                <ScalarProperty Name="A001_nombreCompleto" ColumnName="A001_nombreCompleto" />
+                <ScalarProperty Name="A001_clave" ColumnName="A001_clave" />
+                <ScalarProperty Name="A001_aliasUsuario" ColumnName="A001_aliasUsuario" />
+                <ScalarProperty Name="A001_codigo" ColumnName="A001_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
