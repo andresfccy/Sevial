@@ -99,13 +99,23 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Entity\Sistema\SistemaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SistemaModel.edmx</DependentUpon>
+      <LastGenOutput>SistemaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\Sistema\SistemaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SistemaModel.edmx</DependentUpon>
+      <LastGenOutput>SistemaModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
-    <Compile Include="Controllers\SEG_TB001_UsuarioController.cs" />
+    <Compile Include="Controllers\SistemaController.cs" />
     <Compile Include="Entity\Seguridad\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +137,21 @@
     <Compile Include="Entity\Seguridad\SP001_AutenticarUsuario_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Sistema\SistemaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sistema\SistemaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Sistema\SistemaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,6 +168,13 @@
     </EntityDeploy>
     <Content Include="Entity\Seguridad\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\Sistema\SistemaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SistemaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\Sistema\SistemaModel.edmx.diagram">
+      <DependentUpon>SistemaModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
