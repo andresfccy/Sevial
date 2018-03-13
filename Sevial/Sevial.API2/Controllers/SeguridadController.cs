@@ -42,5 +42,31 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/seguridad/darModuloUsuario")]
+        [ResponseType(typeof(RespuestaLista<SP002_DarModuloUsuario_Result>))]
+        public IHttpActionResult PostDarModuloUSuario(DarModuloUsuario oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP002_DarModuloUsuario(oe.AliasUsuario, codigoRpta, mensajeRpta);
+            var dataSet = result.ToList();
+
+            RespuestaLista<SP002_DarModuloUsuario_Result> os = new RespuestaLista<SP002_DarModuloUsuario_Result>();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+            os.Lista = dataSet;
+
+            return Ok(os);
+
+
+        }
     }
 }

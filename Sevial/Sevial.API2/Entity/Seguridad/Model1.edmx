@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="APPSEVIALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="APPSEVIALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="SEG_TB001_Usuario">
           <Key>
             <PropertyRef Name="A001_codigo" />
@@ -33,11 +33,15 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP002_DarModuloUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALModelStoreContainer">
           <EntitySet Name="SEG_TB001_Usuario" EntityType="Self.SEG_TB001_Usuario" Schema="dbo" Table="SEG.TB001_Usuario" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="APPSEVIALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -71,6 +75,11 @@
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP002_DarModuloUsuario" ReturnType="Collection(APPSEVIALModel.SP002_DarModuloUsuario_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP001_AutenticarUsuario_Result">
           <Property Type="Int32" Name="A001_codigo" Nullable="false" />
@@ -90,6 +99,12 @@
           <Property Type="Int32" Name="A001_usuarioCreacion" Nullable="true" />
           <Property Type="Int32" Name="A001_usuarioModificacion" Nullable="true" />
           <Property Type="String" Name="A001_estadoRegistro" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP002_DarModuloUsuario_Result">
+          <Property Type="Int32" Name="A002_codigo" Nullable="false" />
+          <Property Type="String" Name="A002_nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A002_icono" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A002_url" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -140,6 +155,16 @@
                 <ScalarProperty Name="A001_usuarioCreacion" ColumnName="A001_usuarioCreacion" />
                 <ScalarProperty Name="A001_usuarioModificacion" ColumnName="A001_usuarioModificacion" />
                 <ScalarProperty Name="A001_estadoRegistro" ColumnName="A001_estadoRegistro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP002_DarModuloUsuario" FunctionName="APPSEVIALModel.Store.SP002_DarModuloUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel.SP002_DarModuloUsuario_Result">
+                <ScalarProperty Name="A002_codigo" ColumnName="A002_codigo" />
+                <ScalarProperty Name="A002_nombre" ColumnName="A002_nombre" />
+                <ScalarProperty Name="A002_icono" ColumnName="A002_icono" />
+                <ScalarProperty Name="A002_url" ColumnName="A002_url" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

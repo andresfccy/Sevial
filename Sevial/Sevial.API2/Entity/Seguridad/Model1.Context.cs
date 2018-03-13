@@ -41,5 +41,14 @@ namespace Sevial.API2.Entity.Seguridad
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP001_AutenticarUsuario_Result>("SP001_AutenticarUsuario", aliasUsuarioParameter, claveParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP002_DarModuloUsuario_Result> SP002_DarModuloUsuario(string aliasUsuario, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP002_DarModuloUsuario_Result>("SP002_DarModuloUsuario", aliasUsuarioParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
