@@ -140,6 +140,9 @@
     <Compile Include="Entity\Seguridad\SP002_DarModuloUsuario_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Seguridad\SP003_DarOpcionModuloUsuario_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Sistema\SistemaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +164,8 @@
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\DarModuloUsuario.cs" />
+    <Compile Include="Models\ObjetoEntrada\Seguridad\DarOpcionModuloUsuario.cs" />
+    <Compile Include="Models\ObjetoEntrada\Seguridad\ValidarUrlIngreso.cs" />
     <Compile Include="Models\ObjetoSalida\Respuesta.cs" />
     <Compile Include="Models\ObjetoSalida\RespuestaEntidad.cs" />
     <Compile Include="Models\ObjetoSalida\RespuestaLista.cs" />

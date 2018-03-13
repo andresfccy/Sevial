@@ -38,6 +38,18 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP003_DarOpcionModuloUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idModulo" Type="int" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP004_ValidarUrlIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEG">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="url" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALModelStoreContainer">
           <EntitySet Name="SEG_TB001_Usuario" EntityType="Self.SEG_TB001_Usuario" Schema="dbo" Table="SEG.TB001_Usuario" store:Type="Tables" />
         </EntityContainer>
@@ -80,6 +92,18 @@
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP003_DarOpcionModuloUsuario" ReturnType="Collection(APPSEVIALModel.SP003_DarOpcionModuloUsuario_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idModulo" Mode="In" Type="Int32" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP004_ValidarUrlIngreso">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP001_AutenticarUsuario_Result">
           <Property Type="Int32" Name="A001_codigo" Nullable="false" />
@@ -105,6 +129,13 @@
           <Property Type="String" Name="A002_nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="A002_icono" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="A002_url" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP003_DarOpcionModuloUsuario_Result">
+          <Property Type="Int32" Name="A005_menu" Nullable="true" />
+          <Property Type="String" Name="A004_nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="A005_codigo" Nullable="false" />
+          <Property Type="String" Name="A005_nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A005_url" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -168,6 +199,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP003_DarOpcionModuloUsuario" FunctionName="APPSEVIALModel.Store.SP003_DarOpcionModuloUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel.SP003_DarOpcionModuloUsuario_Result">
+                <ScalarProperty Name="A005_menu" ColumnName="A005_menu" />
+                <ScalarProperty Name="A004_nombre" ColumnName="A004_nombre" />
+                <ScalarProperty Name="A005_codigo" ColumnName="A005_codigo" />
+                <ScalarProperty Name="A005_nombre" ColumnName="A005_nombre" />
+                <ScalarProperty Name="A005_url" ColumnName="A005_url" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP004_ValidarUrlIngreso" FunctionName="APPSEVIALModel.Store.SP004_ValidarUrlIngreso" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

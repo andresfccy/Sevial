@@ -68,5 +68,55 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/seguridad/darOpcionModuloUsuario")]
+        [ResponseType(typeof(RespuestaLista<SP003_DarOpcionModuloUsuario_Result>))]
+        public IHttpActionResult PostDarOpcionModuloUsuario(DarOpcionModuloUsuario oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP003_DarOpcionModuloUsuario(oe.AliasUsuario, oe.IdModulo, codigoRpta, mensajeRpta);
+            var dataSet = result.ToList();
+
+            RespuestaLista<SP003_DarOpcionModuloUsuario_Result> os = new RespuestaLista<SP003_DarOpcionModuloUsuario_Result>();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+            os.Lista = dataSet;
+
+            return Ok(os);
+
+
+        }
+
+        [Route("api/seguridad/validarUrlIngreso")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostValidarUrlIngreso(ValidarUrlIngreso oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP004_ValidarUrlIngreso(oe.AliasUsuario, oe.Url, codigoRpta, mensajeRpta);
+         
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
     }
 }

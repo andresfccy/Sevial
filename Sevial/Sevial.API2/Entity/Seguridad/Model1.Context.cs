@@ -50,5 +50,31 @@ namespace Sevial.API2.Entity.Seguridad
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP002_DarModuloUsuario_Result>("SP002_DarModuloUsuario", aliasUsuarioParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP003_DarOpcionModuloUsuario_Result> SP003_DarOpcionModuloUsuario(string aliasUsuario, Nullable<int> idModulo, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idModuloParameter = idModulo.HasValue ?
+                new ObjectParameter("idModulo", idModulo) :
+                new ObjectParameter("idModulo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP003_DarOpcionModuloUsuario_Result>("SP003_DarOpcionModuloUsuario", aliasUsuarioParameter, idModuloParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual int SP004_ValidarUrlIngreso(string aliasUsuario, string url, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var urlParameter = url != null ?
+                new ObjectParameter("url", url) :
+                new ObjectParameter("url", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP004_ValidarUrlIngreso", aliasUsuarioParameter, urlParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
