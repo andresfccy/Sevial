@@ -4,7 +4,7 @@ dashboardModule.config(['$stateProvider',
         $stateProvider
             .state('home', {
                 url: '/Home',
-                templateUrl: 'app/dashboard/views/dashboard.html',
+                templateUrl: 'app/0_dashboard/views/dashboard.html',
                 resolve: {
                     //"check": function (SessionServices, $location, loading, growl) {
                     //    if (!SessionServices.isLoggedIn()) {

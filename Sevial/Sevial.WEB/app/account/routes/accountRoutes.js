@@ -7,13 +7,19 @@ accountModule.config(['$stateProvider',
                 templateUrl: 'app/account/views/login.html',
                 controller: 'account.accountController as accCtrl',
                 resolve: {
-                    "check": function (SessionServices, $location, loading, growl) {
-                        if (SessionServices.isLoggedIn()) {
-                            $location.path("/Home");
-                            growl.info("¡Bienvenido de nuevo!");
+                    check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
+                        function ($timeout, $state, $q, SessionServices, loading, growl) {
+                            if (SessionServices.isLoggedIn()) {
+                                $state.go("home");
+                                growl.info("¡Bienvenido de nuevo!");
+                            }
+                            $timeout(function () {
+                                $state.go('home');
+                            }, 0);
+                            return $q.reject()
+                            //SessionServices.authorized("login");
                         }
-                        //SessionServices.authorized("login");
-                    }
+                    ]
                 }
             })
     }

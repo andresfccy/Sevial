@@ -41,7 +41,7 @@ accountModule
                     // Save to storage info
                     SessionServices.setValueToStorage(CommonConstants.TOKEN_KEY_LOCALSTORAGE, "provisional_token");
 
-                    //$state.go("home");
+                    $state.go("home");
                     growl.success("¡Autenticación correcta!");
                     loading.stopLoading(getCtrlName() + ".token");
                 }).catch(function (error) {
