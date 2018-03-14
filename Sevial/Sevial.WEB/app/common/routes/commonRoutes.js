@@ -4,6 +4,6 @@
             enabled: true,
             requireBase: false
         });
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/Home');
     }
 ]);

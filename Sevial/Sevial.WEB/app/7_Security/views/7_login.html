@@ -1,0 +1,35 @@
+﻿<div class="col-md-12" ng-init="secCtrl.init()">
+    <div class="offset-md-4 col-md-4">
+        <div class="panel panel-default">
+            <div class="col-md-12 text-center margin-top-bottom">
+                <img class="img-responsive" src="/assets/img/wireframe_logo.png">
+            </div>
+            <form>
+                <div class="form-group">
+                    <input id="Login"
+                           name="Login"
+                           class="form-control"
+                           placeholder="Digite su usuario"
+                           type="text"
+                           ng-model="secCtrl.login.username" />
+                </div>
+                <div class="form-group">
+                    <input id="Password"
+                           name="Password"
+                           class="form-control"
+                           placeholder="Digite su contraseña"
+                           type="password"
+                           ng-model="secCtrl.login.password" />
+                </div>
+                <div class="form-group">
+                    <input id="btnLogin"
+                           type="button"
+                           ng-click="secCtrl.submit()"
+                           value="{{ 'security.login' | translate}}"
+                           class="btn btn-lg btn-primary btn-block">
+                </div>
+            </form>
+            <p class="text-center margin-top-bottom watermark">{{ 'security.watermark' | translate}}</p>
+        </div>
+    </div>
+</div>

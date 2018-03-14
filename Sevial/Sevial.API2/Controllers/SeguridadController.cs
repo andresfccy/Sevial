@@ -16,7 +16,6 @@ namespace Sevial.API2.Controllers
     {
         private APPSEVIALEntities db = new APPSEVIALEntities();
 
-
         [Route("api/seguridad/autenticarUsuario")]
         [ResponseType(typeof(RespuestaLista<SP001_AutenticarUsuario_Result>))]
         public IHttpActionResult PostAutenticarUsuario(AutenticarUsuario oe)
@@ -39,8 +38,6 @@ namespace Sevial.API2.Controllers
             os.Lista = dataSet;
 
             return Ok(os);
-
-
         }
 
         [Route("api/seguridad/darModuloUsuario")]
@@ -65,8 +62,6 @@ namespace Sevial.API2.Controllers
             os.Lista = dataSet;
 
             return Ok(os);
-
-
         }
 
         [Route("api/seguridad/darOpcionModuloUsuario")]
@@ -91,8 +86,6 @@ namespace Sevial.API2.Controllers
             os.Lista = dataSet;
 
             return Ok(os);
-
-
         }
 
         [Route("api/seguridad/validarUrlIngreso")]
@@ -115,8 +108,6 @@ namespace Sevial.API2.Controllers
             os.MensajeRpta = mensajeRpta.Value.ToString();
 
             return Ok(os);
-
-
         }
     }
 }

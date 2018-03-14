@@ -1,0 +1,19 @@
+﻿<div ng-include="'app/common/views/header.html'"
+     ng-controller="common.commonController as cmnCtrl"></div>
+
+<section id="dashboard" class="dashboard">
+    <h1>{{'dashboard.title'|translate}}</h1>
+    <div ng-repeat="o in dshCtrl.modulesMatrix" class="card-deck">
+        <div ng-repeat="o1 in o"
+             class="card"
+             ui-sref="{{o1.A002_url}}">
+            <img class="card-img-top" src="{{o1.A002_icono}}" alt="Card image cap">
+            <!--<div class="card-body">
+            <p class="card-text">{{o1.A002_nombre}}</p>
+            </div>-->
+            <div class="card-footer">
+                <small class="text-muted">{{o1.A002_nombre}}</small>
+            </div>
+        </div>
+    </div>
+</section>

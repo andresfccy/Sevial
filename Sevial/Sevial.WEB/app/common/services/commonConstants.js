@@ -8,13 +8,13 @@ commonModule.factory('CommonConstants', [
             API_LOGIN: 'http://localhost',
             API_LOGIN_SSL: 'https://localhost',
 
-            API_PORT: '50885',
-            API_LOGIN_PORT: '50885',
+            API_PORT: '4000',
+            API_LOGIN_PORT: '4000',
 
             TOKEN_HEADER: 'Authorization',
-            TOKEN_KEY_LOCALSTORAGE: 'authData',
-            USER_ID_LOCALSTORAGE: 'u',
-            ROL_LOCALSTORAGE: 'r',
+            TOKEN_KEY: 'authData',
+            USER_ID_KEY: 'u',
+            ROL_KEY: 'r',
             API_BASE_URL: function () {
                 var baseUrl = factory.API_HOSTNAME;
                 if (factory.API_PORT.length > 0 || factory.API_PORT !== '80') {
@@ -44,41 +44,23 @@ commonModule.factory('CommonConstants', [
                 return baseUrl;
             }
 
-            , TOKEN: function () { return factory.API_BASE_URL() + '/Sesion/Login'; }
+            , SYSTEM_EP: function () { return '/api/sistema' }
+            , SECURITY_EP: function () { return '/api/seguridad' }
+            , PARAMETER_EP: function () { return '/api/parametro' }
+            , INFO_UPLOAD_EP: function () { return '/api/cargueInformacion' }
 
-            , ACCOUNT: function () { return factory.API_BASE_URL() + '/Account'; }
-            , HOME_ADMINISTRATIVE: function () { return factory.API_BASE_URL() + '/HomeAdministrativo'; }
-            , QA_SCHEDULE: function () { return factory.API_BASE_URL() + '/ModuloHorarioCalidad'; }
+            //, SYS_VALIDATE_ACCESS_URL: function () { return factory.API_BASE_URL() + factory.SECURITY_EP + '/validarUrlIngreso'; }
 
-            , SISEC_ACCOUNT_GET_VALIDATION_CODE: function () { return factory.SISEC_ACCOUNT() + '/GenerarCodigoValidacion?userName=:username'; }
-            , SISEC_ACCOUNT_LOGIN: function () { return factory.SISEC_ACCOUNT() + '/Login'; }
+            , SEC_LOGIN: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/autenticarUsuario'; }
+            , SEC_GET_MODULES_BY_USER: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/darModuloUsuario'; }
+            , SEC_GET_OPTIONS_BY_USER: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/darOpcionModuloUsuario'; }
+            , SEC_VALIDATE_ACCESS_URL: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/validarUrlIngreso'; }
 
-            , HOME_ADMINISTRATIVE_GET_HOURS: function () { return factory.HOME_ADMINISTRATIVE() + '/ListaGeneralHorarioCalidad'; }
+            , PARAM_GET_CATEGORIES: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/darListaCategoria'; }
 
-            , QA_SCHEDULE_GET_ALL: function () { return factory.QA_SCHEDULE() + '/ListaGeneralHorarioCalidad'; }
-            , QA_SCHEDULE_GET_SCHEDULES_TYPES: function () { return factory.QA_SCHEDULE() + '/ListarObjetosCalidad'; }
+            , INFUP_GET_FILES: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/darArchivosCargue'; }
+            , INFUP_PROCESS_FILE: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/procesarArchivo'; }
         };
-
-        var procesando = false;
-
-        var funcionesObservadores = [];
-        var registrarObservadorProcesando = function (funcion) {
-            funcionesObservadores.push(funcion);
-        };
-
-        var notificarObservadores = function () {
-            angular.forEach(funcionesObservadores, function (funcion) {
-                funcion();
-            });
-        };
-
-        var storage = localStorage;
-        function guardar(clave, valor) {
-            storage.setItem(clave, valor);
-        }
-        function eliminar(clave) {
-            storage.removeItem(clave);
-        }
         return factory;
     }
 ]);

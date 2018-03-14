@@ -10,11 +10,26 @@
     text-shadow: rgba(245,245,245,0.5) 3px 5px 1px;
 }
 
-.dashboard{
+.dashboard {
     height: 100vh;
     width: 100vw;
 }
 
-.welcoming{
+.welcoming {
     font-size: 20px;
+}
+
+#dashboard .card-deck {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#dashboard .card{
+    cursor: pointer;
+}
+
+#dashboard .card-img-top {
+    max-width: 14vw;
+    margin: auto;
 }

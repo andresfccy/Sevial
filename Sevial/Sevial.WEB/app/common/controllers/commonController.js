@@ -13,7 +13,7 @@ commonModule
 
             // Funciones
             function isHome() {
-                if (!$location.path().split('/')[1] && $location.path().split('/')[1] == '') {
+                if (!$location.path().split('/')[1] && $location.path().split('/')[1] == 'Home') {
                     return true;
                 }
                 return false;

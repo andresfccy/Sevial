@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +51,14 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.4\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -69,27 +77,58 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\0_Dashboard\dashboardModule.js" />
-    <Content Include="app\0_Dashboard\routes\dashboardRoutes.js" />
-    <Content Include="app\0_Dashboard\views\dashboard.html" />
-    <Content Include="app\account\accountModule.js" />
-    <Content Include="app\account\controllers\accountController.js" />
-    <Content Include="app\account\interceptors\sessionInterceptor.js" />
-    <Content Include="app\account\routes\accountRoutes.js" />
-    <Content Include="app\account\services\accountServices.js" />
-    <Content Include="app\account\services\sessionServices.js" />
-    <Content Include="app\account\views\login.html" />
+    <Content Include="app\4_CorrespondenceControl\controllers\correspondenceControlController.js" />
+    <Content Include="app\4_CorrespondenceControl\correspondenceControlModule.js" />
+    <Content Include="app\4_CorrespondenceControl\routes\correspondenceControlRoutes.js" />
+    <Content Include="app\4_CorrespondenceControl\services\correspondenceControlService.js" />
+    <Content Include="app\4_CorrespondenceControl\views\4_index.html" />
+    <Content Include="app\5_PortfolioManagement\controllers\portfolioManagementController.js" />
+    <Content Include="app\5_PortfolioManagement\portfolioManagementModule.js" />
+    <Content Include="app\5_PortfolioManagement\routes\portfolioManagementRoutes.js" />
+    <Content Include="app\5_PortfolioManagement\services\portfolioManagementService.js" />
+    <Content Include="app\5_PortfolioManagement\views\5_index.html" />
+    <Content Include="app\6_SysParameters\controllers\sysParametersController.js" />
+    <Content Include="app\6_SysParameters\sysParametersModule.js" />
+    <Content Include="app\6_SysParameters\routes\sysParametersRoutes.js" />
+    <Content Include="app\6_SysParameters\services\sysParametersService.js" />
+    <Content Include="app\6_SysParameters\views\6_index.html" />
+    <Content Include="app\3_RightToPetition\controllers\rightToPetitionController.js" />
+    <Content Include="app\3_RightToPetition\rightToPetitionModule.js" />
+    <Content Include="app\3_RightToPetition\routes\rightToPetitionRoutes.js" />
+    <Content Include="app\3_RightToPetition\services\rightToPetitionService.js" />
+    <Content Include="app\3_RightToPetition\views\3_index.html" />
+    <Content Include="app\2_PendingTransfers\controllers\pendingTransfersController.js" />
+    <Content Include="app\2_PendingTransfers\pendingTransfersModule.js" />
+    <Content Include="app\2_PendingTransfers\routes\pendingTransfersRoutes.js" />
+    <Content Include="app\2_PendingTransfers\services\pendingTransfersService.js" />
+    <Content Include="app\2_PendingTransfers\views\2_index.html" />
+    <Content Include="app\1_Dashboard\controllers\dashboardController.js" />
+    <Content Include="app\1_Dashboard\dashboardModule.js" />
+    <Content Include="app\1_Dashboard\routes\dashboardRoutes.js" />
+    <Content Include="app\1_Dashboard\services\dashboardService.js" />
+    <Content Include="app\1_Dashboard\views\1_index.html" />
+    <Content Include="app\7_Security\securityModule.js" />
+    <Content Include="app\7_Security\controllers\securityController.js" />
+    <Content Include="app\7_Security\interceptors\sessionInterceptor.js" />
+    <Content Include="app\7_Security\routes\securityRoutes.js" />
+    <Content Include="app\7_Security\services\securityServices.js" />
+    <Content Include="app\7_Security\services\sessionServices.js" />
+    <Content Include="app\7_Security\views\7_login.html" />
     <Content Include="app\app.js" />
     <Content Include="app\common\commonModule.js" />
     <Content Include="app\common\controllers\commonController.js" />
     <Content Include="app\common\directives\loadingDirective.js" />
     <Content Include="app\common\routes\commonRoutes.js" />
     <Content Include="app\common\services\commonConstants.js" />
+    <Content Include="app\common\services\commonService.js" />
+    <Content Include="app\common\views\header.html" />
     <Content Include="app\common\views\loading.html" />
     <Content Include="assets\css\creative.css" />
     <Content Include="assets\css\creative.min.css" />
     <Content Include="assets\css\selectize.default.css" />
     <Content Include="assets\css\styles.css" />
+    <Content Include="assets\img\modulo1.png" />
+    <Content Include="assets\img\modulo2.png" />
     <Content Include="assets\img\wireframe_logo.png" />
     <Content Include="assets\js\creative.min.js" />
     <Content Include="index.html" />
@@ -1545,8 +1584,14 @@
     <Content Include="node_modules\font-awesome\scss\_stacked.scss" />
     <Content Include="node_modules\font-awesome\scss\_variables.scss" />
     <Content Include="i18n\common\common-es.json" />
-    <Content Include="i18n\account\account-es.json" />
+    <Content Include="i18n\security\security-es.json" />
     <Content Include="i18n\dashboard\dashboard-es.json" />
+    <Content Include="jsconfig.json" />
+    <Content Include="i18n\portfolioManagement\portfolioManagement-es.json" />
+    <Content Include="i18n\sysParameters\sysParameters-es.json" />
+    <Content Include="i18n\correspondenceControl\correspondenceControl-es.json" />
+    <Content Include="i18n\rightToPetition\rightToPetition-es.json" />
+    <Content Include="i18n\pendingTransfers\pendingTransfers-es.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
