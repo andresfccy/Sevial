@@ -18,7 +18,7 @@ namespace Sevial.API2.Entity.Parametro
     public partial class APPSEVIALEntities2 : DbContext
     {
         public APPSEVIALEntities2()
-            : base("name=APPSEVIALEntities2")
+            : base("name=APPSEVIALParametro")
         {
         }
     

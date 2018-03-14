@@ -18,7 +18,7 @@ namespace Sevial.API2.Entity.Seguridad
     public partial class APPSEVIALEntities : DbContext
     {
         public APPSEVIALEntities()
-            : base("name=APPSEVIALEntities")
+            : base("name=APPSEVIALSeguridad")
         {
         }
     

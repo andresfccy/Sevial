@@ -18,7 +18,7 @@ namespace Sevial.API2.Entity.Sistema
     public partial class APPSEVIALEntities1 : DbContext
     {
         public APPSEVIALEntities1()
-            : base("name=APPSEVIALEntities")
+            : base("name=APPSEVIALSistema")
         {
         }
     
