@@ -1,43 +1,32 @@
 ﻿'use strict';
 accountModule
     .factory('SessionServices',
-    ['$localStorage', 
-    'CommonConstants',
-    function ($localStorage,
-    CommonConstants) {
-        var factory = {};
-        
-        factory.getTokenFromLocalStorage = function () {
-            return $localStorage[CommonConstants.TOKEN_KEY_LOCALSTORAGE];
-        };
-        factory.setTokenToLocalStorage = function (token) {
-            $localStorage[CommonConstants.TOKEN_KEY_LOCALSTORAGE] = token;
-        };
-        factory.getUserIdFromLocalStorage = function () {
-            return $localStorage[CommonConstants.USER_ID_LOCALSTORAGE];
-        };
-        factory.setUserIdToLocalStorage = function (userId) {
-            $localStorage[CommonConstants.USER_ID_LOCALSTORAGE] = userId;
-        };
-        factory.getRolFromLocalStorage = function () {
-            return $localStorage[CommonConstants.ROL_LOCALSTORAGE];
-        };
-        factory.setRolToLocalStorage = function (rol) {
-            $localStorage[CommonConstants.ROL_LOCALSTORAGE] = rol;
-        };
-        factory.removeAllInfoFromLocalStorage = function () {
-            $localStorage.$reset;
-        };
-        factory.isLoggedIn = function () {
-            var token = factory.getTokenFromLocalStorage();
-            if (typeof token == 'undefined' || token == null || token == '') {
-                return false;
+    ['$localStorage', '$sessionStorage',
+        'CommonConstants',
+        function ($localStorage, $sessionStorage,
+            CommonConstants) {
+            var factory = {};
+
+            factory.setValueToStorage = function (key, value) {
+                $sessionStorage[key] = value;
+            };
+            factory.getValueFromStorage = function (key) {
+                return $sessionStorage[key];
+            };
+            factory.removeAllInfoFromLocalStorage = function () {
+                $sessionStorage.$reset;
+            };
+
+            factory.isLoggedIn = function () {
+                var token = factory.getValueFromStorage(CommonConstants.TOKEN_KEY_LOCALSTORAGE);
+                if (typeof token == 'undefined' || token == null || token == '') {
+                    return false;
+                }
+                return true;
+            };
+            factory.authorized = function (state) {
+                //TODO: Lógica para saber si un usuario tiene acceso a un determinado estado del enrutador.
             }
-            return true;
-        };
-        factory.authorized = function (state) {
-            //TODO: Lógica para saber si un usuario tiene acceso a un determinado estado del enrutador.
+            return factory;
         }
-        return factory;
-    }
     ]);

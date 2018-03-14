@@ -12,7 +12,7 @@ accountModule.config(['$stateProvider',
                             $location.path("/Home");
                             growl.info("¡Bienvenido de nuevo!");
                         }
-                        SessionServices.authorized("login");
+                        //SessionServices.authorized("login");
                     }
                 }
             })

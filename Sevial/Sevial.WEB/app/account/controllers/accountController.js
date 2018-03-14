@@ -24,31 +24,24 @@ accountModule
             }
 
             function submit() {
-
                 growl.info("Validando información");
-
-                // -------------------------------------------
-                // TODO: Implementar validación con Sirius
-                // -------------------------------------------
                 // Do login
-                loading.startLoading(getCtrlName() + ".token");
-                var req = ""
-                    + "grant_type=password"
-                    + "&clientAppType=INS"
-                    + "&username=" + self.login.username
-                    + "&password=" + self.login.password;
+                loading.startLoading(getCtrlName() + ".login");
+                //var req = ""
+                //    + "grant_type=password"
+                //    + "&clientAppType=INS"
+                //    + "&username=" + self.login.username
+                //    + "&password=" + self.login.password;
+                var req = {
+                    AliasUsuario: self.login.username,
+                    Clave: self.login.password
+                };
                 var p = AccountServices.login(req).$promise;
                 p.then(function (resultLogin) {
+                    // Save to storage info
+                    SessionServices.setValueToStorage(CommonConstants.TOKEN_KEY_LOCALSTORAGE, "provisional_token");
 
-                    SessionServices.setTokenToLocalStorage(resultLogin.access_token);
-                    SessionServices.setUserIdToLocalStorage(resultLogin.userName);
-
-                    // -------------------------------------------
-                    // TODO: Guardar en el local storage el resto de información útil, requerida para comprobar sesión
-                    // -------------------------------------------
-
-                    $state.go("home");
-
+                    //$state.go("home");
                     growl.success("¡Autenticación correcta!");
                     loading.stopLoading(getCtrlName() + ".token");
                 }).catch(function (error) {

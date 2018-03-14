@@ -8,8 +8,8 @@ commonModule.factory('CommonConstants', [
             API_LOGIN: 'http://localhost',
             API_LOGIN_SSL: 'https://localhost',
 
-            API_PORT: '50885',
-            API_LOGIN_PORT: '50885',
+            API_PORT: '4000',
+            API_LOGIN_PORT: '4000',
 
             TOKEN_HEADER: 'Authorization',
             TOKEN_KEY_LOCALSTORAGE: 'authData',
@@ -44,7 +44,8 @@ commonModule.factory('CommonConstants', [
                 return baseUrl;
             }
 
-            , TOKEN: function () { return factory.API_BASE_URL() + '/Sesion/Login'; }
+            //, TOKEN: function () { return factory.API_BASE_URL() + '/Sesion/Login'; }
+            , TOKEN: function() { return factory.API_BASE_URL() + '/api/seguridad/autenticarUsuario'; }
 
             , ACCOUNT: function () { return factory.API_BASE_URL() + '/Account'; }
             , HOME_ADMINISTRATIVE: function () { return factory.API_BASE_URL() + '/HomeAdministrativo'; }

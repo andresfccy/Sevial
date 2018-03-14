@@ -10,7 +10,7 @@ accountModule
             login: {
                 method: 'POST',
                 url: CommonConstants.TOKEN(),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                //headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }
         };
         return $resource(url, paramDefaults, actions);
