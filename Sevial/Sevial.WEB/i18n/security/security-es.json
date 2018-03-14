@@ -1,0 +1,7 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "security": {
+    "login": "Ingresar",
+    "watermark": "SEVIAL - 2018"
+  }
+}

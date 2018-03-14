@@ -17,8 +17,13 @@ var app = angular.module('sevialApp', [
     // Módulos de la aplicación 
     // NOTA: Cada componente se tiene que registrar en la aplicación (en la lista siguiente) para ser incluído
     , 'sevialApp.common'
-    , 'sevialApp.account'
+    , 'sevialApp.security'
     , 'sevialApp.dashboard'
+    , 'sevialApp.sysParameters'
+    , 'sevialApp.pendingTransfers'
+    , 'sevialApp.rightToPetition'
+    , 'sevialApp.correspondenceControl'
+    , 'sevialApp.portfolioManagement'
 
 ]).config(function ($translateProvider, $translatePartialLoaderProvider, growlProvider) {
     $translateProvider.useLoader('$translatePartialLoader', {
