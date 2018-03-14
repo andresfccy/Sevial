@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="APPSEVIALCargueInformacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP006_DarArchivosCargue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idTipoCargue" Type="int" Mode="In" />
+          <Parameter Name="idEstadoCargue" Type="int" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP007_ProcesarArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="listaProcesar" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="APPSEVIALCargueInformacionModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APPSEVIALCargueInformacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="APPSEVIALCargueInformacion" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP006_DarArchivosCargue" ReturnType="Collection(APPSEVIALCargueInformacionModel.SP006_DarArchivosCargue_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idTipoCargue" Mode="In" Type="Int32" />
+            <Parameter Name="idEstadoCargue" Mode="In" Type="Int32" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP007_ProcesarArchivo">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="listaProcesar" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP006_DarArchivosCargue_Result">
+          <Property Type="Int32" Name="idArchivo" Nullable="false" />
+          <Property Type="Boolean" Name="seleccionable" Nullable="false" />
+          <Property Type="String" Name="colorBoton" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="idTipoCargue" Nullable="true" />
+          <Property Type="String" Name="nomTipoCargue" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A020_nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="A020_estadoCargue" Nullable="true" />
+          <Property Type="String" Name="nomEstadoCargue" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="A020_tieneRechazo" Nullable="true" />
+          <Property Type="String" Name="A020_mensajeRechazo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APPSEVIALCargueInformacionModelStoreContainer" CdmEntityContainer="APPSEVIALCargueInformacion" >
+          <FunctionImportMapping FunctionImportName="SP006_DarArchivosCargue" FunctionName="APPSEVIALCargueInformacionModel.Store.SP006_DarArchivosCargue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALCargueInformacionModel.SP006_DarArchivosCargue_Result">
+                <ScalarProperty Name="idArchivo" ColumnName="idArchivo" />
+                <ScalarProperty Name="seleccionable" ColumnName="seleccionable" />
+                <ScalarProperty Name="colorBoton" ColumnName="colorBoton" />
+                <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
+                <ScalarProperty Name="nomTipoCargue" ColumnName="nomTipoCargue" />
+                <ScalarProperty Name="A020_nombre" ColumnName="A020_nombre" />
+                <ScalarProperty Name="A020_estadoCargue" ColumnName="A020_estadoCargue" />
+                <ScalarProperty Name="nomEstadoCargue" ColumnName="nomEstadoCargue" />
+                <ScalarProperty Name="A020_tieneRechazo" ColumnName="A020_tieneRechazo" />
+                <ScalarProperty Name="A020_mensajeRechazo" ColumnName="A020_mensajeRechazo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP007_ProcesarArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP007_ProcesarArchivo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

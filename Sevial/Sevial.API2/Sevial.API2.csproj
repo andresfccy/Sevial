@@ -101,6 +101,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Entity\CargueInformacion\CargueModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CargueModel.edmx</DependentUpon>
+      <LastGenOutput>CargueModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\CargueInformacion\CargueModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CargueModel.edmx</DependentUpon>
+      <LastGenOutput>CargueModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Entity\Parametro\PArametroModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PArametroModel.edmx</DependentUpon>
@@ -136,9 +146,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CargueInformacionController.cs" />
     <Compile Include="Controllers\ParametroController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SistemaController.cs" />
+    <Compile Include="Entity\CargueInformacion\CargueModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CargueModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CargueInformacion\CargueModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CargueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CargueInformacion\CargueModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CargueModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CargueInformacion\SP006_DarArchivosCargue_Result.cs">
+      <DependentUpon>CargueModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Parametro\PArametroModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -203,6 +232,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\OPTIONSHandler.cs" />
+    <Compile Include="Models\ObjetoEntrada\CargueInformacion\DarArchivosCargue.cs" />
+    <Compile Include="Models\ObjetoEntrada\CargueInformacion\ProcesarArchivo.cs" />
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />
@@ -235,6 +266,13 @@
     </EntityDeploy>
     <Content Include="Entity\Parametro\PArametroModel.edmx.diagram">
       <DependentUpon>PArametroModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\CargueInformacion\CargueModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CargueModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\CargueInformacion\CargueModel.edmx.diagram">
+      <DependentUpon>CargueModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
