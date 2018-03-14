@@ -42,5 +42,29 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/cargueInformacion/procesarArchivo")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostProcesarArchivo(ProcesarArchivo oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP007_ProcesarArchivo(oe.AliasUsuario, oe.ListaProcesar, codigoRpta, mensajeRpta);
+         
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
     }
 }

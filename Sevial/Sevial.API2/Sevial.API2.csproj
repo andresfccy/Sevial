@@ -220,6 +220,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\DarArchivosCargue.cs" />
+    <Compile Include="Models\ObjetoEntrada\CargueInformacion\ProcesarArchivo.cs" />
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />

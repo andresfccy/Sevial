@@ -44,5 +44,18 @@ namespace Sevial.API2.Entity.CargueInformacion
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP006_DarArchivosCargue_Result>("SP006_DarArchivosCargue", aliasUsuarioParameter, idTipoCargueParameter, idEstadoCargueParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual int SP007_ProcesarArchivo(string aliasUsuario, string listaProcesar, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var listaProcesarParameter = listaProcesar != null ?
+                new ObjectParameter("listaProcesar", listaProcesar) :
+                new ObjectParameter("listaProcesar", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP007_ProcesarArchivo", aliasUsuarioParameter, listaProcesarParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
