@@ -111,6 +111,16 @@
       <DependentUpon>CargueModel.edmx</DependentUpon>
       <LastGenOutput>CargueModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Entity\Informacion\InformacionModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InformacionModel.edmx</DependentUpon>
+      <LastGenOutput>InformacionModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\Informacion\InformacionModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InformacionModel.edmx</DependentUpon>
+      <LastGenOutput>InformacionModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Entity\Parametro\PArametroModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PArametroModel.edmx</DependentUpon>
@@ -147,6 +157,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CargueInformacionController.cs" />
+    <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\ParametroController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SistemaController.cs" />
@@ -167,6 +178,24 @@
     </Compile>
     <Compile Include="Entity\CargueInformacion\SP006_DarArchivosCargue_Result.cs">
       <DependentUpon>CargueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Informacion\InformacionModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InformacionModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Informacion\InformacionModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InformacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Informacion\InformacionModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InformacionModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Informacion\SP008_DarTransferencias_Result.cs">
+      <DependentUpon>InformacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Parametro\PArametroModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -235,6 +264,7 @@
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\DarArchivosCargue.cs" />
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\ProcesarArchivo.cs" />
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
+    <Compile Include="Models\ObjetoEntrada\Informacion\DarTransferencias.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\DarModuloUsuario.cs" />
@@ -273,6 +303,13 @@
     </EntityDeploy>
     <Content Include="Entity\CargueInformacion\CargueModel.edmx.diagram">
       <DependentUpon>CargueModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\Informacion\InformacionModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InformacionModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\Informacion\InformacionModel.edmx.diagram">
+      <DependentUpon>InformacionModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

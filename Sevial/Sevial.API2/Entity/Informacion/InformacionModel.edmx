@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="APPSEVIALInformacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP008_DarTransferencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="INF">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="filtro" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="APPSEVIALInformacionModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APPSEVIALInformacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="APPSEVIALInformacion" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP008_DarTransferencias" ReturnType="Collection(APPSEVIALInformacionModel.SP008_DarTransferencias_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="filtro" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP008_DarTransferencias_Result">
+          <Property Type="Int32" Name="A030_codigo" Nullable="false" />
+          <Property Type="Int32" Name="A030_estadoGestion" Nullable="false" />
+          <Property Type="String" Name="nomEstadoGestion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="A030_municipio" Nullable="false" />
+          <Property Type="String" Name="nomMunicipio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nomDepartamento" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="A030_vlrPagado" Nullable="false" Precision="19" />
+          <Property Type="Int32" Name="A030_cuantia" Nullable="false" />
+          <Property Type="String" Name="nomCuantia" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="A030_vlrTrf45" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="A030_vlrTrf10" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="A030_fechaInicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="A030_fechaFin" Nullable="false" Precision="23" />
+          <Property Type="String" Name="A030_vigencia" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="A030_fechaTrf" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="A030_fechaCorte" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="A030_tipoTrf" Nullable="false" />
+          <Property Type="String" Name="nomTipoTrf" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A030_observacion" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="A030_bancoCuenta" Nullable="false" />
+          <Property Type="String" Name="nomBancoCuenta" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A030_estadoRegistro" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="A030_fechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A030_fechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="A030_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="A030_usuarioModificacion" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APPSEVIALInformacionModelStoreContainer" CdmEntityContainer="APPSEVIALInformacion" >
+          <FunctionImportMapping FunctionImportName="SP008_DarTransferencias" FunctionName="APPSEVIALInformacionModel.Store.SP008_DarTransferencias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALInformacionModel.SP008_DarTransferencias_Result">
+                <ScalarProperty Name="A030_codigo" ColumnName="A030_codigo" />
+                <ScalarProperty Name="A030_estadoGestion" ColumnName="A030_estadoGestion" />
+                <ScalarProperty Name="nomEstadoGestion" ColumnName="nomEstadoGestion" />
+                <ScalarProperty Name="A030_municipio" ColumnName="A030_municipio" />
+                <ScalarProperty Name="nomMunicipio" ColumnName="nomMunicipio" />
+                <ScalarProperty Name="nomDepartamento" ColumnName="nomDepartamento" />
+                <ScalarProperty Name="A030_vlrPagado" ColumnName="A030_vlrPagado" />
+                <ScalarProperty Name="A030_cuantia" ColumnName="A030_cuantia" />
+                <ScalarProperty Name="nomCuantia" ColumnName="nomCuantia" />
+                <ScalarProperty Name="A030_vlrTrf45" ColumnName="A030_vlrTrf45" />
+                <ScalarProperty Name="A030_vlrTrf10" ColumnName="A030_vlrTrf10" />
+                <ScalarProperty Name="A030_fechaInicio" ColumnName="A030_fechaInicio" />
+                <ScalarProperty Name="A030_fechaFin" ColumnName="A030_fechaFin" />
+                <ScalarProperty Name="A030_vigencia" ColumnName="A030_vigencia" />
+                <ScalarProperty Name="A030_fechaTrf" ColumnName="A030_fechaTrf" />
+                <ScalarProperty Name="A030_fechaCorte" ColumnName="A030_fechaCorte" />
+                <ScalarProperty Name="A030_tipoTrf" ColumnName="A030_tipoTrf" />
+                <ScalarProperty Name="nomTipoTrf" ColumnName="nomTipoTrf" />
+                <ScalarProperty Name="A030_observacion" ColumnName="A030_observacion" />
+                <ScalarProperty Name="A030_bancoCuenta" ColumnName="A030_bancoCuenta" />
+                <ScalarProperty Name="nomBancoCuenta" ColumnName="nomBancoCuenta" />
+                <ScalarProperty Name="A030_estadoRegistro" ColumnName="A030_estadoRegistro" />
+                <ScalarProperty Name="A030_fechaCreacion" ColumnName="A030_fechaCreacion" />
+                <ScalarProperty Name="A030_fechaModificacion" ColumnName="A030_fechaModificacion" />
+                <ScalarProperty Name="A030_usuarioCreacion" ColumnName="A030_usuarioCreacion" />
+                <ScalarProperty Name="A030_usuarioModificacion" ColumnName="A030_usuarioModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
