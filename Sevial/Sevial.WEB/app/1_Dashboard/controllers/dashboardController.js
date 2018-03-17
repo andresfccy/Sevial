@@ -13,7 +13,6 @@ dashboardModule
 
             // Publicación de variables por medio de la variable self
             self.modules = [];
-            self.col_md_n = "";
 
             // Publicación de las funciones por medio de la variable self
             self.$onInit = init;
@@ -34,8 +33,10 @@ dashboardModule
                         self.rows = Math.ceil(Math.sqrt(result.Lista.length));
                         self.modulesMatrix = listToMatrix(result.Lista, self.rows);
                         //self.col_md_n = "col-md-" + 12 / Math.ceil(Math.sqrt(result.Lista.length));
-                        
-                        growl.success(result.MensajeRpta);
+
+                        CommonConstants.menu = result.Lista.map(function (o) { return { id: o.A002_codigo, name:o.A002_nombre, url: o.A002_url }; })
+
+                        SessionServices.setValueToStorage(CommonConstants.MODULES_KEY, result.Lista.map(function (o) { return { id:o.A002_codigo, url:o.A002_url };}));
                     } else {
                         growl.warning(result.MensajeRpta);
                     }

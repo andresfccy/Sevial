@@ -1,14 +1,15 @@
 ﻿'use strict';
 var app = angular.module('sevialApp', [
-      'ngCookies'
+    'ngCookies'
     , 'ngResource'
     , 'pascalprecht.translate'
     , 'angular-growl'
     , 'ui.router'
+    , 'ui.router.title'
+    , 'ui.router.breadcrumbs'
     , 'ngMessages'
     , 'ngStorage'
     , 'ngAnimate'
-    , 'ui.router.title'
     , 'ui.bootstrap'
     , 'ui.select'
     , 'ngSanitize'

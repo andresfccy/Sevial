@@ -1,0 +1,15 @@
+.json .hljs-attr,
+.json .hljs-string
+{
+  color: $highlight-string;
+}
+
+.json .hljs-literal,
+{
+  color: $highlight-keyword;
+}
+
+.json .hljs-number
+{
+  color: $highlight-number;
+}

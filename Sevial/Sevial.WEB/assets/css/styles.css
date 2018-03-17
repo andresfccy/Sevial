@@ -11,8 +11,8 @@
 }
 
 .dashboard {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 }
 
 .welcoming {
@@ -25,11 +25,39 @@
     margin-bottom: 20px;
 }
 
-#dashboard .card{
+#dashboard .card {
     cursor: pointer;
 }
 
 #dashboard .card-img-top {
     max-width: 14vw;
     margin: auto;
+}
+
+#loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 99999;
+}
+
+.app .app-body .app-sidebar.sidebar-dark .sidebar-footer .footprint {
+    color: #b9c9d8;
+    position: absolute;
+    bottom: 0;
+    /* margin: auto 0; */
+    width: 100%;
+}
+
+.app-sidebar .sidebar-footer .footprint {
+    padding: .625rem 0;
+    white-space: nowrap;
+}
+
+.app-sidebar .sidebar-footer .username small {
+    display: block;
+    padding-top: .25rem;
+    filter: alpha(opacity=75);
+    opacity: .75;
 }

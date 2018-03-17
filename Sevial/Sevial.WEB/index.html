@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Olimpia Management">
 
@@ -28,7 +28,9 @@
     <link href="node_modules/sweetalert/dist/sweetalert.css" rel="stylesheet" />
 
     <!-- Custom Styles -->
-    <link href="assets/css/creative.min.css" rel="stylesheet" />
+    <!--<link href="assets/css/creative.min.css" rel="stylesheet" />-->
+    <link href="assets/css/admin4b.min.css" rel="stylesheet" />
+    <!--<link href="assets/css/admin4b-highlight.min.css" rel="stylesheet" />-->
     <link href="assets/css/styles.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
@@ -36,25 +38,56 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body ng-controller="common.commonController as cmnCtrl">
     <!-- Directives -->
     <div loading></div>
     <div growl></div>
 
     <!-- Loader before AngularJS -->
-    <div id="loading" ng-if="false">
-        <div class="svg-icon-loader">
+    <div id="loading" ng-if="!cmnCtrl.angularLoaded()">
+        <!--<div class="loader">
             <img src="assets/img/svg-loaders/bars.svg" width="40" alt="">
+        </div>-->
+        <div id="spinner" class="spinner spinner-block">
+            <div class="spinner-bar"></div>
+            <div class="spinner-text">Cargando la plataforma...</div>
         </div>
     </div>
 
-    <!-- Views rendering div -->
-    <div ui-view ng-cloak></div>
+    <div class="app" ng-if="cmnCtrl.isLoggedIn()" ng-cloak>
+        <div class="app-body">
+            <div ng-include="'app/common/views/header.html'"
+                 class="app-sidebar sidebar-dark sidebar-slide-left"></div>
+
+            <!-- Views rendering div -->
+            <div class="app-content">
+                <nav class="navbar navbar-expand navbar-light bg-white">
+                    <button type="button" class="btn btn-sidebar" data-toggle="sidebar">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="navbar-brand"><a ui-sref="home">{{cmnCtrl.appName}}</a></div>
+                </nav>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" breadcrumbs>
+                        <li class="breadcrumb-item"
+                            ng-repeat="breadcrumb in breadcrumbs">
+                            {{breadcrumb.text}}
+                        </li>
+                        <!--<li class="breadcrumb-item active" aria-current="page">Library</li>-->
+                    </ol>
+                </nav>
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+
+    <ui-view ng-if="!cmnCtrl.isLoggedIn()"></ui-view>
 
     <!-- JS Dependencies -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="assets/js/admin4b.min.js"></script>
 
     <!-- AngularJS Dependencies -->
     <script src="node_modules/angular/angular.min.js"></script>
@@ -75,6 +108,7 @@
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="node_modules/ui-select/dist/select.min.js"></script>
     <script src="node_modules/angular-swal/index.js"></script>
+    <script src="node_modules/angular-ui-router-breadcrumbs/dist/angular-ui-router-breadcrumbs.min.js"></script>
 
     <!-- AngularJS App-->
     <script src="app/app.js"></script>

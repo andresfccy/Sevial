@@ -12,9 +12,12 @@ commonModule.factory('CommonConstants', [
             API_LOGIN_PORT: '4000',
 
             TOKEN_HEADER: 'Authorization',
+
             TOKEN_KEY: 'authData',
             USER_ID_KEY: 'u',
             ROL_KEY: 'r',
+            MODULES_KEY: 'Mds$%_',
+
             API_BASE_URL: function () {
                 var baseUrl = factory.API_HOSTNAME;
                 if (factory.API_PORT.length > 0 || factory.API_PORT !== '80') {
@@ -60,6 +63,13 @@ commonModule.factory('CommonConstants', [
 
             , INFUP_GET_FILES: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/darArchivosCargue'; }
             , INFUP_PROCESS_FILE: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/procesarArchivo'; }
+
+            // Shared
+            , appName: "Sevial 2018"
+            , version: "v. Unrelease 0.18.3.17.2"
+            , copyright: "CopyRight, 2018 by Sevial"
+            , role: undefined
+            , menu: []
         };
         return factory;
     }

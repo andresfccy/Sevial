@@ -12,6 +12,10 @@
   version "1.6.43"
   resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.6.43.tgz#6235ef416053a86302970717510a936d889cbb9a"
 
+"@uirouter/core@5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-5.0.3.tgz#e2b5b1e45190e20c67ba4e15c013de5d4e0ccab3"
+
 angular-animate@^1.6.6:
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.9.tgz#a0f926c1ba3190bd8929ef966a7fa79760682622"
@@ -102,12 +106,25 @@ angular-ui-bootstrap@^2.5.6:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-2.5.6.tgz#23937322ec641a6fbee16498cc32452aa199e7c5"
 
+angular-ui-router-breadcrumbs@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/angular-ui-router-breadcrumbs/-/angular-ui-router-breadcrumbs-0.0.2.tgz#5f86da0bb280fc31ecd02211c923d2b3f6d011ba"
+  dependencies:
+    angular ">= 1.0.8"
+    angular-ui-router ">= 0.2.10"
+
 angular-ui-router-title@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/angular-ui-router-title/-/angular-ui-router-title-0.1.1.tgz#9a9fed4e6b9b85794e839a300d1088f7c438caeb"
   dependencies:
     "@types/angular" "^1.5.17"
     "@types/angular-ui-router" "^1.1.34"
+
+"angular-ui-router@>= 0.2.10":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-1.0.3.tgz#bf2494caae95c37cf01af3761d89747cfed2db45"
+  dependencies:
+    "@uirouter/core" "5.0.3"
 
 angular-ui-router@^0.4.3:
   version "0.4.3"

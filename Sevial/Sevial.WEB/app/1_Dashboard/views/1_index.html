@@ -1,8 +1,5 @@
-﻿<div ng-include="'app/common/views/header.html'"
-     ng-controller="common.commonController as cmnCtrl"></div>
-
-<section id="dashboard" class="dashboard">
-    <h1>{{'dashboard.title'|translate}}</h1>
+﻿<section id="dashboard" class="dashboard">
+    <!--<h1>{{'dashboard.title'|translate}}</h1>-->
     <div ng-repeat="o in dshCtrl.modulesMatrix" class="card-deck">
         <div ng-repeat="o1 in o"
              class="card"

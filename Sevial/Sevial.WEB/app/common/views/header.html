@@ -1,14 +1,43 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" ui-sref="home">Sevial</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+﻿<div class="text-right">
+    <button type="button" class="btn btn-sidebar" data-dismiss="sidebar">
+        <span class="x"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <!--<div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-        </div>-->
+</div>
+<div class="sidebar-header">
+    <img src="assets/img/user-photo.png" class="user-photo">
+    <p class="username">
+        {{cmnCtrl.username}}
+        <small>{{cmnCtrl.role}}</small>
+    </p>
+</div>
+<div id="sidebar-nav" class="sidebar-nav" data-children=".sidebar-nav-group">
+    <!--<a class="sidebar-nav-link disabled"
+       ng-if="!cmnCtrl.menu || cmnCtrl.menu.length == 0">
+        <i class="icon-rocket"></i> Sin opciones
+    </a>-->
+    <div class="sidebar-nav-group"
+         ng-repeat="m in cmnCtrl.menu">
+        <a ng-if="!m.url" href="#menu{{m.id}}" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+            <i class="icon-puzzle"></i> {{m.name}}
+        </a>
+        <a ng-if="m.url" ui-sref="{{m.url}}" href="#menu{{m.id}}" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+            <i class="icon-puzzle"></i> {{m.name}}
+        </a>
+        <div id="menu{{m.id}}" class="sidebar-nav-group collapse">
+            <a ui-sref="{{o.url}}" class="sidebar-nav-link"
+               ng-repeat="o in m.options"><p>{{o.name}}</p></a>
+        </div>
     </div>
-</nav>
+</div>
+<div class="sidebar-footer">
+    <a href="#" data-toggle="tooltip" title="" data-original-title="Settings">
+        <i class="fa fa-cog"></i>
+    </a>
+    <a href="#" data-toggle="tooltip" title="" data-original-title="Logout">
+        <i class="fa fa-power-off"></i>
+    </a>
+    <div class="footprint">
+        <p>{{cmnCtrl.copyright}}</p>
+        <small>{{cmnCtrl.version}}</small>
+    </div>
+</div>

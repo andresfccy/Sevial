@@ -17,15 +17,17 @@ securityModule
                 $sessionStorage.$reset;
             };
 
-            factory.isLoggedIn = function () {
+            factory.isLoggedIn = function (a) {
                 var token = factory.getValueFromStorage(CommonConstants.TOKEN_KEY);
-                if (typeof token == 'undefined' || token == null || token == '') {
+                if (typeof token === 'undefined' || token == null || token === '') {
                     return false;
                 }
                 return true;
             };
             factory.authorized = function (state) {
+                console.log(state);
                 //TODO: Lógica para saber si un usuario tiene acceso a un determinado estado del enrutador.
+                return true;
             }
             return factory;
         }
