@@ -17,21 +17,63 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP010_EditarTransferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="INF">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idRegistro" Type="int" Mode="In" />
+          <Parameter Name="idEstadoGestion" Type="int" Mode="In" />
+          <Parameter Name="idMunicipio" Type="int" Mode="In" />
+          <Parameter Name="vlrPagado" Type="money" Mode="In" />
+          <Parameter Name="idCuantia" Type="int" Mode="In" />
+          <Parameter Name="vlrTrf45" Type="money" Mode="In" />
+          <Parameter Name="vlrTrf10" Type="money" Mode="In" />
+          <Parameter Name="fechaInicio" Type="char" Mode="In" />
+          <Parameter Name="fechaFin" Type="char" Mode="In" />
+          <Parameter Name="vigencia" Type="nvarchar" Mode="In" />
+          <Parameter Name="fechaTrf" Type="char" Mode="In" />
+          <Parameter Name="fechaCorte" Type="char" Mode="In" />
+          <Parameter Name="idTipoTrf" Type="int" Mode="In" />
+          <Parameter Name="observacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="bancoCuenta" Type="int" Mode="In" />
+          <Parameter Name="idAutoridadImposicion" Type="int" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALInformacionModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="APPSEVIALInformacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="APPSEVIALInformacion" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="SP008_DarTransferencias" ReturnType="Collection(APPSEVIALInformacionModel.SP008_DarTransferencias_Result)">
-            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
-            <Parameter Name="filtro" Mode="In" Type="String" />
-            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
-            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP009_EliminarTransferencia">
             <Parameter Name="aliasUsuario" Mode="In" Type="String" />
             <Parameter Name="idRegistro" Mode="In" Type="Int32" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP010_EditarTransferencia">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idRegistro" Mode="In" Type="Int32" />
+            <Parameter Name="idEstadoGestion" Mode="In" Type="Int32" />
+            <Parameter Name="idMunicipio" Mode="In" Type="Int32" />
+            <Parameter Name="vlrPagado" Mode="In" Type="Decimal" />
+            <Parameter Name="idCuantia" Mode="In" Type="Int32" />
+            <Parameter Name="vlrTrf45" Mode="In" Type="Decimal" />
+            <Parameter Name="vlrTrf10" Mode="In" Type="Decimal" />
+            <Parameter Name="fechaInicio" Mode="In" Type="String" />
+            <Parameter Name="fechaFin" Mode="In" Type="String" />
+            <Parameter Name="vigencia" Mode="In" Type="String" />
+            <Parameter Name="fechaTrf" Mode="In" Type="String" />
+            <Parameter Name="fechaCorte" Mode="In" Type="String" />
+            <Parameter Name="idTipoTrf" Mode="In" Type="Int32" />
+            <Parameter Name="observacion" Mode="In" Type="String" />
+            <Parameter Name="bancoCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="idAutoridadImposicion" Mode="In" Type="Int32" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP008_DarTransferencias" ReturnType="Collection(APPSEVIALInformacionModel.SP008_DarTransferencias_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="filtro" Mode="In" Type="String" />
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -41,7 +83,7 @@
           <Property Type="Int32" Name="A030_estadoGestion" Nullable="false" />
           <Property Type="String" Name="nomEstadoGestion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="A030_municipio" Nullable="false" />
-          <Property Type="String" Name="nomMunicipio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nomMunicipio" Nullable="true" MaxLength="203" />
           <Property Type="String" Name="nomDepartamento" Nullable="true" MaxLength="100" />
           <Property Type="Decimal" Name="A030_vlrPagado" Nullable="false" Precision="19" />
           <Property Type="Int32" Name="A030_cuantia" Nullable="false" />
@@ -63,6 +105,8 @@
           <Property Type="DateTime" Name="A030_fechaModificacion" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="A030_usuarioCreacion" Nullable="true" />
           <Property Type="Int32" Name="A030_usuarioModificacion" Nullable="true" />
+          <Property Type="Int32" Name="A030_autoridadImposicion" Nullable="true" />
+          <Property Type="String" Name="nomAutoridadImposicion" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -70,6 +114,8 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="APPSEVIALInformacionModelStoreContainer" CdmEntityContainer="APPSEVIALInformacion" >
+          <FunctionImportMapping FunctionImportName="SP009_EliminarTransferencia" FunctionName="APPSEVIALInformacionModel.Store.SP009_EliminarTransferencia" />
+          <FunctionImportMapping FunctionImportName="SP010_EditarTransferencia" FunctionName="APPSEVIALInformacionModel.Store.SP010_EditarTransferencia" />
           <FunctionImportMapping FunctionImportName="SP008_DarTransferencias" FunctionName="APPSEVIALInformacionModel.Store.SP008_DarTransferencias">
             <ResultMapping>
               <ComplexTypeMapping TypeName="APPSEVIALInformacionModel.SP008_DarTransferencias_Result">
@@ -99,10 +145,11 @@
                 <ScalarProperty Name="A030_fechaModificacion" ColumnName="A030_fechaModificacion" />
                 <ScalarProperty Name="A030_usuarioCreacion" ColumnName="A030_usuarioCreacion" />
                 <ScalarProperty Name="A030_usuarioModificacion" ColumnName="A030_usuarioModificacion" />
+                <ScalarProperty Name="A030_autoridadImposicion" ColumnName="A030_autoridadImposicion" />
+                <ScalarProperty Name="nomAutoridadImposicion" ColumnName="nomAutoridadImposicion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP009_EliminarTransferencia" FunctionName="APPSEVIALInformacionModel.Store.SP009_EliminarTransferencia" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

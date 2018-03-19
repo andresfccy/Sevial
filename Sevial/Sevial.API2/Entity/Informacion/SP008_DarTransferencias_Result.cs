@@ -39,5 +39,7 @@ namespace Sevial.API2.Entity.Informacion
         public Nullable<System.DateTime> A030_fechaModificacion { get; set; }
         public Nullable<int> A030_usuarioCreacion { get; set; }
         public Nullable<int> A030_usuarioModificacion { get; set; }
+        public Nullable<int> A030_autoridadImposicion { get; set; }
+        public string nomAutoridadImposicion { get; set; }
     }
 }

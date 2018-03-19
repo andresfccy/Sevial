@@ -28,19 +28,6 @@ namespace Sevial.API2.Entity.Informacion
         }
     
     
-        public virtual ObjectResult<SP008_DarTransferencias_Result> SP008_DarTransferencias(string aliasUsuario, string filtro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
-        {
-            var aliasUsuarioParameter = aliasUsuario != null ?
-                new ObjectParameter("aliasUsuario", aliasUsuario) :
-                new ObjectParameter("aliasUsuario", typeof(string));
-    
-            var filtroParameter = filtro != null ?
-                new ObjectParameter("filtro", filtro) :
-                new ObjectParameter("filtro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP008_DarTransferencias_Result>("SP008_DarTransferencias", aliasUsuarioParameter, filtroParameter, codigoRpta, mensajeRpta);
-        }
-    
         public virtual int SP009_EliminarTransferencia(string aliasUsuario, Nullable<int> idRegistro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
         {
             var aliasUsuarioParameter = aliasUsuario != null ?
@@ -52,6 +39,92 @@ namespace Sevial.API2.Entity.Informacion
                 new ObjectParameter("idRegistro", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP009_EliminarTransferencia", aliasUsuarioParameter, idRegistroParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual int SP010_EditarTransferencia(string aliasUsuario, Nullable<int> idRegistro, Nullable<int> idEstadoGestion, Nullable<int> idMunicipio, Nullable<decimal> vlrPagado, Nullable<int> idCuantia, Nullable<decimal> vlrTrf45, Nullable<decimal> vlrTrf10, string fechaInicio, string fechaFin, string vigencia, string fechaTrf, string fechaCorte, Nullable<int> idTipoTrf, string observacion, Nullable<int> bancoCuenta, Nullable<int> idAutoridadImposicion, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            var idEstadoGestionParameter = idEstadoGestion.HasValue ?
+                new ObjectParameter("idEstadoGestion", idEstadoGestion) :
+                new ObjectParameter("idEstadoGestion", typeof(int));
+    
+            var idMunicipioParameter = idMunicipio.HasValue ?
+                new ObjectParameter("idMunicipio", idMunicipio) :
+                new ObjectParameter("idMunicipio", typeof(int));
+    
+            var vlrPagadoParameter = vlrPagado.HasValue ?
+                new ObjectParameter("vlrPagado", vlrPagado) :
+                new ObjectParameter("vlrPagado", typeof(decimal));
+    
+            var idCuantiaParameter = idCuantia.HasValue ?
+                new ObjectParameter("idCuantia", idCuantia) :
+                new ObjectParameter("idCuantia", typeof(int));
+    
+            var vlrTrf45Parameter = vlrTrf45.HasValue ?
+                new ObjectParameter("vlrTrf45", vlrTrf45) :
+                new ObjectParameter("vlrTrf45", typeof(decimal));
+    
+            var vlrTrf10Parameter = vlrTrf10.HasValue ?
+                new ObjectParameter("vlrTrf10", vlrTrf10) :
+                new ObjectParameter("vlrTrf10", typeof(decimal));
+    
+            var fechaInicioParameter = fechaInicio != null ?
+                new ObjectParameter("fechaInicio", fechaInicio) :
+                new ObjectParameter("fechaInicio", typeof(string));
+    
+            var fechaFinParameter = fechaFin != null ?
+                new ObjectParameter("fechaFin", fechaFin) :
+                new ObjectParameter("fechaFin", typeof(string));
+    
+            var vigenciaParameter = vigencia != null ?
+                new ObjectParameter("vigencia", vigencia) :
+                new ObjectParameter("vigencia", typeof(string));
+    
+            var fechaTrfParameter = fechaTrf != null ?
+                new ObjectParameter("fechaTrf", fechaTrf) :
+                new ObjectParameter("fechaTrf", typeof(string));
+    
+            var fechaCorteParameter = fechaCorte != null ?
+                new ObjectParameter("fechaCorte", fechaCorte) :
+                new ObjectParameter("fechaCorte", typeof(string));
+    
+            var idTipoTrfParameter = idTipoTrf.HasValue ?
+                new ObjectParameter("idTipoTrf", idTipoTrf) :
+                new ObjectParameter("idTipoTrf", typeof(int));
+    
+            var observacionParameter = observacion != null ?
+                new ObjectParameter("observacion", observacion) :
+                new ObjectParameter("observacion", typeof(string));
+    
+            var bancoCuentaParameter = bancoCuenta.HasValue ?
+                new ObjectParameter("bancoCuenta", bancoCuenta) :
+                new ObjectParameter("bancoCuenta", typeof(int));
+    
+            var idAutoridadImposicionParameter = idAutoridadImposicion.HasValue ?
+                new ObjectParameter("idAutoridadImposicion", idAutoridadImposicion) :
+                new ObjectParameter("idAutoridadImposicion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP010_EditarTransferencia", aliasUsuarioParameter, idRegistroParameter, idEstadoGestionParameter, idMunicipioParameter, vlrPagadoParameter, idCuantiaParameter, vlrTrf45Parameter, vlrTrf10Parameter, fechaInicioParameter, fechaFinParameter, vigenciaParameter, fechaTrfParameter, fechaCorteParameter, idTipoTrfParameter, observacionParameter, bancoCuentaParameter, idAutoridadImposicionParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual ObjectResult<SP008_DarTransferencias_Result> SP008_DarTransferencias(string aliasUsuario, string filtro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("filtro", filtro) :
+                new ObjectParameter("filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP008_DarTransferencias_Result>("SP008_DarTransferencias", aliasUsuarioParameter, filtroParameter, codigoRpta, mensajeRpta);
         }
     }
 }

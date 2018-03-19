@@ -67,5 +67,30 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/informacion/editarTransferencia")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostEditarTransferencias(EditarTransferencia oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+
+            var result = db.SP010_EditarTransferencia(oe.AliasUsuario, oe.IdRegistro, oe.IdEstadoGestion, oe.IdMunicipio, oe.VlrPagado, oe.IdCuantia, oe.VlrTrf45, oe.VlrTrf10, oe.FechaInicio, oe.FechaFin, oe.Vigencia, oe.FechaTrf, oe.FechaCorte, oe.IdTipoTrf, oe.Observacion, oe.BancoCuenta, oe.IdAutoridadImposicion, codigoRpta, mensajeRpta);
+            
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
     }
 }

@@ -265,6 +265,7 @@
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\ProcesarArchivo.cs" />
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\DarTransferencias.cs" />
+    <Compile Include="Models\ObjetoEntrada\Informacion\EditarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\EliminarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />
