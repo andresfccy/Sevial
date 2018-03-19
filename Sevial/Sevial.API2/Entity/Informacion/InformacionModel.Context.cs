@@ -40,5 +40,18 @@ namespace Sevial.API2.Entity.Informacion
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP008_DarTransferencias_Result>("SP008_DarTransferencias", aliasUsuarioParameter, filtroParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual int SP009_EliminarTransferencia(string aliasUsuario, Nullable<int> idRegistro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP009_EliminarTransferencia", aliasUsuarioParameter, idRegistroParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
