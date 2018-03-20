@@ -25,8 +25,6 @@ securityModule
             }
 
             function submit() {
-                growl.info("Validando información");
-
                 // Do login
                 var actionName = getCtrlName() + ".login"
                 loading.startLoading(actionName);

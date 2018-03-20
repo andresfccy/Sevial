@@ -1,8 +1,8 @@
 ﻿<div class="col-md-12" ng-init="secCtrl.init()">
     <div class="offset-md-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="col-md-12 text-center margin-top-bottom">
-                <img class="img-responsive" src="/assets/img/wireframe_logo.png">
+        <div class="panel panel-default panel-login">
+            <div class="col-md-12 text-center margin-top-bottom form-group">
+                <img class="img-responsive" src="/assets/img/sevial_logo.png">
             </div>
             <form>
                 <div class="form-group">
@@ -33,3 +33,26 @@
         </div>
     </div>
 </div>
+
+<style>
+    body {
+        background-image: url('/assets/img/login_background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: top;
+        position: fixed;
+        min-height:334px;
+    }
+
+    @media(min-height: 541px) {
+        .panel-login {
+            margin-top: 30vh;
+        }
+    }
+
+    @media(max-height: 540px) {
+        .panel-login {
+            margin-top: 10vh;
+        }
+    }
+</style>

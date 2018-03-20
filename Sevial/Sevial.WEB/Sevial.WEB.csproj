@@ -134,12 +134,14 @@
     <Content Include="assets\css\creative.min.css" />
     <Content Include="assets\css\selectize.default.css" />
     <Content Include="assets\css\styles.css" />
+    <Content Include="assets\img\login_background.jpg" />
     <Content Include="assets\img\modulo1.png" />
     <Content Include="assets\img\modulo2.png" />
     <Content Include="assets\img\modulo3.png" />
     <Content Include="assets\img\modulo4.png" />
     <Content Include="assets\img\modulo5.png" />
     <Content Include="assets\img\modulo6.png" />
+    <Content Include="assets\img\sevial_logo.png" />
     <Content Include="assets\img\user-photo.png" />
     <Content Include="assets\img\wireframe_logo.png" />
     <Content Include="assets\js\admin4b.min.js" />

@@ -45,7 +45,9 @@
                     <tr class=""
                         ng-class="{'bg-info': item.seleccionado}">
                         <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
-                            ng-class="{'cursor-pointer': item.seleccionable}">{{item.nomTipoCargue}}</td>
+                            ng-class="{'cursor-pointer': item.seleccionable}">
+                            <b>{{item.nomTipoCargue}}</b> - {{item.A020_nombre}}
+                        </td>
                         <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
                             ng-class="{'bg-secondary': item.A020_estadoCargue == 11,
                                        'bg-warning': item.A020_estadoCargue == 12,
