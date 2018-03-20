@@ -125,10 +125,13 @@ hr {
     padding: 0 !important;
 }
 
-
 input[readonly] {
     border: 1px solid #ced4da;
     color: #495057;
     background-color: #fff !important;
     box-shadow: none;
+}
+
+.img-brand{
+    max-height: 35px;
 }
