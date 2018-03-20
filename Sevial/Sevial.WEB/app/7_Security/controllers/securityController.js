@@ -17,6 +17,7 @@ securityModule
             // Publicación de las funciones por medio de la variable self
             self.init = init;
             self.submit = submit;
+            self.logout = logout;
 
             // Funciones
             function init() {
@@ -57,6 +58,11 @@ securityModule
                     console.log(error);
                     loading.stopLoading(actionName);
                 });
+            }
+
+            function logout() {
+                SessionServices.removeAllInfoFromLocalStorage();
+                growl.warning("Sesión finalizada, ¡Hasta pronto!");
             }
 
             // Helpers
