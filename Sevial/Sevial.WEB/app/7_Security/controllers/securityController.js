@@ -48,7 +48,7 @@ securityModule
                         $state.go("home");
                         growl.success("¡Autenticación correcta!");
                     } else {
-                        group.warning("Hubo un fallo en la consulta");
+                        growl.warning(result.MensajeRpta);
                     }
                     loading.stopLoading(actionName);
                 }).catch(function (error) {
