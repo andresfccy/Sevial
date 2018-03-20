@@ -83,7 +83,7 @@ commonModule.factory('CommonConstants', [
             , AUTORIDAD_IMPOSICION: "AUTORIDAD_IMPOSICION"
 
             , appName: "Sevial 2018"
-            , version: "v. Unrelease 0.18.3.20.1"
+            , version: "v. Unrelease 0.18.3.20.2"
             , copyright: "CopyRight, 2018 by Sevial"
             , role: undefined
             , menu: []
