@@ -1,3 +1,84 @@
-﻿<div id="pendingTransfers" class="pendingTransfers">
-    Carga de información... En construcción
+﻿<div id="pendingTransfers" class="pendingTransfers col">
+    <div class="card">
+        <div class="card-header bg-primary">Transferencias pendientes</div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="form-group col-6">
+                    <label for="sel1">Tipo de cargue:</label>
+                    <select id="sel1"
+                            class="form-control form-control-sm"
+                            placeholder="Selecciona un tipo de cargue..."
+                            ng-model="PTInfoUpCtrl.uploadType"
+                            ng-options="item.A011_codigo as item.A011_valor for item in PTInfoUpCtrl.uploadTypes"></select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="sel1">Estado:</label>
+                    <select id="sel1"
+                            class="form-control form-control-sm"
+                            placeholder="Selecciona un estado..."
+                            ng-model="PTInfoUpCtrl.state"
+                            ng-options="item.A011_codigo as item.A011_valor for item in PTInfoUpCtrl.states"></select>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-light float-right"
+                            ng-click="PTInfoUpCtrl.filterTable()">
+                        Consultar
+                    </button>
+                    <button class="btn btn-light float-left"
+                            ng-disabled="PTInfoUpCtrl.selectedFiles.length == 0"
+                            ng-click="PTInfoUpCtrl.submit()">
+                        Procesar seleccionados
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Archivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in PTInfoUpCtrl.files">
+                    <tr class=""
+                        ng-class="{'bg-info': item.seleccionado}">
+                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                            ng-class="{'cursor-pointer': item.seleccionable}">{{item.nomTipoCargue}}</td>
+                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                            ng-class="{'bg-secondary': item.A020_estadoCargue == 11,
+                                       'bg-warning': item.A020_estadoCargue == 12,
+                                       'bg-success': item.A020_estadoCargue == 13,
+                                       'bg-danger': item.A020_estadoCargue == 14,
+                                       'cursor-pointer': item.seleccionable}">{{item.nomEstadoCargue}}</td>
+                        <td>
+                            <span class="fa cursor-pointer"
+                                  title="Seleccionar archivo para procesar"
+                                  ng-if="item.seleccionable"
+                                  ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                                  ng-class="{' fa-check-circle-o': !item.seleccionado, 'fa-check-circle': item.seleccionado}"></span>
+                            <span class="fa fa-eye cursor-pointer"
+                                  title="Ver razón del rechazo"
+                                  ng-click="PTInfoUpCtrl.showReason(item)"
+                                  ng-if="item.A020_estadoCargue == 14"></span>
+                        </td>
+                    </tr>
+                    <tr ng-class="{'bg-danger': item.A020_estadoCargue == 14}"
+                        ng-if="item.showReason && item.A020_tieneRechazo">
+                        <td colspan="3" class="text-center">
+                            <b>Mensaje de rechazo: </b>{{item.A020_mensajeRechazo}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="PTInfoUpCtrl.files.length == 0">
+                    <tr class="bg-info">
+                        <td colspan="3">
+                            Lista vacía.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

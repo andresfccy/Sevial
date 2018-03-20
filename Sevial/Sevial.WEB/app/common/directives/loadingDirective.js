@@ -18,12 +18,12 @@ app.provider('loading', function () {
             $rootScope.$broadcast('loadingFlag', flag);
         }
         function startLoading(who) {
-            console.log("Start loading: ", who);
+            //console.log("Start loading: ", who);
             listCallers.push(who);
             broadcastFlag(true);
         }
         function stopLoading(who) {
-            console.log("Stop loading: ",who);
+            //console.log("Stop loading: ",who);
             listCallers.splice(listCallers.indexOf(who), 1);
             //console.log("stop: " + JSON.stringify(listCallers))
             if (listCallers.length == 0)

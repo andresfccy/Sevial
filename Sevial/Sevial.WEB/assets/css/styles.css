@@ -61,3 +61,48 @@
     filter: alpha(opacity=75);
     opacity: .75;
 }
+
+table{
+    font-size: 0.75em;
+}
+
+.btn {
+    border: 1px solid #ced4da;
+}
+
+.bg-primary {
+    background-color: #34495e !important;
+    color: #dae2ea;
+}
+
+.bg-info {
+    background-color: #5b8da56e !important;
+}
+
+.bg-danger {
+    background-color: #dc354557 !important;
+}
+
+.bg-warning {
+    background-color: #ffc10757 !important;
+}
+
+.bg-secondary {
+    background-color: #6c757d57 !important;
+}
+
+.bg-success {
+    background-color: #28a74557 !important;
+}
+
+.card .table {
+    margin-bottom: 0;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+table td span.fa{
+    margin-right: 10px;
+}

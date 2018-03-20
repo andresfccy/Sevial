@@ -18,7 +18,7 @@ namespace Sevial.API2.Controllers
 
         [Route("api/parametro/darListaCategoria")]
         [ResponseType(typeof(RespuestaLista<SP005_DarListaCategoria_Result>))]
-        public IHttpActionResult PostAutenticarUsuario(DarListaCategoria oe)
+        public IHttpActionResult GetListaCategoria(DarListaCategoria oe)
         {
             if (!ModelState.IsValid)
             {

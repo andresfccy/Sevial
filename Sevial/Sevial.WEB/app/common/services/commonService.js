@@ -7,9 +7,9 @@ commonModule
             var paramDefaults = {};
 
             var actions = {
-                getCategories: {
+                getList: {
                     method: 'POST',
-                    url: CommonConstants.PARAM_GET_CATEGORIES()
+                    url: CommonConstants.PARAM_GET_LIST()
                 },
             };
             return $resource(url, paramDefaults, actions);

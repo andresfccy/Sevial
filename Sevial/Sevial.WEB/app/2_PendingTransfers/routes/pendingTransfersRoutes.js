@@ -41,6 +41,7 @@ pendingTransfersModule.config(['$stateProvider',
                 url: '/CargueInformacion',
                 breadcrumb: 'Carga de información',
                 templateUrl: 'app/2_pendingTransfers/views/2_infoUpload.html',
+                controller: 'pendingTransfers.pendingTransfersInfoUploadController as PTInfoUpCtrl',
                 resolve: {
                     check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
                         function ($timeout, $state, $q, SessionServices, loading, growl) {

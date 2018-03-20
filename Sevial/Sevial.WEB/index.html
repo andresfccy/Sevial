@@ -24,7 +24,7 @@
     <link href="node_modules/angular-growl-v2/build/angular-growl.min.css" rel="stylesheet" />
     <link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" />
     <link href="node_modules/ui-select/dist/select.min.css" rel="stylesheet" />
-    <link href="assets/css/selectize.default.css" rel="stylesheet" />
+    <!--<link href="assets/css/selectize.default.css" rel="stylesheet" />-->
     <link href="node_modules/sweetalert/dist/sweetalert.css" rel="stylesheet" />
 
     <!-- Custom Styles -->
@@ -106,7 +106,7 @@
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="node_modules/ui-select/dist/select.min.js"></script>
+    <script src="node_modules/ui-select/dist/select.js"></script>
     <script src="node_modules/angular-swal/index.js"></script>
     <script src="node_modules/angular-ui-router-breadcrumbs/dist/angular-ui-router-breadcrumbs.min.js"></script>
 
@@ -119,6 +119,7 @@
     <script src="app/common/directives/loadingDirective.js"></script>
     <script src="app/common/routes/commonRoutes.js"></script>
     <script src="app/common/services/commonConstants.js"></script>
+    <script src="app/common/services/commonService.js"></script>
 
     <!-- DashboardModule -->
     <script src="app/1_Dashboard/dashboardModule.js"></script>
@@ -126,19 +127,20 @@
     <script src="app/1_Dashboard/controllers/dashboardController.js"></script>
     <script src="app/1_Dashboard/services/dashboardService.js"></script>
 
-    <!-- SysParametersModule -->
+    <!-- PendingTransfersModule -->
     <script src="app/2_PendingTransfers/pendingTransfersModule.js"></script>
     <script src="app/2_PendingTransfers/routes/pendingTransfersRoutes.js"></script>
     <script src="app/2_PendingTransfers/controllers/pendingTransfersController.js"></script>
+    <script src="app/2_PendingTransfers/controllers/pendingTransfers_InfoUploadController.js"></script>
     <script src="app/2_PendingTransfers/services/pendingTransfersService.js"></script>
 
-    <!-- SysParametersModule -->
+    <!-- RightToPetitionModule -->
     <script src="app/3_RightToPetition/rightToPetitionModule.js"></script>
     <script src="app/3_RightToPetition/routes/rightToPetitionRoutes.js"></script>
     <script src="app/3_RightToPetition/controllers/rightToPetitionController.js"></script>
     <script src="app/3_RightToPetition/services/rightToPetitionService.js"></script>
 
-    <!-- SysParametersModule -->
+    <!-- CorrespondenceModule -->
     <script src="app/4_CorrespondenceControl/correspondenceControlModule.js"></script>
     <script src="app/4_CorrespondenceControl/routes/correspondenceControlRoutes.js"></script>
     <script src="app/4_CorrespondenceControl/controllers/correspondenceControlController.js"></script>

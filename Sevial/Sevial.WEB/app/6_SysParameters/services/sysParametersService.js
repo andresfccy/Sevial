@@ -7,10 +7,7 @@ sysParametersModule
             var paramDefaults = {};
 
             var actions = {
-                getCategories: {
-                    method: 'POST',
-                    url: CommonConstants.PARAM_GET_CATEGORIES()
-                },
+
             };
             return $resource(url, paramDefaults, actions);
         }

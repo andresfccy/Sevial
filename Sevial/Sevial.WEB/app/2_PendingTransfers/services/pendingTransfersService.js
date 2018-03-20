@@ -7,10 +7,14 @@ pendingTransfersModule
             var paramDefaults = {};
 
             var actions = {
-                //login: {
-                //    method: 'POST',
-                //    url: CommonConstants.SEC_LOGIN()
-                //},
+                getUploadFiles: {
+                    method: 'POST',
+                    url: CommonConstants.INFUP_GET_FILES()
+                },
+                proccessFiles: {
+                    method: 'POST',
+                    url: CommonConstants.INFUP_PROCESS_FILE()
+                }
             };
             return $resource(url, paramDefaults, actions);
         }

@@ -24,7 +24,10 @@ pendingTransfersModule
                 var mod = SessionServices.getValueFromStorage(CommonConstants.MODULES_KEY).find(function (o) { return o.url.split('.')[0] == $state.current.name.split('.')[0] }) || {};
                 var actionName = getCtrlName() + ".getOptionsByUser"
                 loading.startLoading(actionName);
-                var req = { IdModulo: mod.id, AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) };
+                var req = {
+                    IdModulo: mod.id,
+                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                };
                 console.log(req);
                 var p = SecurityServices.getOptionsByUser(req).$promise;
                 p.then(function (result) {

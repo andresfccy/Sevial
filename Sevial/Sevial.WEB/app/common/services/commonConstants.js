@@ -59,12 +59,20 @@ commonModule.factory('CommonConstants', [
             , SEC_GET_OPTIONS_BY_USER: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/darOpcionModuloUsuario'; }
             , SEC_VALIDATE_ACCESS_URL: function () { return factory.API_BASE_URL() + factory.SECURITY_EP() + '/validarUrlIngreso'; }
 
-            , PARAM_GET_CATEGORIES: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/darListaCategoria'; }
+            , PARAM_GET_LIST: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/darListaCategoria'; }
 
             , INFUP_GET_FILES: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/darArchivosCargue'; }
             , INFUP_PROCESS_FILE: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/procesarArchivo'; }
 
             // Shared
+            , TIPO_CARGUE: "TIPO_CARGUE"
+            , ESTADO_CARGUE: "ESTADO_CARGUE"
+            , BANCO_CUENTA: "BANCO_CUENTA"
+            , CUANTIA: "CUANTIA"
+            , TIPO_TRANSFERENCIA: "TIPO_TRANSFERENCIA"
+            , COLOR_BOTON: "COLOR_BOTON"
+            , ESTADO_GESTION: "ESTADO_GESTION"
+
             , appName: "Sevial 2018"
             , version: "v. Unrelease 0.18.3.17.2"
             , copyright: "CopyRight, 2018 by Sevial"
