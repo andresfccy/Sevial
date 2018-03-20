@@ -14,7 +14,7 @@ securityModule
                 return $sessionStorage[key];
             };
             factory.removeAllInfoFromLocalStorage = function () {
-                $sessionStorage.$reset;
+                $sessionStorage.$reset();
             };
 
             factory.isLoggedIn = function (a) {

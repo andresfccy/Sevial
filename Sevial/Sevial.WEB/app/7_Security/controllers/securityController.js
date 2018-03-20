@@ -63,6 +63,7 @@ securityModule
             function logout() {
                 SessionServices.removeAllInfoFromLocalStorage();
                 growl.warning("Sesión finalizada, ¡Hasta pronto!");
+                $state.go("login");
             }
 
             // Helpers

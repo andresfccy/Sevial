@@ -21,6 +21,10 @@ pendingTransfersModule
 
             // Funciones
             function init() {
+                if (isHome()) {
+                    $state.go("pendingTransfers.infoUpload");
+                }
+
                 var mod = SessionServices.getValueFromStorage(CommonConstants.MODULES_KEY).find(function (o) { return o.url.split('.')[0] == $state.current.name.split('.')[0] }) || {};
                 var actionName = getCtrlName() + ".getOptionsByUser"
                 loading.startLoading(actionName);
@@ -53,10 +57,14 @@ pendingTransfersModule
 
             function submit() {
             }
-
+            
             // Helpers
             function getCtrlName() {
                 return "pendingTransfers.pendingTransfersController";
+            }
+
+            function isHome() {
+                if ($location.url() == "/TransferenciasPendientes/Inicio") return true;
             }
         }
     ]);

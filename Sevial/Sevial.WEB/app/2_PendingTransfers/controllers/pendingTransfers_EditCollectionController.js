@@ -152,6 +152,7 @@ pendingTransfersModule
             }
 
             function filterTable() {
+                getTransfers();
             }
 
             function editTransfer(obj) {
@@ -242,6 +243,7 @@ pendingTransfersModule
                 loading.startLoading(actionName);
                 var actionName = getCtrlName() + ".getTransfers()"
                 var req = {
+                    Filtro: self.filter,
                     AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
                 };
                 var p = PendingTransfersServices.getTransfers(req).$promise;
