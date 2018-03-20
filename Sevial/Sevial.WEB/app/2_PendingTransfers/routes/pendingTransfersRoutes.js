@@ -62,6 +62,7 @@ pendingTransfersModule.config(['$stateProvider',
                 url: '/EdicionRecaudo',
                 breadcrumb: 'Editar recaudo local',
                 templateUrl: 'app/2_pendingTransfers/views/2_editLocalColl.html',
+                controller: 'pendingTransfers.pendingTransfersEditCollectionController as PTEditCollCtrl',
                 resolve: {
                     check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
                         function ($timeout, $state, $q, SessionServices, loading, growl) {

@@ -1,3 +1,349 @@
-﻿<div id="pendingTransfers" class="pendingTransfers">
-    Edición de recaudo... En construcción
+﻿<div id="pendingTransfers_editLocalColl" class="module-content col">
+    <div class="card">
+        <div class="card-header bg-primary">Edición transferencias efectuadas</div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="form-group col-12 row">
+                    <div class="form-group col-12">
+                        <label for="filtro">Filtro:</label>
+                        <input id="filtro"
+                               class="form-control form-control-sm"
+                               type="text"
+                               placeholder="Ingresa los criterios de búsqueda, separados por comas (,)"
+                               ng-model="PTEditCollCtrl.filter" />
+                    </div>
+                    <div class="form-group clearfix col-12">
+                        <button class="btn btn-sm btn-light float-right"
+                                ng-click="PTEditCollCtrl.filterTable()">
+                            Buscar
+                        </button>
+                    </div>
+                    <hr class="col-12" />
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-sm btn-light bg-success float-right"
+                            data-toggle="modal"
+                            data-target="#EditTransferModal"
+                            ng-click="PTEditCollCtrl.cleanForm(false)">
+                        Agregar transferencia
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Departamento</th>
+                        <th>Municipio</th>
+                        <th>Autoridad Imposición</th>
+                        <th>Vlr. Pagado</th>
+                        <th>Cuantía</th>
+                        <th>Vigencia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in PTEditCollCtrl.transfers"
+                        ng-class="{'bg-info': item.seleccionado}">
+                        <td>{{item.nomEstadoGestion}}</td>
+                        <td>{{item.nomDepartamento}}</td>
+                        <td>{{item.nomMunicipio}}</td>
+                        <td>{{item.nomAutoridadImposicion}}</td>
+                        <td>{{item.A030_vlrPagado}}</td>
+                        <td>{{item.nomCuantia}}</td>
+                        <td>{{item.A030_vigencia}}</td>
+                        <td>
+                            <span class="fa fa-edit cursor-pointer"
+                                  title="Editar transferencia"
+                                  data-toggle="modal"
+                                  data-target="#EditTransferModal"
+                                  ng-click="PTEditCollCtrl.editTransfer(item)"></span>
+                            <span class="fa fa-trash cursor-pointer"
+                                  title="Eliminar transferencia"
+                                  ng-click="PTEditCollCtrl.deleteObj(item)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="PTEditCollCtrl.transfers.length == 0">
+                    <tr class="bg-info">
+                        <td colspan="7" class="text-center">
+                            Lista vacía.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="EditTransferModal" tabindex="-1" role="dialog" aria-labelledby="EditTransferModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content"
+              name="PTEditCollCtrl.transferForm">
+            <div class="modal-header"
+                 ng-class="{'bg-warning': PTEditCollCtrl.editingTransfer, 'bg-success': !PTEditCollCtrl.editingTransfer}">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <span ng-if="PTEditCollCtrl.editingTransfer">Edición de transferencia</span>
+                    <span ng-if="!PTEditCollCtrl.editingTransfer">Agregar una transferencia</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-4">
+                    <label for="sel1"><b>Gestión</b></label>
+                    <hr class="col-12" />
+                    <div class="form-group">
+                        <label class="radio">
+                            <input type="radio"
+                                   name="radio-group1"
+                                   ng-value=33
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_estadoGestion">
+                            <span class="check-mark"></span> Gestión DITRA
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="radio">
+                            <input type="radio"
+                                   name="radio-group1"
+                                   ng-value=34
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_estadoGestion">
+                            <span class="check-mark"></span> Gestión SEVIAL-FCM
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="sel1"><b>Municipio</b></label>
+                        <hr class="col-12" />
+                        <select id="sel1"
+                                class="form-control form-control-sm"
+                                placeholder="Selecciona un municipio..."
+                                ng-model="PTEditCollCtrl.editTransfer.A030_municipio"
+                                ng-options="item.A011_codigo as item.A011_valor for item in PTEditCollCtrl.towns"></select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="col form-group">
+                        <label><b>Autoridad imposición</b></label>
+                        <hr class="col-12" />
+                        <div class="form-group" ng-repeat="item in PTEditCollCtrl.autorities">
+                            <label class="radio">
+                                <input type="radio"
+                                       name="radio-group2"
+                                       ng-value=item.A011_codigo
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_autoridadImposicion">
+                                <span class="check-mark"></span> {{item.A011_valor}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr class="col-12" />
+                <div class="col-12 row">
+                    <div class="col">
+                        <label class=""><b>Valores</b></label>
+                        <hr class="col-12" />
+                        <div class="form-group">
+                            <label>Pagado</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="payedValue"
+                                   placeholder="Valor pagado"
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_vlrPagado" />
+                        </div>
+                        <div class="form-group">
+                            <label>45%</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="payedValue"
+                                   placeholder="Valor trf 45%"
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_vlrTrf45" />
+                        </div>
+                        <div class="form-group">
+                            <label>10%</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="payedValue"
+                                   placeholder="Valor trf 10%"
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_vlrTrf10" />
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label class=""><b>Cuantía</b></label>
+                        <hr class="col-12" />
+
+                        <div class="form-group" ng-repeat="item in PTEditCollCtrl.quantities">
+                            <label class="radio">
+                                <input type="radio"
+                                       name="radio-group3"
+                                       ng-value=item.A011_codigo
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_cuantia">
+                                <span class="check-mark"></span> {{item.A011_valor}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class=""><b>Fecha</b></label>
+                        <hr class="col-12" />
+                        <label>Fecha inicio</label>
+                        <div class="form-group">
+                            <p class="input-group">
+                                <input type="text"
+                                       class="form-control form-control-sm cursor-pointer"
+                                       uib-datepicker-popup="{{format}}"
+                                       ng-click="PTEditCollCtrl.openCal(1)"
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_fechaInicio"
+                                       is-open="PTEditCollCtrl.popup[1]"
+                                       datepicker-options="PTEditCollCtrl.dateOptions"
+                                       ng-required="true"
+                                       alt-input-formats="altInputFormats"
+                                       current-text="Hoy"
+                                       clear-text="Borrar"
+                                       close-text="Cerrar"
+                                       readonly />
+                                <span class="input-group-append">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="PTEditCollCtrl.openCal(1)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                        <label>Fecha fin</label>
+                        <div class="form-group">
+                            <p class="input-group">
+                                <input type="text"
+                                       class="form-control form-control-sm cursor-pointer"
+                                       uib-datepicker-popup="{{format}}"
+                                       ng-click="PTEditCollCtrl.openCal(2)"
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_fechaFin"
+                                       is-open="PTEditCollCtrl.popup[2]"
+                                       datepicker-options="PTEditCollCtrl.dateOptions"
+                                       ng-required="true"
+                                       alt-input-formats="altInputFormats"
+                                       current-text="Hoy"
+                                       clear-text="Borrar"
+                                       close-text="Cerrar"
+                                       readonly />
+                                <span class="input-group-append">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="PTEditCollCtrl.openCal(2)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                        <label>Fecha trf</label>
+                        <div class="form-group">
+                            <p class="input-group">
+                                <input type="text"
+                                       class="form-control form-control-sm cursor-pointer"
+                                       uib-datepicker-popup="{{format}}"
+                                       ng-click="PTEditCollCtrl.openCal(3)"
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_fechaTrf"
+                                       is-open="PTEditCollCtrl.popup[3]"
+                                       datepicker-options="PTEditCollCtrl.dateOptions"
+                                       ng-required="true"
+                                       alt-input-formats="altInputFormats"
+                                       current-text="Hoy"
+                                       clear-text="Borrar"
+                                       close-text="Cerrar"
+                                       readonly />
+                                <span class="input-group-append">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="PTEditCollCtrl.openCal(3)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                        <label>Fecha corte</label>
+                        <div class="form-group">
+                            <p class="input-group">
+                                <input type="text"
+                                       class="form-control form-control-sm cursor-pointer"
+                                       uib-datepicker-popup="{{format}}"
+                                       ng-click="PTEditCollCtrl.openCal(4)"
+                                       ng-model="PTEditCollCtrl.editTransfer.A030_fechaCorte"
+                                       is-open="PTEditCollCtrl.popup[4]"
+                                       datepicker-options="PTEditCollCtrl.dateOptions"
+                                       ng-required="true"
+                                       alt-input-formats="altInputFormats"
+                                       current-text="Hoy"
+                                       clear-text="Borrar"
+                                       close-text="Cerrar"
+                                       readonly />
+                                <span class="input-group-append">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="PTEditCollCtrl.openCal(4)">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="col-12" />
+                <div class="col-3">
+                    <label for="sel3"><b>Tipo</b></label>
+                    <hr class="col-12" />
+                    <div class="form-group" ng-repeat="item in PTEditCollCtrl.types">
+                        <label class="radio">
+                            <input type="radio"
+                                   name="radio-group4"
+                                   ng-value=item.A011_codigo
+                                   ng-model="PTEditCollCtrl.editTransfer.A030_tipoTrf">
+                            <span class="check-mark"></span> {{item.A011_valor}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row col">
+                        <div class="col form-group">
+                            <label for="sel3"><b>Cuenta</b></label>
+                            <hr class="col-12" />
+                            <select id="sel3"
+                                    class="form-control form-control-sm"
+                                    placeholder="Selecciona una cuenta bancaria..."
+                                    ng-model="PTEditCollCtrl.editTransfer.A030_bancoCuenta"
+                                    ng-options="item.A011_codigo as item.A011_valor for item in PTEditCollCtrl.banks"></select>
+                        </div>
+                    </div>
+                    <div class="row col">
+                        <div class="col">
+                            <label><b>Observación</b></label>
+                            <hr class="col-12" />
+                            <textarea class="form-control"
+                                      ng-model="PTEditCollCtrl.editTransfer.A030_observacion"></textarea>
+                        </div>
+                        <div class="col">
+                            <label><b>Soporte</b></label>
+                            <hr class="col-12" />
+                            <textarea class="form-control"
+                                      ng-model="PTEditCollCtrl.editTransfer.A030_soporte"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset"
+                        class="btn btn-sm bg-secondary"
+                        data-dismiss="modal">
+                    Cerrar
+                </button>
+                <button type="submit"
+                        class="btn btn-sm bg-success"
+                        ng-click="PTEditCollCtrl.submit()">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

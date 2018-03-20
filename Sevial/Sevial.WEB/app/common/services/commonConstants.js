@@ -51,6 +51,7 @@ commonModule.factory('CommonConstants', [
             , SECURITY_EP: function () { return '/api/seguridad' }
             , PARAMETER_EP: function () { return '/api/parametro' }
             , INFO_UPLOAD_EP: function () { return '/api/cargueInformacion' }
+            , INFO_EP: function () { return '/api/informacion' }
 
             //, SYS_VALIDATE_ACCESS_URL: function () { return factory.API_BASE_URL() + factory.SECURITY_EP + '/validarUrlIngreso'; }
 
@@ -64,6 +65,11 @@ commonModule.factory('CommonConstants', [
             , INFUP_GET_FILES: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/darArchivosCargue'; }
             , INFUP_PROCESS_FILE: function () { return factory.API_BASE_URL() + factory.INFO_UPLOAD_EP() + '/procesarArchivo'; }
 
+            , INF_GET_TRANSFERS: function () { return factory.API_BASE_URL() + factory.INFO_EP() + '/darTransferencias'; }
+            , INF_EDIT_TRANSFER: function () { return factory.API_BASE_URL() + factory.INFO_EP() + '/editarTransferencia'; }
+            , INF_DELETE_TRANSFER: function () { return factory.API_BASE_URL() + factory.INFO_EP() + '/eliminarTransferencia'; }
+
+
             // Shared
             , TIPO_CARGUE: "TIPO_CARGUE"
             , ESTADO_CARGUE: "ESTADO_CARGUE"
@@ -72,9 +78,12 @@ commonModule.factory('CommonConstants', [
             , TIPO_TRANSFERENCIA: "TIPO_TRANSFERENCIA"
             , COLOR_BOTON: "COLOR_BOTON"
             , ESTADO_GESTION: "ESTADO_GESTION"
+            , MUNICIPIO: "MUNICIPIO"
+            , DEPARTAMENTO: "DEPARTAMENTO"
+            , AUTORIDAD_IMPOSICION: "AUTORIDAD_IMPOSICION"
 
             , appName: "Sevial 2018"
-            , version: "v. Unrelease 0.18.3.17.2"
+            , version: "v. Unrelease 0.18.3.20.1"
             , copyright: "CopyRight, 2018 by Sevial"
             , role: undefined
             , menu: []

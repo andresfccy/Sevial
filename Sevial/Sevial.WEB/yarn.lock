@@ -47,6 +47,10 @@ angular-growl-v2@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/angular-growl-v2/-/angular-growl-v2-0.7.5.tgz#57876d511622801948c02e3a95dd96337af6470d"
 
+angular-i18n@^1.6.9:
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/angular-i18n/-/angular-i18n-1.6.9.tgz#d901faf0c375e858af60eead2d8e49d716a53bfd"
+
 angular-messages@^1.6.6:
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.6.9.tgz#c6958a32ab49316af36e3e5ac6f94c361571fa72"

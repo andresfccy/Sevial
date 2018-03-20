@@ -18,7 +18,7 @@ namespace Sevial.API2.Controllers
 
         [Route("api/parametro/darListaCategoria")]
         [ResponseType(typeof(RespuestaLista<SP005_DarListaCategoria_Result>))]
-        public IHttpActionResult GetListaCategoria(DarListaCategoria oe)
+        public IHttpActionResult PostListaCategoria(DarListaCategoria oe)
         {
             if (!ModelState.IsValid)
             {
@@ -28,7 +28,7 @@ namespace Sevial.API2.Controllers
             ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
             ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
 
-            var result = db.SP005_DarListaCategoria(oe.AliasUsuario,oe.NomCategoria, oe.Filtro, codigoRpta, mensajeRpta);
+            var result = db.SP005_DarListaCategoria(oe.AliasUsuario, oe.NomCategoria, oe.Filtro, codigoRpta, mensajeRpta);
             var dataSet = result.ToList();
 
             RespuestaLista<SP005_DarListaCategoria_Result> os = new RespuestaLista<SP005_DarListaCategoria_Result>();
@@ -38,8 +38,6 @@ namespace Sevial.API2.Controllers
             os.Lista = dataSet;
 
             return Ok(os);
-
-
         }
     }
 }

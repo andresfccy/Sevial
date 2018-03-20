@@ -4,6 +4,7 @@ var app = angular.module('sevialApp', [
     , 'ngResource'
     , 'pascalprecht.translate'
     , 'angular-growl'
+    , 'angularMoment'
     , 'ui.router'
     , 'ui.router.title'
     , 'ui.router.breadcrumbs'

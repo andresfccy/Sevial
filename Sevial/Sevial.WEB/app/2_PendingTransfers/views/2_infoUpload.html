@@ -1,4 +1,4 @@
-﻿<div id="pendingTransfers" class="pendingTransfers col">
+﻿<div id="pendingTransfers_infoUpload" class="module-content col">
     <div class="card">
         <div class="card-header bg-primary">Transferencias pendientes</div>
         <div class="card-body">
@@ -12,22 +12,22 @@
                             ng-options="item.A011_codigo as item.A011_valor for item in PTInfoUpCtrl.uploadTypes"></select>
                 </div>
                 <div class="form-group col-6">
-                    <label for="sel1">Estado:</label>
-                    <select id="sel1"
+                    <label for="sel2">Estado:</label>
+                    <select id="sel2"
                             class="form-control form-control-sm"
                             placeholder="Selecciona un estado..."
                             ng-model="PTInfoUpCtrl.state"
                             ng-options="item.A011_codigo as item.A011_valor for item in PTInfoUpCtrl.states"></select>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-light float-right"
+                    <button class="btn btn-sm btn-light float-right"
                             ng-click="PTInfoUpCtrl.filterTable()">
                         Consultar
                     </button>
-                    <button class="btn btn-light float-left"
+                    <button class="btn btn-sm btn-light float-left bg-primary"
                             ng-disabled="PTInfoUpCtrl.selectedFiles.length == 0"
                             ng-click="PTInfoUpCtrl.submit()">
-                        Procesar seleccionados
+                        Procesar seleccionados <small ng-if="PTInfoUpCtrl.selectedFiles.length != 0">({{PTInfoUpCtrl.selectedFiles.length}})</small>
                     </button>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 </tbody>
                 <tbody ng-if="PTInfoUpCtrl.files.length == 0">
                     <tr class="bg-info">
-                        <td colspan="3">
+                        <td colspan="3" class="text-center">
                             Lista vacía.
                         </td>
                     </tr>

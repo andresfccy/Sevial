@@ -3,10 +3,10 @@ pendingTransfersModule
     .controller('pendingTransfers.pendingTransfersInfoUploadController',
     ['$scope', '$state', '$rootScope', '$translate', '$location', '$timeout', '$q', '$http',
         'growl', 'loading',
-        'CommonConstants', 'SecurityServices', 'SessionServices', 'CommonServices', 'PendingTransfersServices',
+        'CommonConstants', 'SessionServices', 'CommonServices', 'PendingTransfersServices',
         function ($scope, $state, $rootScope, $translate, $location, $timeout, $q, $http,
             growl, loading,
-            CommonConstants, SecurityServices, SessionServices, CommonServices, PendingTransfersServices) {
+            CommonConstants, SessionServices, CommonServices, PendingTransfersServices) {
 
             // Instancia del controlador dentro de la variable self
             var self = this;
@@ -90,32 +90,15 @@ pendingTransfersModule
             }
 
             function filterTable() {
-                var actionName = getCtrlName() + ".getUploadFiles()"
-                loading.startLoading(actionName);
-                var req = {
-                    IdTipoCargue: self.uploadType,
-                    IdEstadoCargue: self.state
-                };
-                var p = PendingTransfersServices.getUploadFiles(req).$promise;
-                p.then(function (result) {
-                    if (result.CodigoRpta == 0) {
-                        self.files = result.Lista;
-                    } else {
-                        //growl.warning(result.MensajeRpta);
-                    }
-                    loading.stopLoading(actionName);
-                }).catch(function (error) {
-                    growl.error("Ocurrió un error");
-                    console.log(error);
-                    loading.stopLoading(actionName);
-                });
+                getFiles();
             }
 
             function submit() {
                 var actionName = getCtrlName() + ".proccessFiles()"
                 loading.startLoading(actionName);
                 var req = {
-                    ListaProcesar: self.selectedFiles.map(function (o) { return o.idTipoCargue + ',' + o.idArchivo; }).join(';')
+                    ListaProcesar: self.selectedFiles.map(function (o) { return o.idTipoCargue + ',' + o.idArchivo; }).join(';'),
+                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
                 };
                 var p = PendingTransfersServices.proccessFiles(req).$promise;
                 p.then(function (result) {
@@ -138,7 +121,11 @@ pendingTransfersModule
                 // Traer archivos
                 var actionName = getCtrlName() + ".getUploadFiles()"
                 loading.startLoading(actionName);
-                var req = { AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) };
+                var req = {
+                    IdTipoCargue: self.uploadType,
+                    IdEstadoCargue: self.state,
+                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                };
                 var p = PendingTransfersServices.getUploadFiles(req).$promise;
                 p.then(function (result) {
                     if (result.CodigoRpta == 0) {
