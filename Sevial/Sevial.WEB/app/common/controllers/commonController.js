@@ -23,13 +23,20 @@ commonModule
                 return CommonConstants.menu;
             }), function (newVal) {
                 self.menu = newVal;
-            });
+                });
+
+
 
             // Publicación de las funciones en el scope
             self.isLoggedIn = isLoggedIn;
             self.angularLoaded = angularLoaded;
+            self.$onInit = init;
 
             // Funciones
+            function init() {
+                self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "Dummy";
+            }
+
             function isHome() {
                 if (!$location.path().split('/')[1] && $location.path().split('/')[1] == 'Home') {
                     return true;

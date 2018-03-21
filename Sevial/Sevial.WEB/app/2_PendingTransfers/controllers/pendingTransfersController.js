@@ -21,9 +21,9 @@ pendingTransfersModule
 
             // Funciones
             function init() {
-                if (isHome()) {
-                    $state.go("pendingTransfers.infoUpload");
-                }
+                //if (isHome()) {
+                //    $state.go("pendingTransfers.infoUpload");
+                //}
 
                 var mod = SessionServices.getValueFromStorage(CommonConstants.MODULES_KEY).find(function (o) { return o.url.split('.')[0] == $state.current.name.split('.')[0] }) || {};
                 var actionName = getCtrlName() + ".getOptionsByUser"
