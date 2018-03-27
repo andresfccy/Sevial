@@ -56,8 +56,8 @@
 
     <div class="app" ng-if="cmnCtrl.isLoggedIn()" ng-cloak>
         <div class="app-body">
-            <div ng-include="'app/common/views/header.html'"
-                 class="app-sidebar sidebar-dark sidebar-slide-left"></div>
+            <div class="app-sidebar sidebar-dark sidebar-slide-left" ng-include="'app/common/views/header.html'" >
+            </div>
 
             <!-- Views rendering div -->
             <div class="app-content">
@@ -65,7 +65,7 @@
                     <button type="button" class="btn btn-sidebar" data-toggle="sidebar">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <div class="navbar-brand"><a ui-sref="home"><img src="assets/img/sevial_logo.png" class="img-fluid img-brand" title="{{cmnCtrl.appName}}"/></a></div>
+                    <div class="navbar-brand"><a ui-sref="home"><img src="assets/img/sevial_logo.png" class="img-fluid img-brand" title="{{cmnCtrl.appName}}" /></a></div>
                 </nav>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" breadcrumbs>
@@ -91,6 +91,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
     <script src="assets/js/admin4b.min.js"></script>
+    <div admin4b></div>
 
     <!-- AngularJS Dependencies -->
     <script src="node_modules/angular/angular.min.js"></script>
@@ -123,6 +124,7 @@
     <script src="app/common/commonModule.js"></script>
     <script src="app/common/controllers/commonController.js"></script>
     <script src="app/common/directives/loadingDirective.js"></script>
+    <script src="app/common/directives/loadScriptDirective.js"></script>
     <script src="app/common/routes/commonRoutes.js"></script>
     <script src="app/common/services/commonConstants.js"></script>
     <script src="app/common/services/commonService.js"></script>

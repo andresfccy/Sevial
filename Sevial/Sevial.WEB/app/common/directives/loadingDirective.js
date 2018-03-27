@@ -5,8 +5,12 @@ app.directive('loading', ['$rootScope', function ($rootScope) {
         scope: true,
         controller: ['$scope', function ($scope) {
             $scope.loading = false;
-            $rootScope.$on('loadingFlag', function (event, flag) {
-                $scope.loading = flag;
+            $rootScope.$on('loadingFlag', function (event, flag, partial) {
+                //flag = true;
+                //partial = true;
+                if(!partial)
+                    $scope.loading = flag;
+                $scope.bars_loading = flag;
             })
         }]
     }
@@ -17,10 +21,10 @@ app.provider('loading', function () {
         function broadcastFlag(flag) {
             $rootScope.$broadcast('loadingFlag', flag);
         }
-        function startLoading(who) {
+        function startLoading(who, partial) {
             //console.log("Start loading: ", who);
             listCallers.push(who);
-            broadcastFlag(true);
+            broadcastFlag(true, partial);
         }
         function stopLoading(who) {
             //console.log("Stop loading: ",who);

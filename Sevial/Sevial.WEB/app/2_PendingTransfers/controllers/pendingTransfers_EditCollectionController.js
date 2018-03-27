@@ -28,7 +28,7 @@ pendingTransfersModule
             // Publicación de las funciones por medio de la variable self
             self.$onInit = init;
             self.filterTable = filterTable;
-            self.editTransfer = editTransfer;
+            self.prepareEdit = prepareEdit;
             self.submit = submit;
             self.deleteObj = deleteObj;
             self.cleanForm = cleanForm;
@@ -155,7 +155,7 @@ pendingTransfersModule
                 getTransfers();
             }
 
-            function editTransfer(obj) {
+            function prepareEdit(obj) {
                 //self.editingTransfer = true;
                 //self.transferForm.$setPristine();
                 //self.transferForm.$setUntouched();

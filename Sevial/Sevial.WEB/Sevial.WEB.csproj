@@ -123,6 +123,7 @@
     <Content Include="app\common\commonModule.js" />
     <Content Include="app\common\controllers\commonController.js" />
     <Content Include="app\common\directives\loadingDirective.js" />
+    <Content Include="app\common\directives\loadScriptDirective.js" />
     <Content Include="app\common\routes\commonRoutes.js" />
     <Content Include="app\common\services\commonConstants.js" />
     <Content Include="app\common\services\commonService.js" />
