@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="APPSEVIALCargueInformacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP011_DarTipoArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP012_RegistrarArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="tipoArchivo" Type="int" Mode="In" />
+          <Parameter Name="nombreArchivo" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="APPSEVIALCargueInformacionModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APPSEVIALCargueInformacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="APPSEVIALCargueInformacionEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP011_DarTipoArchivo" ReturnType="Collection(APPSEVIALCargueInformacionModel.SP011_DarTipoArchivo_Result)">
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP012_RegistrarArchivo">
+            <Parameter Name="tipoArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="nombreArchivo" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP011_DarTipoArchivo_Result">
+          <Property Type="Int32" Name="A015_codigo" Nullable="false" />
+          <Property Type="Int32" Name="A015_tipoArchivo" Nullable="true" />
+          <Property Type="String" Name="nomTipoArchivo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="A015_carpeta" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="A015_carpetaHistorico" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="A015_comodin" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APPSEVIALCargueInformacionModelStoreContainer" CdmEntityContainer="APPSEVIALCargueInformacionEntities" >
+          <FunctionImportMapping FunctionImportName="SP011_DarTipoArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP011_DarTipoArchivo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALCargueInformacionModel.SP011_DarTipoArchivo_Result">
+                <ScalarProperty Name="A015_codigo" ColumnName="A015_codigo" />
+                <ScalarProperty Name="A015_tipoArchivo" ColumnName="A015_tipoArchivo" />
+                <ScalarProperty Name="nomTipoArchivo" ColumnName="nomTipoArchivo" />
+                <ScalarProperty Name="A015_carpeta" ColumnName="A015_carpeta" />
+                <ScalarProperty Name="A015_carpetaHistorico" ColumnName="A015_carpetaHistorico" />
+                <ScalarProperty Name="A015_comodin" ColumnName="A015_comodin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP012_RegistrarArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP012_RegistrarArchivo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
