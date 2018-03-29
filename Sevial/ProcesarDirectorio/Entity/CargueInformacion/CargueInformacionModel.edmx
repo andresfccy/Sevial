@@ -15,6 +15,17 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP015_DarArchivosProcesar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP016_CargaArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="tipoArchivo" Type="int" Mode="In" />
+          <Parameter Name="idArchivo" Type="int" Mode="In" />
+          <Parameter Name="nomArchivo" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALCargueInformacionModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -31,6 +42,17 @@
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP015_DarArchivosProcesar" ReturnType="Collection(APPSEVIALCargueInformacionModel.SP015_DarArchivosProcesar_Result)">
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP016_CargaArchivo">
+            <Parameter Name="tipoArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="idArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="nomArchivo" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP011_DarTipoArchivo_Result">
           <Property Type="Int32" Name="A015_codigo" Nullable="false" />
@@ -39,6 +61,11 @@
           <Property Type="String" Name="A015_carpeta" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="A015_carpetaHistorico" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="A015_comodin" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP015_DarArchivosProcesar_Result">
+          <Property Type="Int32" Name="A020_codigo" Nullable="false" />
+          <Property Type="Int32" Name="A020_tipoCargue" Nullable="true" />
+          <Property Type="String" Name="A020_nombre" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -59,6 +86,16 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP012_RegistrarArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP012_RegistrarArchivo" />
+          <FunctionImportMapping FunctionImportName="SP015_DarArchivosProcesar" FunctionName="APPSEVIALCargueInformacionModel.Store.SP015_DarArchivosProcesar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALCargueInformacionModel.SP015_DarArchivosProcesar_Result">
+                <ScalarProperty Name="A020_codigo" ColumnName="A020_codigo" />
+                <ScalarProperty Name="A020_tipoCargue" ColumnName="A020_tipoCargue" />
+                <ScalarProperty Name="A020_nombre" ColumnName="A020_nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP016_CargaArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP016_CargaArchivo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

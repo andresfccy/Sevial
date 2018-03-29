@@ -98,6 +98,9 @@
     <Compile Include="Entity\CargueInformacion\SP011_DarTipoArchivo_Result.cs">
       <DependentUpon>CargueInformacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\CargueInformacion\SP015_DarArchivosProcesar_Result.cs">
+      <DependentUpon>CargueInformacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Models\RespuestaEntidad.cs" />
     <Compile Include="Models\RespuestaLista.cs" />

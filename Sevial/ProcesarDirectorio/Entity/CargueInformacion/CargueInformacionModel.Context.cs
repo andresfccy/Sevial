@@ -45,5 +45,27 @@ namespace ProcesarDirectorio.Entity.CargueInformacion
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP012_RegistrarArchivo", tipoArchivoParameter, nombreArchivoParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP015_DarArchivosProcesar_Result> SP015_DarArchivosProcesar(ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP015_DarArchivosProcesar_Result>("SP015_DarArchivosProcesar", codigoRpta, mensajeRpta);
+        }
+    
+        public virtual int SP016_CargaArchivo(Nullable<int> tipoArchivo, Nullable<int> idArchivo, string nomArchivo, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var tipoArchivoParameter = tipoArchivo.HasValue ?
+                new ObjectParameter("tipoArchivo", tipoArchivo) :
+                new ObjectParameter("tipoArchivo", typeof(int));
+    
+            var idArchivoParameter = idArchivo.HasValue ?
+                new ObjectParameter("idArchivo", idArchivo) :
+                new ObjectParameter("idArchivo", typeof(int));
+    
+            var nomArchivoParameter = nomArchivo != null ?
+                new ObjectParameter("nomArchivo", nomArchivo) :
+                new ObjectParameter("nomArchivo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP016_CargaArchivo", tipoArchivoParameter, idArchivoParameter, nomArchivoParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
