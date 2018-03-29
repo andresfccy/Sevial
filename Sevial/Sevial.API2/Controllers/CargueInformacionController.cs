@@ -62,6 +62,19 @@ namespace Sevial.API2.Controllers
             os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
             os.MensajeRpta = mensajeRpta.Value.ToString();
 
+            string[] listaTipoArchivo = oe.ListaProcesar.Split(';');
+            foreach (string tipoArchivo in listaTipoArchivo)
+            {
+                string[] listaArchivo = tipoArchivo.Split(',');
+
+                ObjectParameter codigoRptaArc = new ObjectParameter("CodigoRpta", typeof(Int32));
+                ObjectParameter mensajeRptaArc = new ObjectParameter("MensajeRpta", typeof(String));
+
+                var resultAr = db.SP013_IniciarProceso(oe.AliasUsuario,Convert.ToInt32(listaArchivo[0]), Convert.ToInt32(listaArchivo[1]), codigoRpta, mensajeRpta);
+
+            }
+
+
             return Ok(os);
 
 

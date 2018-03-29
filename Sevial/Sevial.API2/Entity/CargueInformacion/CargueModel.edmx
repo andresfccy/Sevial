@@ -18,6 +18,13 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP013_IniciarProceso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CAR">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipoArchivo" Type="int" Mode="In" />
+          <Parameter Name="numArchivo" Type="int" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALCargueInformacionModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,6 +41,13 @@
           <FunctionImport Name="SP007_ProcesarArchivo">
             <Parameter Name="aliasUsuario" Mode="In" Type="String" />
             <Parameter Name="listaProcesar" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP013_IniciarProceso">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="tipoArchivo" Mode="In" Type="Int32" />
+            <Parameter Name="numArchivo" Mode="In" Type="Int32" />
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -73,6 +87,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP007_ProcesarArchivo" FunctionName="APPSEVIALCargueInformacionModel.Store.SP007_ProcesarArchivo" />
+          <FunctionImportMapping FunctionImportName="SP013_IniciarProceso" FunctionName="APPSEVIALCargueInformacionModel.Store.SP013_IniciarProceso" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
