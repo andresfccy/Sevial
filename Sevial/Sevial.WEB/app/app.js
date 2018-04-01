@@ -12,9 +12,9 @@ var app = angular.module('sevialApp', [
     , 'ngStorage'
     , 'ngAnimate'
     , 'ui.bootstrap'
-    , 'ui.select'
     , 'ngSanitize'
     , 'angular-swal'
+    , 'ui.select'
 
     // Módulos de la aplicación 
     // NOTA: Cada componente se tiene que registrar en la aplicación (en la lista siguiente) para ser incluído

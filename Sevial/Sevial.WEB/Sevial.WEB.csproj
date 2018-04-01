@@ -1435,6 +1435,19 @@
     <Content Include="node_modules\ngstorage\ngStorage.min.js" />
     <Content Include="node_modules\ngstorage\package.json" />
     <Content Include="node_modules\ngstorage\README.md" />
+    <Content Include="node_modules\popper.js\.eslintrc.js" />
+    <Content Include="node_modules\popper.js\dist\esm\popper-utils.js" />
+    <Content Include="node_modules\popper.js\dist\esm\popper-utils.min.js" />
+    <Content Include="node_modules\popper.js\dist\esm\popper.js" />
+    <Content Include="node_modules\popper.js\dist\esm\popper.min.js" />
+    <Content Include="node_modules\popper.js\dist\popper-utils.js" />
+    <Content Include="node_modules\popper.js\dist\popper-utils.min.js" />
+    <Content Include="node_modules\popper.js\dist\popper.js" />
+    <Content Include="node_modules\popper.js\dist\popper.min.js" />
+    <Content Include="node_modules\popper.js\dist\umd\popper-utils.js" />
+    <Content Include="node_modules\popper.js\dist\umd\popper-utils.min.js" />
+    <Content Include="node_modules\popper.js\dist\umd\popper.js" />
+    <Content Include="node_modules\popper.js\dist\umd\popper.min.js" />
     <Content Include="node_modules\sweetalert\.editorconfig" />
     <Content Include="node_modules\sweetalert\.jshintrc" />
     <Content Include="node_modules\sweetalert\.npmignore" />
@@ -1727,6 +1740,21 @@
     <Content Include="node_modules\angular-ui-router-breadcrumbs\node_modules\angular-ui-router\yarn.lock" />
     <Content Include="node_modules\angular-ui-router-breadcrumbs\package.json" />
     <Content Include="node_modules\angular-ui-router-breadcrumbs\README.md" />
+    <Content Include="node_modules\popper.js\.eslintignore" />
+    <Content Include="node_modules\popper.js\dist\esm\popper-utils.js.map" />
+    <Content Include="node_modules\popper.js\dist\esm\popper-utils.min.js.map" />
+    <Content Include="node_modules\popper.js\dist\esm\popper.js.map" />
+    <Content Include="node_modules\popper.js\dist\esm\popper.min.js.map" />
+    <Content Include="node_modules\popper.js\dist\popper-utils.js.map" />
+    <Content Include="node_modules\popper.js\dist\popper-utils.min.js.map" />
+    <Content Include="node_modules\popper.js\dist\popper.js.map" />
+    <Content Include="node_modules\popper.js\dist\popper.min.js.map" />
+    <Content Include="node_modules\popper.js\dist\umd\popper-utils.js.map" />
+    <Content Include="node_modules\popper.js\dist\umd\popper-utils.min.js.map" />
+    <Content Include="node_modules\popper.js\dist\umd\popper.js.map" />
+    <Content Include="node_modules\popper.js\dist\umd\popper.min.js.map" />
+    <Content Include="node_modules\popper.js\package.json" />
+    <Content Include="node_modules\popper.js\README.md" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1745,6 +1773,7 @@
   <ItemGroup>
     <Folder Include="assets\img\loader\" />
     <Folder Include="node_modules\angular-ui-router-title\test\" />
+    <Folder Include="node_modules\popper.js\.tmp\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

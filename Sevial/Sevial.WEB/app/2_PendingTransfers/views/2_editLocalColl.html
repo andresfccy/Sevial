@@ -119,11 +119,12 @@
                     <div class="form-group">
                         <label for="sel1"><b>Municipio</b></label>
                         <hr class="col-12" />
-                        <select id="sel1"
-                                class="form-control form-control-sm"
-                                placeholder="Selecciona un municipio..."
-                                ng-model="PTEditCollCtrl.editTransfer.A030_municipio"
-                                ng-options="item.A011_codigo as item.A011_valor for item in PTEditCollCtrl.towns"></select>
+                        <ui-select ng-model="PTEditCollCtrl.editTransfer.A030_municipio" theme="selectize" title="Escoge un municipio">
+                            <ui-select-match  placeholder="Selecciona un municipio">{{$select.selected.A011_valor}}</ui-select-match>
+                            <ui-select-choices ng-change="alert()"  repeat="item.A011_codigo as item in PTEditCollCtrl.towns | filter: $select.search">
+                                <div ng-bind-html="item.A011_valor | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
                 <div class="col-4">
