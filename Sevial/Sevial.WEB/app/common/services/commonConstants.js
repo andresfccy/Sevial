@@ -86,6 +86,7 @@ commonModule.factory('CommonConstants', [
             , version: "v. Unrelease 0.18.3.20.2"
             , copyright: "CopyRight, 2018 by Sevial"
             , role: undefined
+            , username: undefined
             , menu: []
         };
         return factory;

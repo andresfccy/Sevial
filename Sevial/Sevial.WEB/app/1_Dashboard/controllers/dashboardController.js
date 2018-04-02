@@ -25,7 +25,6 @@ dashboardModule
                 var req = {
                     AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
                 };
-                console.log(req);
                 var p = SecurityServices.getModulesByUser(req).$promise;
                 p.then(function (result) {
                     if (result.CodigoRpta == 0) {

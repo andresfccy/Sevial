@@ -23,9 +23,14 @@ commonModule
                 return CommonConstants.menu;
             }), function (newVal) {
                 self.menu = newVal;
-                });
+            });
 
-
+            $scope.$watch(angular.bind(CommonConstants.username, function () {
+                return CommonConstants.username;
+            }), function (newVal) {
+                console.log(newVal);
+                self.username = newVal;
+            });
 
             // Publicación de las funciones en el scope
             self.isLoggedIn = isLoggedIn;
@@ -35,6 +40,7 @@ commonModule
             // Funciones
             function init() {
                 self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "Dummy";
+                CommonConstants.username = self.username;
             }
 
             function isHome() {

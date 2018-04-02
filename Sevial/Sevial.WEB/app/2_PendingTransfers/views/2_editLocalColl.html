@@ -121,7 +121,7 @@
                         <hr class="col-12" />
                         <ui-select ng-model="PTEditCollCtrl.editTransfer.A030_municipio" theme="selectize" title="Escoge un municipio">
                             <ui-select-match  placeholder="Selecciona un municipio">{{$select.selected.A011_valor}}</ui-select-match>
-                            <ui-select-choices ng-change="alert()"  repeat="item.A011_codigo as item in PTEditCollCtrl.towns | filter: $select.search">
+                            <ui-select-choices repeat="item.A011_codigo as item in PTEditCollCtrl.towns | filter: $select.search">
                                 <div ng-bind-html="item.A011_valor | highlight: $select.search"></div>
                             </ui-select-choices>
                         </ui-select>
@@ -310,11 +310,18 @@
                         <div class="col form-group">
                             <label for="sel3"><b>Cuenta</b></label>
                             <hr class="col-12" />
-                            <select id="sel3"
+                            <!--<select id="sel3"
                                     class="form-control form-control-sm"
                                     placeholder="Selecciona una cuenta bancaria..."
                                     ng-model="PTEditCollCtrl.editTransfer.A030_bancoCuenta"
-                                    ng-options="item.A011_codigo as item.A011_valor for item in PTEditCollCtrl.banks"></select>
+                                    ng-options="item.A011_codigo as item.A011_valor for item in PTEditCollCtrl.banks"></select>-->
+
+                            <ui-select ng-model="PTEditCollCtrl.editTransfer.A030_bancoCuenta" theme="selectize" title="Escoge una cuenta">
+                                <ui-select-match placeholder="Selecciona una cuenta">{{$select.selected.A011_valor}}</ui-select-match>
+                                <ui-select-choices repeat="item.A011_codigo as item in PTEditCollCtrl.banks | filter: $select.search">
+                                    <div ng-bind-html="item.A011_valor | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
                     <div class="row col">

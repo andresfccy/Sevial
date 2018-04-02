@@ -44,6 +44,7 @@ securityModule
                         // Save info to storage
                         SessionServices.setValueToStorage(CommonConstants.TOKEN_KEY, result.Lista[0].A001_codigo);
                         SessionServices.setValueToStorage(CommonConstants.USER_ID_KEY, result.Lista[0].A001_aliasUsuario);
+                        CommonConstants.username = result.Lista[0].A001_aliasUsuario;
 
                         $state.go("home");
                         growl.success("¡Autenticación correcta!");

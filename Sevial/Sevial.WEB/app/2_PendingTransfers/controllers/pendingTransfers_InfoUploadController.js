@@ -33,7 +33,8 @@ pendingTransfersModule
                 var req = {
                     NomCategoria: CommonConstants.TIPO_CARGUE,
                     Filtro: "",
-                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    //AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    AliasUsuario: CommonConstants.username
                 };
                 var p = CommonServices.getList(req).$promise;
                 p.then(function (result) {
@@ -55,7 +56,8 @@ pendingTransfersModule
                 var req = {
                     NomCategoria: CommonConstants.ESTADO_CARGUE,
                     Filtro: "",
-                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    //AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    AliasUsuario: CommonConstants.username
                 };
                 var p = CommonServices.getList(req).$promise;
                 p.then(function (result) {
@@ -98,7 +100,8 @@ pendingTransfersModule
                 loading.startLoading(actionName);
                 var req = {
                     ListaProcesar: self.selectedFiles.map(function (o) { return o.idTipoCargue + ',' + o.idArchivo; }).join(';'),
-                    AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    //AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
+                    AliasUsuario: CommonConstants.username
                 };
                 var p = PendingTransfersServices.proccessFiles(req).$promise;
                 p.then(function (result) {
