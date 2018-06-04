@@ -43,6 +43,13 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP028_ListarDetalleEntregaCartera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idRegistro" Type="int" Mode="In" />
+          <Parameter Name="filtro" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALModel2StoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -87,6 +94,13 @@
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP028_ListarDetalleEntregaCartera" ReturnType="Collection(APPSEVIALModel2.SP028_ListarDetalleEntregaCartera_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idRegistro" Mode="In" Type="Int32" />
+            <Parameter Name="filtro" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP022_DarFechasControl_Result">
           <Property Type="String" Name="fechaCorteAnterior" Nullable="true" MaxLength="10" />
@@ -122,6 +136,21 @@
           <Property Type="DateTime" Name="A051_fechaModificacion" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="A051_usuarioCreacion" Nullable="true" />
           <Property Type="Int32" Name="A051_usuarioModificacion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP028_ListarDetalleEntregaCartera_Result">
+          <Property Type="Int32" Name="A052_codigo" Nullable="false" />
+          <Property Type="Int32" Name="A052_entregaCartera" Nullable="true" />
+          <Property Type="Int32" Name="A052_municipio" Nullable="true" />
+          <Property Type="String" Name="nomMunicipio" Nullable="true" MaxLength="203" />
+          <Property Type="String" Name="A052_fechaInicial" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="A052_fechaFinal" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="A052_estadoMunicipio" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="A052_observacion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="A052_estadoRegistro" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="A052_fechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A052_fechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="A052_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="A052_usuarioModificacion" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -179,6 +208,25 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP026_EditarEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP026_EditarEntregaCartera" />
           <FunctionImportMapping FunctionImportName="SP027_BorrarEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP027_BorrarEntregaCartera" />
+          <FunctionImportMapping FunctionImportName="SP028_ListarDetalleEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP028_ListarDetalleEntregaCartera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel2.SP028_ListarDetalleEntregaCartera_Result">
+                <ScalarProperty Name="A052_codigo" ColumnName="A052_codigo" />
+                <ScalarProperty Name="A052_entregaCartera" ColumnName="A052_entregaCartera" />
+                <ScalarProperty Name="A052_municipio" ColumnName="A052_municipio" />
+                <ScalarProperty Name="nomMunicipio" ColumnName="nomMunicipio" />
+                <ScalarProperty Name="A052_fechaInicial" ColumnName="A052_fechaInicial" />
+                <ScalarProperty Name="A052_fechaFinal" ColumnName="A052_fechaFinal" />
+                <ScalarProperty Name="A052_estadoMunicipio" ColumnName="A052_estadoMunicipio" />
+                <ScalarProperty Name="A052_observacion" ColumnName="A052_observacion" />
+                <ScalarProperty Name="A052_estadoRegistro" ColumnName="A052_estadoRegistro" />
+                <ScalarProperty Name="A052_fechaCreacion" ColumnName="A052_fechaCreacion" />
+                <ScalarProperty Name="A052_fechaModificacion" ColumnName="A052_fechaModificacion" />
+                <ScalarProperty Name="A052_usuarioCreacion" ColumnName="A052_usuarioCreacion" />
+                <ScalarProperty Name="A052_usuarioModificacion" ColumnName="A052_usuarioModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -168,5 +168,31 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/deuda/listarDetalleEntregaCartera")]
+        [System.Web.Http.Description.ResponseType(typeof(RespuestaLista<SP028_ListarDetalleEntregaCartera_Result>))]
+        public IHttpActionResult PostListarDetalleEntregaCartera(ListarDetalleentregaCartera oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP028_ListarDetalleEntregaCartera(oe.AliasUsuario, oe.IdRegistro, oe.Filtro, codigoRpta, mensajeRpta);
+            var dataSet = result.ToList();
+
+            RespuestaLista<SP028_ListarDetalleEntregaCartera_Result> os = new RespuestaLista<SP028_ListarDetalleEntregaCartera_Result>();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+            os.Lista = dataSet;
+
+            return Ok(os);
+
+
+        }
     }
 }

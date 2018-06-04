@@ -113,5 +113,22 @@ namespace Sevial.API2.Entity.Deuda
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP027_BorrarEntregaCartera", aliasUsuarioParameter, idRegistroParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP028_ListarDetalleEntregaCartera_Result> SP028_ListarDetalleEntregaCartera(string aliasUsuario, Nullable<int> idRegistro, string filtro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("filtro", filtro) :
+                new ObjectParameter("filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP028_ListarDetalleEntregaCartera_Result>("SP028_ListarDetalleEntregaCartera", aliasUsuarioParameter, idRegistroParameter, filtroParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
