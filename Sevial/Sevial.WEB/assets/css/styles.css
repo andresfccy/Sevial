@@ -374,3 +374,8 @@ input[readonly] {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
+
+.uib-datepicker .btn{
+    border: 1px solid #ffffff00;
+    background-color: #e5e6e673;
+}

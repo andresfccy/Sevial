@@ -1,0 +1,79 @@
+﻿<div id="pendingTransfers_editLocalColl" class="module-content col">
+    <div class="card">
+        <div class="card-header bg-primary">Edición transferencias efectuadas</div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="form-group col-12 row">
+                    <div class="form-group col-12">
+                        <label for="filtro">Filtro:</label>
+                        <input id="filtro"
+                               class="form-control form-control-sm"
+                               type="text"
+                               placeholder="Ingresa los criterios de búsqueda, separados por comas (,)"
+                               ng-model="PTEditCollCtrl.filter" />
+                    </div>
+                    <div class="form-group clearfix col-12">
+                        <button class="btn btn-sm btn-light float-right"
+                                ng-click="PTEditCollCtrl.filterTable()">
+                            Buscar
+                        </button>
+                    </div>
+                    <hr class="col-12" />
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-sm btn-light bg-success float-right"
+                            data-toggle="modal"
+                            data-target="#EditTransferModal"
+                            ng-click="PTEditCollCtrl.cleanForm(false)">
+                        Agregar transferencia
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Departamento</th>
+                        <th>Municipio</th>
+                        <th>Autoridad Imposición</th>
+                        <th>Vlr. Pagado</th>
+                        <th>Cuantía</th>
+                        <th>Vigencia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in PTEditCollCtrl.transfers"
+                        ng-class="{'bg-info': item.seleccionado}">
+                        <td>{{item.nomEstadoGestion}}</td>
+                        <td>{{item.nomDepartamento}}</td>
+                        <td>{{item.nomMunicipio}}</td>
+                        <td>{{item.nomAutoridadImposicion}}</td>
+                        <td>{{item.A030_vlrPagado}}</td>
+                        <td>{{item.nomCuantia}}</td>
+                        <td>{{item.A030_vigencia}}</td>
+                        <td>
+                            <span class="fa fa-edit cursor-pointer"
+                                  title="Editar transferencia"
+                                  data-toggle="modal"
+                                  data-target="#EditTransferModal"
+                                  ng-click="PTEditCollCtrl.prepareEdit(item)"></span>
+                            <span class="fa fa-trash cursor-pointer"
+                                  title="Eliminar transferencia"
+                                  ng-click="PTEditCollCtrl.deleteObj(item)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="PTEditCollCtrl.transfers.length == 0">
+                    <tr class="bg-info">
+                        <td colspan="7" class="text-center">
+                            Lista vacía.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

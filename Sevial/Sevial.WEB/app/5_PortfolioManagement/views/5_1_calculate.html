@@ -1,0 +1,108 @@
+﻿<section id="portfolioManagement" class="portfolioManagement">
+    <div class="card">
+        <div class="card-header bg-primary">Proceso de cálculo de transferencias pendientes</div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="form-group col-6">
+                    <label>Fecha corte anterior:</label>
+                    <small class="input-group">
+                        {{CalcCtrl.getCutDate()}}
+                    </small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-group col-6">
+                    <label>Fecha corte a procesar:</label>
+                    <p class="input-group">
+                        <input type="text"
+                               class="form-control form-control-sm cursor-pointer"
+                               uib-datepicker-popup="{{format}}"
+                               ng-click="CalcCtrl.openCal(2)"
+                               ng-model="CalcCtrl.process.Fecha"
+                               is-open="CalcCtrl.popup[2]"
+                               datepicker-options="CalcCtrl.dateOptions"
+                               ng-required="true"
+                               alt-input-formats="altInputFormats"
+                               current-text="Hoy"
+                               clear-text="Borrar"
+                               close-text="Cerrar"
+                               readonly />
+                        <span class="input-group-append">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="CalcCtrl.openCal(2)">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+                <div class="form-group col-6">
+                    <label>Estado del proceso:</label>
+                    <p>
+                        <uib-progressbar max="100" value="CalcCtrl.process.Porcentaje"><span style="color:white; white-space:nowrap;">{{dynamic}} / {{100}}</span></uib-progressbar>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-group col-6">
+                    <label>Fecha corte anterior:</label>
+                    <small class="input-group">
+                        {{CalcCtrl.getCutDate()}}
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Archivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in PTInfoUpCtrl.files">
+                    <tr class=""
+                        ng-class="{'bg-info': item.seleccionado}">
+                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                            ng-class="{'cursor-pointer': item.seleccionable}">
+                            <b>{{item.nomTipoCargue}}</b> - {{item.A020_nombre}}
+                        </td>
+                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                            ng-class="{'bg-secondary': item.A020_estadoCargue == 11,
+                                       'bg-warning': item.A020_estadoCargue == 12,
+                                       'bg-success': item.A020_estadoCargue == 13,
+                                       'bg-danger': item.A020_estadoCargue == 14,
+                                       'cursor-pointer': item.seleccionable}">
+                            {{item.nomEstadoCargue}}
+                        </td>
+                        <td>
+                            <span class="fa cursor-pointer"
+                                  title="Seleccionar archivo para procesar"
+                                  ng-if="item.seleccionable"
+                                  ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
+                                  ng-class="{' fa-check-circle-o': !item.seleccionado, 'fa-check-circle': item.seleccionado}"></span>
+                            <span class="fa fa-eye cursor-pointer"
+                                  title="Ver razón del rechazo"
+                                  ng-click="PTInfoUpCtrl.showReason(item)"
+                                  ng-if="item.A020_estadoCargue == 14"></span>
+                        </td>
+                    </tr>
+                    <tr ng-class="{'bg-danger': item.A020_estadoCargue == 14}"
+                        ng-if="item.showReason && item.A020_tieneRechazo">
+                        <td colspan="3" class="text-center">
+                            <b>Mensaje de rechazo: </b>{{item.A020_mensajeRechazo}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="PTInfoUpCtrl.files.length == 0">
+                    <tr class="bg-info">
+                        <td colspan="3" class="text-center">
+                            Lista vacía.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

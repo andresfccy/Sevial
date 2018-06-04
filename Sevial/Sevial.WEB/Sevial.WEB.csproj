@@ -77,6 +77,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\5_PortfolioManagement\controllers\portfolioManagement_CalculateTransfersController.js" />
     <Content Include="app\2_PendingTransfers\controllers\pendingTransfers_EditCollectionController.js" />
     <Content Include="app\2_PendingTransfers\controllers\pendingTransfers_InfoUploadController.js" />
     <Content Include="app\2_PendingTransfers\views\2_editLocalColl.html" />
@@ -86,10 +87,15 @@
     <Content Include="app\4_CorrespondenceControl\routes\correspondenceControlRoutes.js" />
     <Content Include="app\4_CorrespondenceControl\services\correspondenceControlService.js" />
     <Content Include="app\4_CorrespondenceControl\views\4_index.html" />
+    <Content Include="app\5_PortfolioManagement\controllers\portfolioManagement_DIVIPOLAController.js" />
+    <Content Include="app\5_PortfolioManagement\controllers\portfolioManagement_TransferController.js" />
     <Content Include="app\5_PortfolioManagement\controllers\portfolioManagementController.js" />
     <Content Include="app\5_PortfolioManagement\portfolioManagementModule.js" />
     <Content Include="app\5_PortfolioManagement\routes\portfolioManagementRoutes.js" />
     <Content Include="app\5_PortfolioManagement\services\portfolioManagementService.js" />
+    <Content Include="app\5_PortfolioManagement\views\5_3_DIVIPOLA.html" />
+    <Content Include="app\5_PortfolioManagement\views\5_2_transfer.html" />
+    <Content Include="app\5_PortfolioManagement\views\5_1_calculate.html" />
     <Content Include="app\5_PortfolioManagement\views\5_index.html" />
     <Content Include="app\6_SysParameters\controllers\sysParametersController.js" />
     <Content Include="app\6_SysParameters\sysParametersModule.js" />

@@ -50,5 +50,23 @@ portfolioManagementModule.config(['$stateProvider',
                     ]
                 }
             })
+            .state('portfolioManagement.calculate', {
+                url: '/CalculoTransferenciasPendientes',
+                breadcrumb: 'Cálculo transferencias pendientes',
+                templateUrl: 'app/5_PortfolioManagement/views/5_1_calculate.html',
+                controller: 'portfolioManagement.calculateTransfersController as CalcCtrl',
+            })
+            .state('portfolioManagement.transfer', {
+                url: '/ParametrizacionEntrega',
+                breadcrumb: 'Parametrización de entregas',
+                templateUrl: 'app/5_PortfolioManagement/views/5_2_transfer.html',
+                controller: 'portfolioManagement.transferController as TransCtrl',
+            })
+            .state('portfolioManagement.divipola', {
+                url: '/GestionDepartamentos',
+                breadcrumb: 'Gestión departamental',
+                templateUrl: 'app/5_PortfolioManagement/views/5_3_DIVIPOLA.html',
+                controller: 'portfolioManagement.DIVIPOLAController as DiviCtrl',
+            })
     }
 ]);
