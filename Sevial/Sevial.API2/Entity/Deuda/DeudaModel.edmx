@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="APPSEVIALModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP022_DarFechasControl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP023_EnviarProcesoDeuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="fechaProceso" Type="char" Mode="In" />
+          <Parameter Name="condicionProceso" Type="char" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP024_ConsultarEstadoProcDeuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="fechaProceso" Type="char" Mode="In" />
+          <Parameter Name="condicionProceso" Type="char" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="APPSEVIALModel2StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APPSEVIALModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="APPSEVIALDeuda" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP022_DarFechasControl" ReturnType="Collection(APPSEVIALModel2.SP022_DarFechasControl_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP023_EnviarProcesoDeuda">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="fechaProceso" Mode="In" Type="String" />
+            <Parameter Name="condicionProceso" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP024_ConsultarEstadoProcDeuda" ReturnType="Collection(APPSEVIALModel2.SP024_ConsultarEstadoProcDeuda_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="fechaProceso" Mode="In" Type="String" />
+            <Parameter Name="condicionProceso" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP022_DarFechasControl_Result">
+          <Property Type="String" Name="fechaCorteAnterior" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fechaRecaudoPagoDiario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fechaTransferenciaPagoDiario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fechaRecaudoPagoNoDiario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="fechaTransferenciaPagoNoDiario" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SP024_ConsultarEstadoProcDeuda_Result">
+          <Property Type="Int32" Name="A050_codigo" Nullable="false" />
+          <Property Type="String" Name="A050_fechaProcesar" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="A050_condicionProceso" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="A050_estadoProceso" Nullable="true" />
+          <Property Type="String" Name="nomEstadoProceso" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="porcProceso" Nullable="true" />
+          <Property Type="Boolean" Name="A050_tieneRechazo" Nullable="true" />
+          <Property Type="String" Name="A050_mensajeRechazo" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="A050_fechaSolicitud" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A050_fechaProceso" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A050_fechaFinProceso" Nullable="true" Precision="23" />
+          <Property Type="String" Name="A050_estadoRegistro" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="A050_fechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A050_fechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="A050_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="A050_usuarioModificacion" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APPSEVIALModel2StoreContainer" CdmEntityContainer="APPSEVIALDeuda" >
+          <FunctionImportMapping FunctionImportName="SP022_DarFechasControl" FunctionName="APPSEVIALModel2.Store.SP022_DarFechasControl">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel2.SP022_DarFechasControl_Result">
+                <ScalarProperty Name="fechaCorteAnterior" ColumnName="fechaCorteAnterior" />
+                <ScalarProperty Name="fechaRecaudoPagoDiario" ColumnName="fechaRecaudoPagoDiario" />
+                <ScalarProperty Name="fechaTransferenciaPagoDiario" ColumnName="fechaTransferenciaPagoDiario" />
+                <ScalarProperty Name="fechaRecaudoPagoNoDiario" ColumnName="fechaRecaudoPagoNoDiario" />
+                <ScalarProperty Name="fechaTransferenciaPagoNoDiario" ColumnName="fechaTransferenciaPagoNoDiario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP023_EnviarProcesoDeuda" FunctionName="APPSEVIALModel2.Store.SP023_EnviarProcesoDeuda" />
+          <FunctionImportMapping FunctionImportName="SP024_ConsultarEstadoProcDeuda" FunctionName="APPSEVIALModel2.Store.SP024_ConsultarEstadoProcDeuda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel2.SP024_ConsultarEstadoProcDeuda_Result">
+                <ScalarProperty Name="A050_codigo" ColumnName="A050_codigo" />
+                <ScalarProperty Name="A050_fechaProcesar" ColumnName="A050_fechaProcesar" />
+                <ScalarProperty Name="A050_condicionProceso" ColumnName="A050_condicionProceso" />
+                <ScalarProperty Name="A050_estadoProceso" ColumnName="A050_estadoProceso" />
+                <ScalarProperty Name="nomEstadoProceso" ColumnName="nomEstadoProceso" />
+                <ScalarProperty Name="porcProceso" ColumnName="porcProceso" />
+                <ScalarProperty Name="A050_tieneRechazo" ColumnName="A050_tieneRechazo" />
+                <ScalarProperty Name="A050_mensajeRechazo" ColumnName="A050_mensajeRechazo" />
+                <ScalarProperty Name="A050_fechaSolicitud" ColumnName="A050_fechaSolicitud" />
+                <ScalarProperty Name="A050_fechaProceso" ColumnName="A050_fechaProceso" />
+                <ScalarProperty Name="A050_fechaFinProceso" ColumnName="A050_fechaFinProceso" />
+                <ScalarProperty Name="A050_estadoRegistro" ColumnName="A050_estadoRegistro" />
+                <ScalarProperty Name="A050_fechaCreacion" ColumnName="A050_fechaCreacion" />
+                <ScalarProperty Name="A050_fechaModificacion" ColumnName="A050_fechaModificacion" />
+                <ScalarProperty Name="A050_usuarioCreacion" ColumnName="A050_usuarioCreacion" />
+                <ScalarProperty Name="A050_usuarioModificacion" ColumnName="A050_usuarioModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
