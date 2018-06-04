@@ -123,32 +123,48 @@ namespace ProcesarDirectorio
                 ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
                 db.Database.CommandTimeout = 0;
 
-                var result = db.SP016_CargaArchivo(archivo.A020_tipoCargue, archivo.A020_codigo, archivo.A020_nombre, codigoRpta, mensajeRpta);
-                Console.WriteLine("Se proceso archivo . Codigo: {0} Mensaje {1}", Convert.ToInt32(codigoRpta.Value), mensajeRpta.Value.ToString());
-
-                if (Convert.ToInt32(codigoRpta.Value) == 0)
+                try
                 {
-                    // Se busca parametrizacion del tipo de archivo
-                    foreach (SP011_DarTipoArchivo_Result tipoArchivo in osDartipoArchivo.Lista)
+                    var result = db.SP016_CargaArchivo(archivo.A020_tipoCargue, archivo.A020_codigo, archivo.A020_nombre, codigoRpta, mensajeRpta);
+                    Console.WriteLine("Se proceso archivo . Codigo: {0} Mensaje {1}", Convert.ToInt32(codigoRpta.Value), mensajeRpta.Value.ToString());
+
+                    if (Convert.ToInt32(codigoRpta.Value) == 0)
                     {
-                        if (!System.IO.Directory.Exists(tipoArchivo.A015_carpetaHistorico))
-                            System.IO.Directory.CreateDirectory(tipoArchivo.A015_carpetaHistorico);
-
-                        if (tipoArchivo.A015_tipoArchivo == archivo.A020_tipoCargue)
+                        // Se busca parametrizacion del tipo de archivo
+                        foreach (SP011_DarTipoArchivo_Result tipoArchivo in osDartipoArchivo.Lista)
                         {
-                            // Mover archivo procesado a carpeta historica
-                            string nomOrigen = tipoArchivo.A015_carpeta + "/" + archivo.A020_nombre;
-                            string nomDestino = tipoArchivo.A015_carpetaHistorico + "/" + archivo.A020_nombre;
+                            if (!System.IO.Directory.Exists(tipoArchivo.A015_carpetaHistorico))
+                                System.IO.Directory.CreateDirectory(tipoArchivo.A015_carpetaHistorico);
 
-                            System.IO.File.Move(nomOrigen, nomDestino);
+                            if (tipoArchivo.A015_tipoArchivo == archivo.A020_tipoCargue)
+                            {
+                                // Mover archivo procesado a carpeta historica
+                                string nomOrigen = tipoArchivo.A015_carpeta + "/" + archivo.A020_nombre;
+                                string nomDestino = tipoArchivo.A015_carpetaHistorico + "/" + archivo.A020_nombre;
+
+                                if (System.IO.File.Exists(nomDestino))
+                                    System.IO.File.Delete(nomDestino);
+
+                                System.IO.File.Move(nomOrigen, nomDestino);
+                            }
                         }
-                    }
 
-                    EnviarCorreo(archivo.A020_codigo,"Cargue exitoso archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se cargo exitosamente");
+                        EnviarCorreo(archivo.A020_codigo, "Cargue exitoso archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se cargo exitosamente");
+                    }
+                    else
+                    {
+                        EnviarCorreo(archivo.A020_codigo, "ERROR BD:Se finalizo proceso de cargue de archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se termino de procesar, pero presento problemas. Por favor consultar aplicativo");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    EnviarCorreo(archivo.A020_codigo,"Se finalizo proceso de cargue de archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se termino de procesar, pero presento problemas. Por favor consultar aplicativo");
+                    Console.WriteLine("Se finalizo proceso de cargue de archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se termino de procesar, pero presento problemas. Por favor consultar aplicativo");
+                    Console.WriteLine(e.InnerException);
+                    Console.WriteLine(e.StackTrace);
+                    Console.WriteLine(e.Message);
+
+                    EnviarCorreo(archivo.A020_codigo, "ERROR APP: Se finalizo proceso de cargue de archivo " + archivo.A020_nombre, "El archivo con nombre " + archivo.A020_nombre + " se termino de procesar, pero presento problemas. Por favor consultar aplicativo");
+
                 }
             }
         }
