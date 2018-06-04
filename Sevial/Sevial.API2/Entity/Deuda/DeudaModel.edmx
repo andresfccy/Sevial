@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="APPSEVIALModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="APPSEVIALModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="SP022_DarFechasControl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
           <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
@@ -24,9 +24,27 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP025_ListarEntregaCartera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP026_EditarEntregaCartera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idRegistro" Type="int" Mode="In" />
+          <Parameter Name="fechaInicial" Type="char" Mode="In" />
+          <Parameter Name="fechaFinal" Type="char" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="SP027_BorrarEntregaCartera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DEU">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="idRegistro" Type="int" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALModel2StoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="APPSEVIALModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -47,6 +65,25 @@
             <Parameter Name="aliasUsuario" Mode="In" Type="String" />
             <Parameter Name="fechaProceso" Mode="In" Type="String" />
             <Parameter Name="condicionProceso" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP025_ListarEntregaCartera" ReturnType="Collection(APPSEVIALModel2.SP025_ListarEntregaCartera_Result)">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP026_EditarEntregaCartera">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idRegistro" Mode="In" Type="Int32" />
+            <Parameter Name="fechaInicial" Mode="In" Type="String" />
+            <Parameter Name="fechaFinal" Mode="In" Type="String" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP027_BorrarEntregaCartera">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="idRegistro" Mode="In" Type="Int32" />
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -75,6 +112,16 @@
           <Property Type="DateTime" Name="A050_fechaModificacion" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="A050_usuarioCreacion" Nullable="true" />
           <Property Type="Int32" Name="A050_usuarioModificacion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP025_ListarEntregaCartera_Result">
+          <Property Type="Int32" Name="A051_codigo" Nullable="false" />
+          <Property Type="String" Name="A051_fechaInicial" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="A051_fechaFinal" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="A051_estadoRegistro" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="A051_fechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="A051_fechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="A051_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="A051_usuarioModificacion" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -116,6 +163,22 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP025_ListarEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP025_ListarEntregaCartera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APPSEVIALModel2.SP025_ListarEntregaCartera_Result">
+                <ScalarProperty Name="A051_codigo" ColumnName="A051_codigo" />
+                <ScalarProperty Name="A051_fechaInicial" ColumnName="A051_fechaInicial" />
+                <ScalarProperty Name="A051_fechaFinal" ColumnName="A051_fechaFinal" />
+                <ScalarProperty Name="A051_estadoRegistro" ColumnName="A051_estadoRegistro" />
+                <ScalarProperty Name="A051_fechaCreacion" ColumnName="A051_fechaCreacion" />
+                <ScalarProperty Name="A051_fechaModificacion" ColumnName="A051_fechaModificacion" />
+                <ScalarProperty Name="A051_usuarioCreacion" ColumnName="A051_usuarioCreacion" />
+                <ScalarProperty Name="A051_usuarioModificacion" ColumnName="A051_usuarioModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP026_EditarEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP026_EditarEntregaCartera" />
+          <FunctionImportMapping FunctionImportName="SP027_BorrarEntregaCartera" FunctionName="APPSEVIALModel2.Store.SP027_BorrarEntregaCartera" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

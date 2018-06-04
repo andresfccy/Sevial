@@ -92,5 +92,81 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+        [Route("api/deuda/listarEntregaCartera")]
+        [System.Web.Http.Description.ResponseType(typeof(RespuestaLista<SP024_ConsultarEstadoProcDeuda_Result>))]
+        public IHttpActionResult PostListarEntregaCartera(ListarEntregaCartera oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP025_ListarEntregaCartera(oe.AliasUsuario, codigoRpta, mensajeRpta);
+            var dataSet = result.ToList();
+
+            RespuestaLista<SP025_ListarEntregaCartera_Result> os = new RespuestaLista<SP025_ListarEntregaCartera_Result>();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+            os.Lista = dataSet;
+
+            return Ok(os);
+
+
+        }
+
+        [Route("api/deuda/editarEntregaCartera")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostEditarEntregaCartera(EditarEntregaCartera oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+
+            var result = db.SP026_EditarEntregaCartera(oe.AliasUsuario, oe.IdRegistro, oe.FechaInicial, oe.FechaFinal, codigoRpta, mensajeRpta);
+
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
+
+        [Route("api/deuda/borrarEntregaCartera")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostBorrarEntregaCartera(BorrarEntregaCartera oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+
+            var result = db.SP027_BorrarEntregaCartera(oe.AliasUsuario, oe.IdRegistro, codigoRpta, mensajeRpta);
+
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
     }
 }

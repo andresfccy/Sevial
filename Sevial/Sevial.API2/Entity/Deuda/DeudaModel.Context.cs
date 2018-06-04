@@ -70,5 +70,48 @@ namespace Sevial.API2.Entity.Deuda
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP024_ConsultarEstadoProcDeuda_Result>("SP024_ConsultarEstadoProcDeuda", aliasUsuarioParameter, fechaProcesoParameter, condicionProcesoParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP025_ListarEntregaCartera_Result> SP025_ListarEntregaCartera(string aliasUsuario, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP025_ListarEntregaCartera_Result>("SP025_ListarEntregaCartera", aliasUsuarioParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual int SP026_EditarEntregaCartera(string aliasUsuario, Nullable<int> idRegistro, string fechaInicial, string fechaFinal, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            var fechaInicialParameter = fechaInicial != null ?
+                new ObjectParameter("fechaInicial", fechaInicial) :
+                new ObjectParameter("fechaInicial", typeof(string));
+    
+            var fechaFinalParameter = fechaFinal != null ?
+                new ObjectParameter("fechaFinal", fechaFinal) :
+                new ObjectParameter("fechaFinal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP026_EditarEntregaCartera", aliasUsuarioParameter, idRegistroParameter, fechaInicialParameter, fechaFinalParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual int SP027_BorrarEntregaCartera(string aliasUsuario, Nullable<int> idRegistro, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP027_BorrarEntregaCartera", aliasUsuarioParameter, idRegistroParameter, codigoRpta, mensajeRpta);
+        }
     }
 }

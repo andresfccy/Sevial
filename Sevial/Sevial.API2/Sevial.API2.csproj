@@ -211,6 +211,9 @@
     <Compile Include="Entity\Deuda\SP024_ConsultarEstadoProcDeuda_Result.cs">
       <DependentUpon>DeudaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Deuda\SP025_ListarEntregaCartera_Result.cs">
+      <DependentUpon>DeudaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Informacion\InformacionModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -295,9 +298,12 @@
     <Compile Include="Handlers\OPTIONSHandler.cs" />
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\DarArchivosCargue.cs" />
     <Compile Include="Models\ObjetoEntrada\CargueInformacion\ProcesarArchivo.cs" />
+    <Compile Include="Models\ObjetoEntrada\Deuda\BorrarEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\ConsultarEstadoProcDeuda.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\DarFechasControl.cs" />
+    <Compile Include="Models\ObjetoEntrada\Deuda\EditarEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\EnviarProcesoDeuda.cs" />
+    <Compile Include="Models\ObjetoEntrada\Deuda\ListarEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\EntradaGeneral.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\DarTransferencias.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\EditarTransferencia.cs" />
