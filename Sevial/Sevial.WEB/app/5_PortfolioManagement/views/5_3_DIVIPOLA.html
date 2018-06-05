@@ -1,3 +1,129 @@
 ﻿<section id="portfolioManagement" class="portfolioManagement">
-    Divipola
+    <div class="card">
+        <div class="card-header bg-primary">Definición de departamentales</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class=" btn btn-success"
+                         data-toggle="modal"
+                         data-target="#editDpto"
+                         ng-click="DiviCtrl.openNew()">Nuevo</div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="table-responsive col-10">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Departamental</th>
+                            <th>DIVIPOLA</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in DiviCtrl.dptos">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.A016_nombre}}</td>
+                            <td>{{item.A016_divipola}}</td>
+                            <td>
+                                <span class="fa fa-edit pointer"
+                                      data-toggle="modal"
+                                      data-target="#editDpto"
+                                      ng-click="DiviCtrl.prepareEdit(item)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </section>
+
+<div id="editDpto" class="modal bd-example-modal-lg fade show" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 ng-show="!DiviCtrl.isEditing" class="modal-title" id="gridModalLabel">Nuevo Departamental</h5>
+                <h5 ng-show="DiviCtrl.isEditing" class="modal-title" id="gridModalLabel">Editar Departamental</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+                    <div class="row form-group">
+                        <div class="col-4">Nombre departamental</div>
+                        <div class="col-5">
+                            <input type="text"
+                                   name="nomDept"
+                                   class="form-control"
+                                   ng-model="DiviCtrl.edit.A016_nombre" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-4">DIVIPOLA</div>
+                        <div class="col-5">
+                            <input type="text"
+                                   name="nomDept"
+                                   class="form-control"
+                                   ng-model="DiviCtrl.edit.A016_divipola" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="jumbotron jumbotron-fluid card-with-list-cities">
+                                <ul class="list-group no-margin">
+                                    <li class="list-group-item clearfix pointer"
+                                        ng-repeat="actual in DiviCtrl.availableCities"
+                                        ng-click="DiviCtrl.selectCity(actual,0)"
+                                        ng-class="{'list-group-item-info': actual.selected}">
+                                        {{actual.nomMunicipio}}
+                                    </li>
+                                </ul>
+                                <div ng-if="!DiviCtrl.availableCities || DiviCtrl.availableCities.length == 0">
+                                    <small>No hay ciudades disponibles</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="btn btn-default"
+                                     ng-click="DiviCtrl.moveCities(1)"
+                                     ng-class="{'disabled': !DiviCtrl.citiesToRemove || DiviCtrl.citiesToRemove.length == 0}">
+                                    <span class="fa fa-arrow-left d-none d-md-block"></span>
+                                    <span class="fa fa-arrow-up d-block d-sm-block d-md-none d-none"></span>
+                                </div>
+                                <div class="btn btn-default"
+                                     ng-click="DiviCtrl.moveCities(0)"
+                                     ng-class="{'disabled': !DiviCtrl.citiesToAdd || DiviCtrl.citiesToAdd.length == 0}">
+                                    <span class="fa fa-arrow-right d-none d-md-block"></span>
+                                    <span class="fa fa-arrow-down d-block d-sm-block d-md-none d-none"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="jumbotron jumbotron-fluid card-with-list-cities">
+                                <ul class="list-group no-margin">
+                                    <li class="list-group-item clearfix pointer"
+                                        ng-repeat="actual in DiviCtrl.cities"
+                                        ng-click="DiviCtrl.selectCity(actual,1)"
+                                        ng-class="{'list-group-item-info': actual.selected}">
+                                        {{actual.nomMunicipio}}
+                                    </li>
+                                </ul>
+                                <div ng-if="!DiviCtrl.cities || DiviCtrl.cities.length == 0">
+                                    <small>No hay ciudades para remover</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

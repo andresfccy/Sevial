@@ -76,6 +76,8 @@ portfolioManagementModule
                     p.then(function (result) {
                         if (result.CodigoRpta == 0) {
                             if (result.Lista.length > 0) {
+                                result.Lista[0].fechaProceso = self.process.fechaProceso;
+                                result.Lista[0].condicionProceso = self.process.condicionProceso;
                                 self.process = result.Lista[0];
                             }
                         } else {

@@ -52,7 +52,7 @@ commonModule.factory('CommonConstants', [
             , PARAMETER_EP: function () { return '/api/parametro' }
             , INFO_UPLOAD_EP: function () { return '/api/cargueInformacion' }
             , INFO_EP: function () { return '/api/informacion' }
-            , PORTF: function () { return '/api/deuda' }
+            , PORTF_EP: function () { return '/api/deuda' }
 
             //, SYS_VALIDATE_ACCESS_URL: function () { return factory.API_BASE_URL() + factory.SECURITY_EP + '/validarUrlIngreso'; }
 
@@ -70,20 +70,20 @@ commonModule.factory('CommonConstants', [
             , INF_EDIT_TRANSFER: function () { return factory.API_BASE_URL() + factory.INFO_EP() + '/editarTransferencia'; }
             , INF_DELETE_TRANSFER: function () { return factory.API_BASE_URL() + factory.INFO_EP() + '/eliminarTransferencia'; }
 
-            , CALCT_GET_CONTROL_DATES: function () { return factory.API_BASE_URL() + factory.PORTF() + '/darFechasControl'; }
-            , CALCT_GET_PERCENTAGE: function () { return factory.API_BASE_URL() + factory.PORTF() + '/consultarEstadoProcDeuda'; }
-            , CALCT_SUBMIT_CALC: function () { return factory.API_BASE_URL() + factory.PORTF() + '/enviarProcesoDeuda'; }
+            , CALCT_GET_CONTROL_DATES: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/darFechasControl'; }
+            , CALCT_GET_PERCENTAGE: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/consultarEstadoProcDeuda'; }
+            , CALCT_SUBMIT_CALC: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/enviarProcesoDeuda'; }
 
-            , PARAM_GET_LIST_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/listarEntregaCartera'; }
-            , PARAM_UPDATE_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/editarEntregaCartera'; }
-            , PARAM_DELETE_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/borrarEntregaCartera'; }
-            , PARAM_GET_DETAIL_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/listarDetalleEntregaCartera'; }
-            , PARAM_UPDATE_DETAIL_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/editarDetalleEntregaCartera'; }
+            , PARAM_GET_LIST_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/listarEntregaCartera'; }
+            , PARAM_UPDATE_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/editarEntregaCartera'; }
+            , PARAM_DELETE_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/borrarEntregaCartera'; }
+            , PARAM_GET_DETAIL_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/listarDetalleEntregaCartera'; }
+            , PARAM_UPDATE_DETAIL_PORTFOLIO: function () { return factory.API_BASE_URL() + factory.PORTF_EP() + '/editarDetalleEntregaCartera'; }
 
-            , PRMDTAL_GET_LIST_DPTOS: function () { return factory.API_BASE_URL() + factory.PORTF() + '/listarDepartamentales'; }
-            , PRMDTAL_GET_LIST_AVAILABLE_CITIES_BY_DPTO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/listarMunDisponiblesDptal'; }
-            , PRMDTAL_GET_LIST_CITIES_BY_DPTO: function () { return factory.API_BASE_URL() + factory.PORTF() + '/listarMunicipiosDptal'; }
-            , PRMDTAL_UPDATE_LIST: function () { return factory.API_BASE_URL() + factory.PORTF() + '/editarDptal'; }
+            , PRMDTAL_GET_LIST_DPTOS: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/listarDepartamentales'; }
+            , PRMDTAL_GET_LIST_AVAILABLE_CITIES_BY_DPTO: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/listarMunDisponiblesDptal'; }
+            , PRMDTAL_GET_LIST_CITIES_BY_DPTO: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/listarMunicipiosDptal'; }
+            , PRMDTAL_UPDATE_LIST: function () { return factory.API_BASE_URL() + factory.PARAMETER_EP() + '/editarDptal'; }
 
             // Shared
             , TIPO_CARGUE: "TIPO_CARGUE"
