@@ -130,5 +130,34 @@ namespace Sevial.API2.Entity.Deuda
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP028_ListarDetalleEntregaCartera_Result>("SP028_ListarDetalleEntregaCartera", aliasUsuarioParameter, idRegistroParameter, filtroParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual int SP029_EditarDetalleEntregaCartera(string aliasUsuario, Nullable<int> idRegistro, string fechaInicial, string fechaFinal, string estadoMunicipio, string observacion, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var idRegistroParameter = idRegistro.HasValue ?
+                new ObjectParameter("idRegistro", idRegistro) :
+                new ObjectParameter("idRegistro", typeof(int));
+    
+            var fechaInicialParameter = fechaInicial != null ?
+                new ObjectParameter("fechaInicial", fechaInicial) :
+                new ObjectParameter("fechaInicial", typeof(string));
+    
+            var fechaFinalParameter = fechaFinal != null ?
+                new ObjectParameter("fechaFinal", fechaFinal) :
+                new ObjectParameter("fechaFinal", typeof(string));
+    
+            var estadoMunicipioParameter = estadoMunicipio != null ?
+                new ObjectParameter("estadoMunicipio", estadoMunicipio) :
+                new ObjectParameter("estadoMunicipio", typeof(string));
+    
+            var observacionParameter = observacion != null ?
+                new ObjectParameter("observacion", observacion) :
+                new ObjectParameter("observacion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP029_EditarDetalleEntregaCartera", aliasUsuarioParameter, idRegistroParameter, fechaInicialParameter, fechaFinalParameter, estadoMunicipioParameter, observacionParameter, codigoRpta, mensajeRpta);
+        }
     }
 }

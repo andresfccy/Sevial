@@ -253,6 +253,15 @@
     <Compile Include="Entity\Parametro\SP005_DarListaCategoria_Result.cs">
       <DependentUpon>PArametroModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Parametro\SP030_ListarDepartamentales_Result.cs">
+      <DependentUpon>PArametroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Parametro\SP031_ListarMunDisponiblesDptal_Result.cs">
+      <DependentUpon>PArametroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Parametro\SP032_ListarMunicipiosDptal_Result.cs">
+      <DependentUpon>PArametroModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Seguridad\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -304,6 +313,7 @@
     <Compile Include="Models\ObjetoEntrada\Deuda\BorrarEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\ConsultarEstadoProcDeuda.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\DarFechasControl.cs" />
+    <Compile Include="Models\ObjetoEntrada\Deuda\EditarDetalleEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\EditarEntregaCartera.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\EnviarProcesoDeuda.cs" />
     <Compile Include="Models\ObjetoEntrada\Deuda\ListarDetalleentregaCartera.cs" />
@@ -313,6 +323,9 @@
     <Compile Include="Models\ObjetoEntrada\Informacion\EditarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\EliminarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
+    <Compile Include="Models\ObjetoEntrada\Parametro\ListarDepartamentales.cs" />
+    <Compile Include="Models\ObjetoEntrada\Parametro\ListarMunDisponiblesDptal.cs" />
+    <Compile Include="Models\ObjetoEntrada\Parametro\ListarMunicipiosDptal.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\AutenticarUsuario.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\DarModuloUsuario.cs" />
     <Compile Include="Models\ObjetoEntrada\Seguridad\DarOpcionModuloUsuario.cs" />

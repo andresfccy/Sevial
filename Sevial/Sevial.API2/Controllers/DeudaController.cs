@@ -194,5 +194,31 @@ namespace Sevial.API2.Controllers
 
 
         }
+
+
+        [Route("api/deuda/editarDetalleEntregaCartera")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostEditarDetalleEntregaCartera(EditarDetalleEntregaCartera oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+
+            var result = db.SP029_EditarDetalleEntregaCartera(oe.AliasUsuario, oe.IdRegistro, oe.FechaInicial, oe.FechaFinal, oe.EstadoMunicipio, oe.Observacion, codigoRpta, mensajeRpta);
+
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+
+
+        }
     }
 }

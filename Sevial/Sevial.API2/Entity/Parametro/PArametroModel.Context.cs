@@ -44,5 +44,40 @@ namespace Sevial.API2.Entity.Parametro
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP005_DarListaCategoria_Result>("SP005_DarListaCategoria", aliasUsuarioParameter, nomCategoriaParameter, filtroParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual ObjectResult<SP030_ListarDepartamentales_Result> SP030_ListarDepartamentales(string aliasUsuario, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP030_ListarDepartamentales_Result>("SP030_ListarDepartamentales", aliasUsuarioParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual ObjectResult<SP031_ListarMunDisponiblesDptal_Result> SP031_ListarMunDisponiblesDptal(string aliasUsuario, Nullable<int> departamental, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var departamentalParameter = departamental.HasValue ?
+                new ObjectParameter("departamental", departamental) :
+                new ObjectParameter("departamental", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP031_ListarMunDisponiblesDptal_Result>("SP031_ListarMunDisponiblesDptal", aliasUsuarioParameter, departamentalParameter, codigoRpta, mensajeRpta);
+        }
+    
+        public virtual ObjectResult<SP032_ListarMunicipiosDptal_Result> SP032_ListarMunicipiosDptal(string aliasUsuario, Nullable<int> departamental, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var departamentalParameter = departamental.HasValue ?
+                new ObjectParameter("departamental", departamental) :
+                new ObjectParameter("departamental", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP032_ListarMunicipiosDptal_Result>("SP032_ListarMunicipiosDptal", aliasUsuarioParameter, departamentalParameter, codigoRpta, mensajeRpta);
+        }
     }
 }
