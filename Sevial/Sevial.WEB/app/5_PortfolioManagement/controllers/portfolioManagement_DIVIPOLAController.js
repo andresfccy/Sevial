@@ -52,8 +52,9 @@ portfolioManagementModule
             }
 
             function updateList() {
-                var actionName = getCtrlName() + ".updateList()"
-                var listaFormateada = self.cities.join(";");
+                var actionName = getCtrlName() + ".updateList()";
+                var citiesString = self.cities.map(function (o) { return o.A013_codigo; });
+                var listaFormateada = citiesString.join(";");
 
                 var req = {
                     aliasUsuario: CommonConstants.username,
@@ -67,6 +68,8 @@ portfolioManagementModule
                 p.then(function (result) {
                     if (result.CodigoRpta == 0) {
                         growl.success(result.MensajeRpta);
+                        $('#editDpto').modal('toggle');
+                        getListDptos();
                     } else {
                         growl.warning(result.MensajeRpta);
                     }
