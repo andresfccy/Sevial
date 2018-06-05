@@ -18,7 +18,7 @@
                                class="form-control form-control-sm cursor-pointer"
                                uib-datepicker-popup="{{format}}"
                                ng-click="CalcCtrl.openCal(2)"
-                               ng-model="CalcCtrl.process.Fecha"
+                               ng-model="CalcCtrl.process.fechaProceso"
                                is-open="CalcCtrl.popup[2]"
                                datepicker-options="CalcCtrl.dateOptions"
                                ng-required="true"
@@ -37,72 +37,70 @@
                     </p>
                 </div>
                 <div class="form-group col-6">
-                    <label>Estado del proceso:</label>
+                    <label>Estado del proceso: <small><i>({{CalcCtrl.process.nomEstadoProceso}})</i></small></label>
                     <p>
-                        <uib-progressbar max="100" value="CalcCtrl.process.Porcentaje"><span style="color:white; white-space:nowrap;">{{dynamic}} / {{100}}</span></uib-progressbar>
+                        <uib-progressbar max="100" value="CalcCtrl.process.porcProceso">
+                            <span style="color:white; white-space:nowrap;">{{CalcCtrl.process.porcProceso}} / {{100}}</span>
+                        </uib-progressbar>
                     </p>
+                    <div class="btn btn-info" ng-click="CalcCtrl.getPercentage()">Actualizar <span class="fa fa-refresh"></span></div>
                 </div>
             </div>
             <div class="form-group row">
+                <div class="form-group col-2">
+                    <label>Condición proceso:</label>
+                </div>
                 <div class="form-group col-6">
-                    <label>Fecha corte anterior:</label>
-                    <small class="input-group">
-                        {{CalcCtrl.getCutDate()}}
-                    </small>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio" ng-value="H" ng-model="CalcCtrl.process.condicionProceso">Con datos históricos
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio" ng-value="A" ng-model="CalcCtrl.process.condicionProceso">Con datos actualizados
+                        </label>
+                    </div>
                 </div>
             </div>
+            <div class="form-group row justify-content-center">
+                <div class="btn btn-success" ng-click="CalcCtrl.submitCalc()">Procesar</div>
+            </div>
         </div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Archivo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody ng-repeat="item in PTInfoUpCtrl.files">
-                    <tr class=""
-                        ng-class="{'bg-info': item.seleccionado}">
-                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
-                            ng-class="{'cursor-pointer': item.seleccionable}">
-                            <b>{{item.nomTipoCargue}}</b> - {{item.A020_nombre}}
-                        </td>
-                        <td ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
-                            ng-class="{'bg-secondary': item.A020_estadoCargue == 11,
-                                       'bg-warning': item.A020_estadoCargue == 12,
-                                       'bg-success': item.A020_estadoCargue == 13,
-                                       'bg-danger': item.A020_estadoCargue == 14,
-                                       'cursor-pointer': item.seleccionable}">
-                            {{item.nomEstadoCargue}}
-                        </td>
-                        <td>
-                            <span class="fa cursor-pointer"
-                                  title="Seleccionar archivo para procesar"
-                                  ng-if="item.seleccionable"
-                                  ng-click="item.seleccionable ? PTInfoUpCtrl.selectFile(item) : null"
-                                  ng-class="{' fa-check-circle-o': !item.seleccionado, 'fa-check-circle': item.seleccionado}"></span>
-                            <span class="fa fa-eye cursor-pointer"
-                                  title="Ver razón del rechazo"
-                                  ng-click="PTInfoUpCtrl.showReason(item)"
-                                  ng-if="item.A020_estadoCargue == 14"></span>
-                        </td>
-                    </tr>
-                    <tr ng-class="{'bg-danger': item.A020_estadoCargue == 14}"
-                        ng-if="item.showReason && item.A020_tieneRechazo">
-                        <td colspan="3" class="text-center">
-                            <b>Mensaje de rechazo: </b>{{item.A020_mensajeRechazo}}
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody ng-if="PTInfoUpCtrl.files.length == 0">
-                    <tr class="bg-info">
-                        <td colspan="3" class="text-center">
-                            Lista vacía.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row justify-content-center">
+            <div class="table-responsive col-10">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>Recaudo diario</th>
+                            <th>Recaudo no diario</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Fecha de recaudo
+                            </th>
+                            <td>
+                                {{CalcCtrl.general.fechaRecaudoPagoDiario}}
+                            </td>
+                            <td>
+                                {{CalcCtrl.general.fechaRecaudoPagoNoDiario}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Fecha de transferencia
+                            </th>
+                            <td>
+                                {{CalcCtrl.general.fechaTransferenciaPagoDiario}}
+                            </td>
+                            <td>
+                                {{CalcCtrl.general.fechaTransferenciaPagoNoDiario}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>

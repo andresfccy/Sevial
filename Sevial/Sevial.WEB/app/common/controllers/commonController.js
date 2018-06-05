@@ -15,7 +15,7 @@ commonModule
             self.appName = CommonConstants.appName;
             self.version = CommonConstants.version;
             self.copyright = CommonConstants.copyright;
-            self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "Dummy";
+            self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "hcendales";
             self.role = CommonConstants.role || "Dummy Role";
             self.menu = [];
 
@@ -39,7 +39,7 @@ commonModule
 
             // Funciones
             function init() {
-                self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "Dummy";
+                self.username = SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY) || "hcendales";
                 CommonConstants.username = self.username;
             }
 

@@ -108,6 +108,7 @@ pendingTransfersModule
                     if (result.CodigoRpta == 0) {
                         growl.success(result.MensajeRpta);
                         getFiles();
+                        self.selectedFiles = [];
                     } else {
                         //growl.warning(result.MensajeRpta);
                     }
