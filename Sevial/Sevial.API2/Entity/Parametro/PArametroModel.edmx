@@ -29,6 +29,15 @@
           <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
           <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="SP033_EditarDptal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PAR">
+          <Parameter Name="aliasUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="departamental" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="divipola" Type="char" Mode="In" />
+          <Parameter Name="listaMunicipios" Type="nvarchar" Mode="In" />
+          <Parameter Name="codigoRpta" Type="int" Mode="InOut" />
+          <Parameter Name="mensajeRpta" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="APPSEVIALParametroModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -56,6 +65,15 @@
           <FunctionImport Name="SP032_ListarMunicipiosDptal" ReturnType="Collection(APPSEVIALParametroModel.SP032_ListarMunicipiosDptal_Result)">
             <Parameter Name="aliasUsuario" Mode="In" Type="String" />
             <Parameter Name="departamental" Mode="In" Type="Int32" />
+            <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
+            <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP033_EditarDptal">
+            <Parameter Name="aliasUsuario" Mode="In" Type="String" />
+            <Parameter Name="departamental" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="divipola" Mode="In" Type="String" />
+            <Parameter Name="listaMunicipios" Mode="In" Type="String" />
             <Parameter Name="codigoRpta" Mode="InOut" Type="Int32" />
             <Parameter Name="mensajeRpta" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -126,6 +144,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP033_EditarDptal" FunctionName="APPSEVIALParametroModel.Store.SP033_EditarDptal" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

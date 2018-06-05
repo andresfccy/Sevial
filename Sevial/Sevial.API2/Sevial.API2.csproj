@@ -323,6 +323,7 @@
     <Compile Include="Models\ObjetoEntrada\Informacion\EditarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Informacion\EliminarTransferencia.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\DarListaCategoria.cs" />
+    <Compile Include="Models\ObjetoEntrada\Parametro\EditarDptal.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\ListarDepartamentales.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\ListarMunDisponiblesDptal.cs" />
     <Compile Include="Models\ObjetoEntrada\Parametro\ListarMunicipiosDptal.cs" />

@@ -79,5 +79,30 @@ namespace Sevial.API2.Entity.Parametro
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP032_ListarMunicipiosDptal_Result>("SP032_ListarMunicipiosDptal", aliasUsuarioParameter, departamentalParameter, codigoRpta, mensajeRpta);
         }
+    
+        public virtual int SP033_EditarDptal(string aliasUsuario, Nullable<int> departamental, string nombre, string divipola, string listaMunicipios, ObjectParameter codigoRpta, ObjectParameter mensajeRpta)
+        {
+            var aliasUsuarioParameter = aliasUsuario != null ?
+                new ObjectParameter("aliasUsuario", aliasUsuario) :
+                new ObjectParameter("aliasUsuario", typeof(string));
+    
+            var departamentalParameter = departamental.HasValue ?
+                new ObjectParameter("departamental", departamental) :
+                new ObjectParameter("departamental", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var divipolaParameter = divipola != null ?
+                new ObjectParameter("divipola", divipola) :
+                new ObjectParameter("divipola", typeof(string));
+    
+            var listaMunicipiosParameter = listaMunicipios != null ?
+                new ObjectParameter("listaMunicipios", listaMunicipios) :
+                new ObjectParameter("listaMunicipios", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP033_EditarDptal", aliasUsuarioParameter, departamentalParameter, nombreParameter, divipolaParameter, listaMunicipiosParameter, codigoRpta, mensajeRpta);
+        }
     }
 }

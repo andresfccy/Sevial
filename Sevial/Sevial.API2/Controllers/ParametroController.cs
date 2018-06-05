@@ -111,5 +111,28 @@ namespace Sevial.API2.Controllers
 
             return Ok(os);
         }
+
+        [Route("api/parametro/editarDptal")]
+        [ResponseType(typeof(Respuesta))]
+        public IHttpActionResult PostEditarDptal(EditarDptal oe)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ObjectParameter codigoRpta = new ObjectParameter("CodigoRpta", typeof(Int32));
+            ObjectParameter mensajeRpta = new ObjectParameter("MensajeRpta", typeof(String));
+
+            var result = db.SP033_EditarDptal(oe.AliasUsuario, oe.Departamental, oe.Nombre, oe.Divipola, oe.ListaMunicipios, codigoRpta, mensajeRpta);
+
+            Respuesta os = new Respuesta();
+
+            os.CodigoRpta = Convert.ToInt32(codigoRpta.Value);
+            os.MensajeRpta = mensajeRpta.Value.ToString();
+
+            return Ok(os);
+        }
+
     }
 }
