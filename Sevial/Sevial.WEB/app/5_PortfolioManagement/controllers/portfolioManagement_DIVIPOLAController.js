@@ -23,6 +23,7 @@ portfolioManagementModule
             self.openNew = openNew;
             self.selectCity = selectCity;
             self.moveCities = moveCities;
+            self.updateList = updateList;
 
             // Funciones
             function init() {
