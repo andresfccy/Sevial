@@ -32,6 +32,7 @@ portfolioManagementModule.config(['$stateProvider',
             })
             .state('portfolioManagement.home', {
                 url: '/Inicio',
+                controller: 'portfolioManagement.portfolioManagementController',
                 templateUrl: 'app/5_PortfolioManagement/views/5_index.html',
                 resolve: {
                     check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
@@ -55,24 +56,88 @@ portfolioManagementModule.config(['$stateProvider',
                 breadcrumb: 'Cálculo transferencias pendientes',
                 templateUrl: 'app/5_PortfolioManagement/views/5_1_calculate.html',
                 controller: 'portfolioManagement.calculateTransfersController as CalcCtrl',
+                resolve: {
+                    check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
+                        function ($timeout, $state, $q, SessionServices, loading, growl) {
+                            if (SessionServices.isLoggedIn()) {
+                                if (!SessionServices.authorized("/CalculoTransferenciasPendientes"))
+                                    return $q.reject();
+                            } else {
+                                $timeout(function () {
+                                    growl.warning("Sesión caducada");
+                                    $state.go('login');
+                                }, 0);
+                                return $q.reject();
+                            }
+                        }
+                    ]
+                }
             })
             .state('portfolioManagement.transfer', {
                 url: '/ParametrizacionEntrega',
                 breadcrumb: 'Parametrización de entregas',
                 templateUrl: 'app/5_PortfolioManagement/views/5_2_transfer.html',
                 controller: 'portfolioManagement.transferController as TransCtrl',
+                resolve: {
+                    check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
+                        function ($timeout, $state, $q, SessionServices, loading, growl) {
+                            if (SessionServices.isLoggedIn()) {
+                                if (!SessionServices.authorized("/ParametrizacionEntrega"))
+                                    return $q.reject();
+                            } else {
+                                $timeout(function () {
+                                    growl.warning("Sesión caducada");
+                                    $state.go('login');
+                                }, 0);
+                                return $q.reject();
+                            }
+                        }
+                    ]
+                }
             })
             .state('portfolioManagement.transferDetail', {
                 url: '/ParametrizacionEntrega/Detalle/:id',
                 breadcrumb: 'Detalle',
                 templateUrl: 'app/5_PortfolioManagement/views/5_2_transfer.detail.html',
                 controller: 'portfolioManagement.transferDetailController as TrDCtrl',
+                resolve: {
+                    check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
+                        function ($timeout, $state, $q, SessionServices, loading, growl) {
+                            if (SessionServices.isLoggedIn()) {
+                                if (!SessionServices.authorized("/ParametrizacionEntrega/Detalle"))
+                                    return $q.reject();
+                            } else {
+                                $timeout(function () {
+                                    growl.warning("Sesión caducada");
+                                    $state.go('login');
+                                }, 0);
+                                return $q.reject();
+                            }
+                        }
+                    ]
+                }
             })
             .state('portfolioManagement.divipola', {
                 url: '/GestionDepartamentos',
                 breadcrumb: 'Gestión departamental',
                 templateUrl: 'app/5_PortfolioManagement/views/5_3_DIVIPOLA.html',
                 controller: 'portfolioManagement.DIVIPOLAController as DiviCtrl',
+                resolve: {
+                    check: ['$timeout', '$state', '$q', 'SessionServices', 'loading', 'growl',
+                        function ($timeout, $state, $q, SessionServices, loading, growl) {
+                            if (SessionServices.isLoggedIn()) {
+                                if (!SessionServices.authorized("/ManejoCartera"))
+                                    return $q.reject();
+                            } else {
+                                $timeout(function () {
+                                    growl.warning("Sesión caducada");
+                                    $state.go('login');
+                                }, 0);
+                                return $q.reject();
+                            }
+                        }
+                    ]
+                }
             })
     }
 ]);

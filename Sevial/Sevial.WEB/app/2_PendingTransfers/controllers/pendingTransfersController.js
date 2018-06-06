@@ -32,7 +32,6 @@ pendingTransfersModule
                     IdModulo: mod.id,
                     AliasUsuario: SessionServices.getValueFromStorage(CommonConstants.USER_ID_KEY)
                 };
-                console.log(req);
                 var p = SecurityServices.getOptionsByUser(req).$promise;
                 p.then(function (result) {
                     if (result.CodigoRpta == 0) {
