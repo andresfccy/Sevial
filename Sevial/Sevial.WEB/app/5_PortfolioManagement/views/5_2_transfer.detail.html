@@ -1,13 +1,14 @@
 ﻿<section id="portfolioManagement" class="portfolioManagement">
     <div class="card">
-        <div class="card-header bg-primary">Entrega de cartera SIMIT a DITRA</div>
+        <div class="card-header bg-primary">Detalle de entrega de cartera</div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                    <div class=" btn btn-success"
-                         data-toggle="modal"
-                         data-target="#editTransfer"
-                         ng-click="TransCtrl.openNew()">Nueva entrega</div>
+            <div class="row justify-content-center">
+                <div class="col-md-3">Filtro</div>
+                <div class="col-md-7">
+                    <input class="form-control"
+                           ng-model="TrDCtrl.filtro"
+                           ng-change="TrDCtrl.getListPortfolio()"/>
+                    <small>Escribir criterios separados por comas (,)</small>
                 </div>
             </div>
         </div>
@@ -17,21 +18,27 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Municipio</th>
                             <th>Fecha inicial</th>
                             <th>Fecha final</th>
+                            <th>Estado</th>
+                            <th>Observación</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in TransCtrl.portfolio">
+                        <tr ng-repeat="item in TrDCtrl.portfolio">
                             <td>{{$index+1}}</td>
-                            <td>{{item.A051_fechaInicial}}</td>
-                            <td>{{item.A051_fechaFinal}}</td>
+                            <td>{{item.nomMunicipio}}</td>
+                            <td>{{item.A052_fechaInicial}}</td>
+                            <td>{{item.A052_fechaFinal}}</td>
+                            <td>{{item.A052_estadoRegistro}}</td>
+                            <td>{{item.A052_observacion}}</td>
                             <td>
                                 <span class="fa fa-edit pointer"
-                                      ui-sref="portfolioManagement.transferDetail({id:item.A051_codigo})"></span>
-                                <span class="fa fa-trash-o pointer"
-                                      ng-click="TransCtrl.deletePortfolio(item)"></span>
+                                      data-toggle="modal"
+                                      data-target="#editTransfer"
+                                      ng-click="TrDCtrl.prepareEdit(item)"></span>
                             </td>
                         </tr>
                     </tbody>
@@ -42,23 +49,27 @@
 </section>
 <div id="editTransfer" class="modal bd-example-modal-lg fade show" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
     <div class="modal-dialog modal-lg" role="document">
-        <form class="modal-content" name="TransCtrl.transferForm" novalidate ng-submit="TransCtrl.updatePortfolio()">
+        <form class="modal-content" name="TrDCtrl.transferForm" novalidate ng-submit="TrDCtrl.updatePortfolio()">
             <div class="modal-header">
-                <h5 ng-show="!TransCtrl.isEditing" class="modal-title" id="gridModalLabel">Crear nueva entrega cartera</h5>
+                <h5 class="modal-title" id="gridModalLabel">Editar entrega cartera DITRA</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid bd-example-row">
+                    <div class="form-group row">
+                        <div class="col-md-4">Municipio</div>
+                        <div class="col-md-4"><p>{{TrDCtrl.edit.nomMunicipio}}</p></div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-md-4">Fecha inicial</div><div class="col-md-4">
                             <p class="input-group">
                                 <input type="text"
                                        class="form-control form-control-sm cursor-pointer"
                                        uib-datepicker-popup="{{format}}"
-                                       ng-click="TransCtrl.openCal(1)"
-                                       ng-model="TransCtrl.edit.A051_fechaInicial"
-                                       is-open="TransCtrl.popup[1]"
-                                       datepicker-options="TransCtrl.dateOptions"
+                                       ng-click="TrDCtrl.openCal(1)"
+                                       ng-model="TrDCtrl.edit.A052_fechaInicial"
+                                       is-open="TrDCtrl.popup[1]"
+                                       datepicker-options="TrDCtrl.dateOptions"
                                        ng-required="true"
                                        alt-input-formats="altInputFormats"
                                        current-text="Hoy"
@@ -69,12 +80,12 @@
                                 <span class="input-group-append">
                                     <button type="button"
                                             class="btn btn-default"
-                                            ng-click="TransCtrl.openCal(1)">
+                                            ng-click="TrDCtrl.openCal(1)">
                                         <i class="fa fa-calendar"></i>
                                     </button>
                                 </span>
-                                <div ng-show="TransCtrl.transferForm.$submitted || TransCtrl.transferForm.iniDate.$touched">
-                                    <span class="error-message" ng-show="TransCtrl.transferForm.iniDate.$error.required">Este es un campo requerido</span>
+                                <div ng-show="TrDCtrl.transferForm.$submitted || TrDCtrl.transferForm.iniDate.$touched">
+                                    <span class="error-message" ng-show="TrDCtrl.transferForm.iniDate.$error.required">Este es un campo requerido</span>
                                 </div>
                             </p>
                         </div>
@@ -85,10 +96,10 @@
                                 <input type="text"
                                        class="form-control form-control-sm cursor-pointer"
                                        uib-datepicker-popup="{{format}}"
-                                       ng-click="TransCtrl.openCal(2)"
-                                       ng-model="TransCtrl.edit.A051_fechaFinal"
-                                       is-open="TransCtrl.popup[2]"
-                                       datepicker-options="TransCtrl.dateOptions"
+                                       ng-click="TrDCtrl.openCal(2)"
+                                       ng-model="TrDCtrl.edit.A052_fechaFinal"
+                                       is-open="TrDCtrl.popup[2]"
+                                       datepicker-options="TrDCtrl.dateOptions"
                                        ng-required="true"
                                        alt-input-formats="altInputFormats"
                                        current-text="Hoy"
@@ -99,7 +110,7 @@
                                 <span class="input-group-append">
                                     <button type="button"
                                             class="btn btn-default"
-                                            ng-click="TransCtrl.openCal(2)">
+                                            ng-click="TrDCtrl.openCal(2)">
                                         <i class="fa fa-calendar"></i>
                                     </button>
                                 </span>
@@ -109,11 +120,27 @@
                             </p>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">Estado</div>
+                        <div class="col-md-4">
+                            <input type="checkbox"
+                                   name="estado"
+                                   ng-model="TrDCtrl.edit.A052_estadoRegistro"
+                                   ng-true-value="'A'"
+                                   ng-false-value="'I'" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">Observación</div>
+                        <div class="col-md-4">
+                            <textarea class="form-control" ng-model="TrDCtrl.edit.A052_observacion"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-primary" type="submit">Guardar cambios</button>
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-primary" type="submit">Aceptar</button>
             </div>
         </form>
     </div>

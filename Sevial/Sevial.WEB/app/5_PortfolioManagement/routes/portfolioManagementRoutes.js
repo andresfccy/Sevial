@@ -62,6 +62,12 @@ portfolioManagementModule.config(['$stateProvider',
                 templateUrl: 'app/5_PortfolioManagement/views/5_2_transfer.html',
                 controller: 'portfolioManagement.transferController as TransCtrl',
             })
+            .state('portfolioManagement.transferDetail', {
+                url: '/ParametrizacionEntrega/Detalle/:id',
+                breadcrumb: 'Detalle',
+                templateUrl: 'app/5_PortfolioManagement/views/5_2_transfer.detail.html',
+                controller: 'portfolioManagement.transferDetailController as TrDCtrl',
+            })
             .state('portfolioManagement.divipola', {
                 url: '/GestionDepartamentos',
                 breadcrumb: 'Gestión departamental',
